@@ -53,10 +53,17 @@ export default function RegistrationModal({ open, onClose, cohort }: Props) {
     setErrors({});
     setSubmitting(true);
     try {
+      const d = parsed.data;
       await createRegistration({
         cohortId: cohort.id,
         cohortName: cohort.name,
-        ...parsed.data,
+        fullName: d.fullName,
+        email: d.email,
+        whatsappNumber: d.whatsappNumber,
+        country: d.country,
+        skillLevel: d.skillLevel,
+        motivation: d.motivation,
+        expectations: d.expectations,
         paymentStatus: 'pending',
         amount: price,
       });
