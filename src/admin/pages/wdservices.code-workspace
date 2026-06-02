@@ -1,0 +1,23 @@
+{
+	"folders": [
+		{
+			"path": "../../.."
+		},
+		{
+			"path": "../../../../ARFed-Main"
+		},
+		{
+			"path": "../../../../asemi"
+		},
+		{
+			"path": "../../../../BakeBook"
+		},
+		{
+			"path": "../../../../PrepMate"
+		},
+		{
+			"path": "../../../../vibe-Codez"
+		}
+	],
+	"settings": {}
+}
