@@ -108,10 +108,10 @@ const WelcomePopup: React.FC = () => {
                       className={`p-4 rounded-lg flex flex-col items-center gap-3 transition-all hover:border-secondary/40 animate-float bouncy-click glass-card ${selectedService === 'mobile app' ? 'inner-glow-mint' : ''}`}
                       style={{ animationDelay: '0.5s' }}
                     >
-                      <div className="w-12 h-12 rounded-full bg-secondary-container/20 flex items-center justify-center shadow-[0_0_20px_rgba(0,180,160,0.3)]">
-                        <span className="material-symbols-outlined text-secondary text-[28px]">smartphone</span>
+                      <div className="w-12 h-12 rounded-full bg-teal-400/20 flex items-center justify-center shadow-[0_0_20px_rgba(45,212,191,0.5)]">
+                        <span className="material-symbols-outlined text-teal-300 text-[28px]">smartphone</span>
                       </div>
-                      <span className="text-xs font-bold tracking-widest text-secondary uppercase">Mobile App</span>
+                      <span className="text-xs font-bold tracking-widest text-teal-300 uppercase">Mobile App</span>
                     </button>
                     {/* AI Tool Card */}
                     <button
@@ -130,10 +130,10 @@ const WelcomePopup: React.FC = () => {
                       className={`p-4 rounded-lg flex flex-col items-center gap-3 transition-all hover:border-secondary/40 animate-float bouncy-click glass-card ${selectedService === 'digital tool' ? 'inner-glow-mint' : ''}`}
                       style={{ animationDelay: '1.5s' }}
                     >
-                      <div className="w-12 h-12 rounded-full bg-secondary-container/20 flex items-center justify-center shadow-[0_0_20px_rgba(0,180,160,0.3)]">
-                        <span className="material-symbols-outlined text-secondary text-[28px]">bolt</span>
+                      <div className="w-12 h-12 rounded-full bg-teal-400/20 flex items-center justify-center shadow-[0_0_20px_rgba(45,212,191,0.5)]">
+                        <span className="material-symbols-outlined text-teal-300 text-[28px]">bolt</span>
                       </div>
-                      <span className="text-xs font-bold tracking-widest text-secondary uppercase">Digital Tool</span>
+                      <span className="text-xs font-bold tracking-widest text-teal-300 uppercase">Digital Tool</span>
                     </button>
                   </div>
                 </section>

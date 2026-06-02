@@ -32,3 +32,5 @@ declare module '../components/LoginForm' {
   export const LoginForm: FC<LoginFormProps>;
   export default LoginForm;
 }
+
+declare module '*.css';
