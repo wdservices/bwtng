@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { App } from '../../types/admin';
-import { LayoutDashboard, ChevronLeft, ChevronRight, LogOut, FileText } from 'lucide-react';
+import { LayoutDashboard, ChevronLeft, ChevronRight, LogOut, FileText, GraduationCap } from 'lucide-react';
 import { useAuth } from '../../contexts/AuthContext';
 
 interface AdminLayoutProps {
@@ -51,6 +51,14 @@ export const AdminLayout = ({ apps = [], children }: AdminLayoutProps) => {
             } ${collapsed ? 'justify-center' : ''}`}>
             <FileText className="h-4 w-4 shrink-0" />
             {!collapsed && <span>Blog</span>}
+          </Link>
+
+          <Link to="/admin/academy" onClick={() => setMobileOpen(false)}
+            className={`flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium transition-colors ${
+              isActive('/admin/academy') ? 'bg-primary/10 text-primary' : 'text-muted-foreground hover:text-foreground hover:bg-muted/50'
+            } ${collapsed ? 'justify-center' : ''}`}>
+            <GraduationCap className="h-4 w-4 shrink-0" />
+            {!collapsed && <span>AI Builder Academy</span>}
           </Link>
 
           {!collapsed && <p className="px-3 pt-5 pb-1.5 text-[10px] font-semibold text-muted-foreground uppercase tracking-widest">Products</p>}

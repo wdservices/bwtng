@@ -7,12 +7,12 @@ import About from "@/components/About";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
 import ClientShowcase from "@/components/ClientShowcase";
-import WelcomePopup from "@/components/WelcomePopup";
+import PopupController from "@/components/PopupController";
 
 const Index = () => {
   return (
     <div className="min-h-screen bg-background text-foreground transition-colors">
-      <WelcomePopup />
+      <PopupController />
       <Header />
       <Hero />
       <Services />

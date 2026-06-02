@@ -31,6 +31,9 @@ import { Dashboard } from '@/admin/pages/Dashboard';
 import BlogAdmin from '@/admin/pages/BlogAdmin';
 import ProductAdmin from '@/admin/pages/ProductAdmin';
 import { ADMIN_PRODUCTS } from '@/page-content/AdminDashboard';
+import AIBuilderAcademy from '@/page-content/AIBuilderAcademy';
+import AcademyCohorts from '@/admin/pages/AcademyCohorts';
+import AcademyRegistrations from '@/admin/pages/AcademyRegistrations';
 
 const queryClient = new QueryClient();
 
@@ -55,10 +58,13 @@ function App() {
               <Route path="/mobile-app-development" element={<MobileAppDevelopment />} />
               <Route path="/seo-services" element={<SEOServices />} />
               <Route path="/branding" element={<Branding />} />
+              <Route path="/ai-builder-academy" element={<AIBuilderAcademy />} />
               {/* Admin routes */}
               <Route path="/admin/login" element={<AdminLogin />} />
               <Route path="/admin" element={<AdminDashboard><Dashboard apps={ADMIN_PRODUCTS} /></AdminDashboard>} />
               <Route path="/admin/blog" element={<AdminDashboard><BlogAdmin /></AdminDashboard>} />
+              <Route path="/admin/academy" element={<AdminDashboard><AcademyCohorts /></AdminDashboard>} />
+              <Route path="/admin/academy/registrations" element={<AdminDashboard><AcademyRegistrations /></AdminDashboard>} />
               <Route path="/admin/products/:appId" element={<AdminDashboard><ProductAdmin apps={ADMIN_PRODUCTS} /></AdminDashboard>} />
               <Route path="*" element={<NotFound />} />
             </Routes>
