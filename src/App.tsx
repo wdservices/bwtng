@@ -32,6 +32,7 @@ import BlogAdmin from '@/admin/pages/BlogAdmin';
 import ProductAdmin from '@/admin/pages/ProductAdmin';
 import { ADMIN_PRODUCTS } from '@/page-content/AdminDashboard';
 import AIBuilderAcademy from '@/page-content/AIBuilderAcademy';
+import AcademyRegister from '@/page-content/AcademyRegister';
 import AcademyCohorts from '@/admin/pages/AcademyCohorts';
 import AcademyRegistrations from '@/admin/pages/AcademyRegistrations';
 
@@ -59,6 +60,7 @@ function App() {
               <Route path="/seo-services" element={<SEOServices />} />
               <Route path="/branding" element={<Branding />} />
               <Route path="/ai-builder-academy" element={<AIBuilderAcademy />} />
+              <Route path="/academy/register" element={<AcademyRegister />} />
               {/* Admin routes */}
               <Route path="/admin/login" element={<AdminLogin />} />
               <Route path="/admin" element={<AdminDashboard><Dashboard apps={ADMIN_PRODUCTS} /></AdminDashboard>} />

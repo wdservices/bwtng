@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import { Helmet } from 'react-helmet-async';
+import { Link } from 'react-router-dom';
 import {
   Sparkles, Rocket, Brain, Code, Users, Award, GraduationCap,
   CheckCircle2, Clock, CalendarDays, Video, ArrowRight
@@ -8,7 +9,6 @@ import {
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import { Button } from '@/components/ui/button';
-import RegistrationModal from '@/components/academy/RegistrationModal';
 import { useActiveCohort } from '@/hooks/useActiveCohort';
 
 const WHY = [
@@ -22,21 +22,6 @@ const WHY = [
 
 const WHO = ['Beginners', 'Students', 'Entrepreneurs', 'Startup Founders', 'Freelancers', 'Product Builders', 'Developers wanting AI productivity'];
 
-const CURRICULUM = [
-  {
-    week: 'Week 1', title: 'Foundations & AI Workflow',
-    items: ['Product Planning', 'Vibe Coding Fundamentals', 'UI Development', 'Frontend Development', 'AI Coding Assistants']
-  },
-  {
-    week: 'Week 2', title: 'Backend & Database Development',
-    items: ['APIs', 'Authentication', 'Databases', 'Backend Logic', 'Full Stack Integration']
-  },
-  {
-    week: 'Week 3', title: 'Launch & Deployment',
-    items: ['Testing', 'Optimization', 'Deployment', 'Launch', 'Final Project Showcase']
-  },
-];
-
 const OUTCOMES = [
   'A completed project',
   'Deployment experience',
@@ -47,8 +32,7 @@ const OUTCOMES = [
 ];
 
 export default function AIBuilderAcademy() {
-  const { cohort, registered, loading } = useActiveCohort();
-  const [open, setOpen] = useState(false);
+  const { cohort, registered } = useActiveCohort();
   const [countdown, setCountdown] = useState('');
 
   useEffect(() => {
@@ -72,12 +56,7 @@ export default function AIBuilderAcademy() {
         ? cohort.earlyBirdPrice : cohort.regularPrice)
     : 50000;
 
-  const seatsLeft = cohort ? Math.max(cohort.seatLimit - registered, 0) : 20;
-
-  const handleRegister = () => {
-    if (!cohort) return;
-    setOpen(true);
-  };
+  const seatsLeft = cohort ? Math.max(cohort.seatLimit - registered, 0) : 50;
 
   return (
     <div className="min-h-screen bg-background text-foreground">
@@ -121,14 +100,19 @@ export default function AIBuilderAcademy() {
               <Chip icon={Video}>Live Virtual Training</Chip>
             </div>
 
-            <div className="flex flex-wrap items-center justify-center gap-3">
-              <Button onClick={handleRegister} disabled={!cohort || loading}
-                className="h-12 px-7 rounded-full bg-gradient-to-r from-primary to-purple-500 text-white font-semibold shadow-[0_8px_30px_rgba(99,102,241,0.4)]">
-                {cohort ? `Join Cohort ${cohort.number}` : 'Cohort opens soon'} <ArrowRight className="w-4 h-4 ml-2" />
+            <div className="flex flex-wrap items-center justify-center gap-4">
+              <Link to="/academy/register">
+                <Button type="button"
+                  className="h-14 px-8 rounded-full bg-gradient-to-r from-primary to-purple-500 text-white font-bold text-base shadow-[0_8px_30px_rgba(99,102,241,0.5)] hover:scale-105 hover:shadow-[0_12px_40px_rgba(99,102,241,0.7)] transition-all">
+                  {cohort ? `Join Cohort ${cohort.number}` : 'Join Now'} <ArrowRight className="w-5 h-5 ml-2" />
+                </Button>
+              </Link>
+            <Link to="/academy/register" className="block">
+              <Button type="button"
+                className="relative w-full h-16 py-3 rounded-full bg-gradient-to-r from-pink-500 via-rose-500 to-orange-500 text-white font-extrabold text-lg uppercase tracking-wide shadow-[0_12px_50px_rgba(244,63,94,0.6)] hover:scale-[1.02] hover:shadow-[0_18px_60px_rgba(244,63,94,0.8)] hover:from-pink-400 hover:via-rose-400 hover:to-orange-400 transition-all ring-2 ring-white/20 hover:ring-white/40">
+                {cohort && seatsLeft === 0 ? 'Sold Out' : `Register Now — ₦${price.toLocaleString()}`}
               </Button>
-              <a href="#curriculum">
-                <Button variant="outline" className="h-12 px-7 rounded-full">View Curriculum</Button>
-              </a>
+            </Link>
             </div>
           </motion.div>
         </div>
@@ -164,32 +148,6 @@ export default function AIBuilderAcademy() {
               <span key={w} className="px-5 py-2.5 rounded-full bg-card border border-border text-sm text-foreground">
                 {w}
               </span>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* CURRICULUM */}
-      <section id="curriculum" className="py-20 border-t border-border/50">
-        <div className="container mx-auto px-6 max-w-6xl">
-          <h2 className="text-3xl sm:text-4xl font-bold font-display text-center mb-12">Curriculum</h2>
-          <div className="grid md:grid-cols-3 gap-5">
-            {CURRICULUM.map((w, i) => (
-              <motion.div key={w.week}
-                initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }} transition={{ delay: i * 0.1 }}
-                className="p-6 rounded-2xl bg-gradient-to-b from-card to-card/40 border border-border">
-                <p className="text-xs font-bold tracking-widest text-primary uppercase mb-2">{w.week}</p>
-                <h3 className="text-xl font-bold text-foreground mb-4 font-display">{w.title}</h3>
-                <ul className="space-y-2">
-                  {w.items.map(it => (
-                    <li key={it} className="flex items-start gap-2 text-sm text-muted-foreground">
-                      <CheckCircle2 className="w-4 h-4 text-primary mt-0.5 shrink-0" />
-                      {it}
-                    </li>
-                  ))}
-                </ul>
-              </motion.div>
             ))}
           </div>
         </div>
@@ -237,19 +195,17 @@ export default function AIBuilderAcademy() {
               </div>
             )}
 
-            <Button onClick={handleRegister} disabled={!cohort || loading || seatsLeft === 0}
-              className="relative w-full h-13 py-3 rounded-full bg-gradient-to-r from-primary to-purple-500 text-white font-semibold text-base shadow-[0_8px_30px_rgba(99,102,241,0.4)]">
-              {seatsLeft === 0 ? 'Sold Out' : `Register Now — ₦${price.toLocaleString()}`}
-            </Button>
+            <Link to="/academy/register" className="block">
+              <Button type="button"
+                className="relative w-full h-16 py-3 rounded-full bg-gradient-to-r from-pink-500 via-rose-500 to-orange-500 text-white font-extrabold text-lg uppercase tracking-wide shadow-[0_12px_50px_rgba(244,63,94,0.6)] hover:scale-[1.02] hover:shadow-[0_18px_60px_rgba(244,63,94,0.8)] hover:from-pink-400 hover:via-rose-400 hover:to-orange-400 transition-all ring-2 ring-white/20 hover:ring-white/40">
+                {cohort && seatsLeft === 0 ? 'Sold Out' : `Register Now — ₦${price.toLocaleString()}`}
+              </Button>
+            </Link>
           </div>
         </div>
       </section>
 
       <Footer />
-
-      {cohort && (
-        <RegistrationModal open={open} onClose={() => setOpen(false)} cohort={cohort} />
-      )}
     </div>
   );
 }

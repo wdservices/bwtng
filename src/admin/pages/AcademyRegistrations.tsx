@@ -37,11 +37,11 @@ export default function AcademyRegistrations() {
   }, [regs]);
 
   const exportCSV = () => {
-    const headers = ['Date', 'Full Name', 'Email', 'WhatsApp', 'Country', 'Skill', 'Motivation', 'Expectations', 'Cohort', 'Status', 'Amount', 'Payment Ref'];
+    const headers = ['Registration Date', 'Full Name', 'Email', 'WhatsApp Number', 'Country', 'Skill Level', 'Motivation', 'Cohort', 'Payment Status', 'Payment Reference', 'Amount'];
     const rows = filtered.map(r => [
       formatDate(r.createdAt), r.fullName, r.email, r.whatsappNumber, r.country,
-      r.skillLevel, r.motivation, r.expectations, r.cohortName, r.paymentStatus,
-      r.amount, r.paymentReference ?? '',
+      r.skillLevel, r.motivation, r.cohortName, r.paymentStatus,
+      r.paymentReference ?? '', r.amount,
     ]);
     const csv = [headers, ...rows].map(row =>
       row.map(v => `"${String(v ?? '').replace(/"/g, '""')}"`).join(',')
@@ -97,31 +97,44 @@ export default function AcademyRegistrations() {
           <table className="w-full text-sm">
             <thead className="bg-muted/50">
               <tr className="text-left text-xs uppercase tracking-wider text-muted-foreground">
-                <th className="p-3">Date</th><th className="p-3">Name</th><th className="p-3">Email</th>
-                <th className="p-3">WhatsApp</th><th className="p-3">Country</th><th className="p-3">Cohort</th>
-                <th className="p-3">Status</th><th className="p-3">Amount</th>
+                <th className="p-3">Registration Date</th>
+                <th className="p-3">Full Name</th>
+                <th className="p-3">Email</th>
+                <th className="p-3">WhatsApp Number</th>
+                <th className="p-3">Country</th>
+                <th className="p-3">Skill Level</th>
+                <th className="p-3">Motivation</th>
+                <th className="p-3">Cohort</th>
+                <th className="p-3">Payment Status</th>
+                <th className="p-3">Payment Reference</th>
+                <th className="p-3">Amount</th>
               </tr>
             </thead>
             <tbody>
               {filtered.length === 0 && (
-                <tr><td colSpan={8} className="p-8 text-center text-muted-foreground">No registrations match these filters.</td></tr>
+                <tr><td colSpan={11} className="p-8 text-center text-muted-foreground">No registrations match these filters.</td></tr>
               )}
               {filtered.map(r => (
-                <tr key={r.id} className="border-t border-border">
-                  <td className="p-3 text-muted-foreground text-xs">{formatDate(r.createdAt)}</td>
-                  <td className="p-3 font-medium text-foreground">{r.fullName}</td>
+                <tr key={r.id} className="border-t border-border align-top">
+                  <td className="p-3 text-muted-foreground text-xs whitespace-nowrap">{formatDate(r.createdAt)}</td>
+                  <td className="p-3 font-medium text-foreground whitespace-nowrap">{r.fullName}</td>
                   <td className="p-3 text-muted-foreground">{r.email}</td>
-                  <td className="p-3 text-muted-foreground">{r.whatsappNumber}</td>
-                  <td className="p-3 text-muted-foreground">{r.country}</td>
-                  <td className="p-3 text-muted-foreground">{r.cohortName}</td>
+                  <td className="p-3 text-muted-foreground whitespace-nowrap">{r.whatsappNumber}</td>
+                  <td className="p-3 text-muted-foreground whitespace-nowrap">{r.country}</td>
+                  <td className="p-3 text-muted-foreground capitalize">{r.skillLevel}</td>
+                  <td className="p-3 text-muted-foreground max-w-xs">
+                    <span className="line-clamp-2" title={r.motivation}>{r.motivation}</span>
+                  </td>
+                  <td className="p-3 text-muted-foreground whitespace-nowrap">{r.cohortName}</td>
                   <td className="p-3">
-                    <span className={`px-2 py-0.5 rounded-full text-xs border ${
+                    <span className={`px-2 py-0.5 rounded-full text-xs border whitespace-nowrap ${
                       r.paymentStatus === 'paid' ? 'bg-green-500/15 text-green-400 border-green-500/30'
                       : r.paymentStatus === 'failed' ? 'bg-destructive/15 text-destructive border-destructive/30'
                       : 'bg-amber-500/15 text-amber-400 border-amber-500/30'
                     }`}>{r.paymentStatus}</span>
                   </td>
-                  <td className="p-3 text-foreground">₦{r.amount?.toLocaleString() ?? 0}</td>
+                  <td className="p-3 text-muted-foreground font-mono text-xs">{r.paymentReference || '—'}</td>
+                  <td className="p-3 text-foreground whitespace-nowrap">₦{r.amount?.toLocaleString() ?? 0}</td>
                 </tr>
               ))}
             </tbody>

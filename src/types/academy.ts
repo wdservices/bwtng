@@ -28,7 +28,6 @@ export interface Registration {
   country: string;
   skillLevel: string;
   motivation: string;
-  expectations: string;
   paymentStatus: PaymentStatus;
   paymentReference?: string;
   amount: number;
