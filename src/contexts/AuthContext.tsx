@@ -45,13 +45,13 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
       }
     };
 
-    const unsubscribeOrCleanup = setupAuth();
+    const cleanupPromise = setupAuth();
 
-    // Cleanup function for the effect
     return () => {
-      if (typeof unsubscribeOrCleanup === 'function') {
-        unsubscribeOrCleanup();
-      }
+      isMounted = false;
+      cleanupPromise.then((cleanup) => {
+        if (typeof cleanup === 'function') cleanup();
+      });
     };
   }, []);
 
