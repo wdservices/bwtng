@@ -658,12 +658,12 @@ export const BlogAdmin = () => {
                 required
                 placeholder="Write your blog content here..."
               />
-              <div className="rounded-lg border border-border p-3 bg-gray-50 dark:bg-gray-900/40 space-y-3">
+              <div className="rounded-lg border border-border/60 p-3 bg-muted/20 space-y-3">
                 <div>
-                  <p className="text-xs text-gray-500 dark:text-gray-400 mb-1">
+                  <p className="text-xs text-muted-foreground mb-1">
                     Selected text
                   </p>
-                  <div className="min-h-10 rounded-md border border-dashed border-gray-300 dark:border-gray-700 px-3 py-2 text-sm text-gray-700 dark:text-gray-300 bg-white dark:bg-gray-800">
+                  <div className="min-h-10 rounded-md border border-dashed border-border px-3 py-2 text-sm text-foreground/80 bg-background/60">
                     {selectedContentText || 'Highlight text inside the content box to link it.'}
                   </div>
                 </div>
@@ -680,7 +680,7 @@ export const BlogAdmin = () => {
                   Add Link To Selected Text
                 </Button>
               </div>
-              <p className="text-xs text-gray-500 dark:text-gray-400">
+              <p className="text-xs text-muted-foreground">
                 Use `[link text](https://example.com)` for linked text, or paste a full URL to make it clickable.
               </p>
             </div>
@@ -697,21 +697,21 @@ export const BlogAdmin = () => {
                   placeholder="https://example.com/image.jpg"
                 />
                 {formData.imageUrl ? (
-                  <div className="rounded-lg border border-border p-3 bg-gray-50 dark:bg-gray-900/40">
-                    <p className="text-xs text-gray-500 dark:text-gray-400 mb-2">
+                  <div className="rounded-lg border border-border/60 p-3 bg-muted/20">
+                    <p className="text-xs text-muted-foreground mb-2">
                       Live preview
                     </p>
                     {!imagePreviewError ? (
                       <img
                         src={formData.imageUrl}
                         alt="Blog preview"
-                        className="w-full h-40 object-cover rounded-md bg-white"
+                        className="w-full h-40 object-cover rounded-md bg-background"
                         loading="lazy"
                         referrerPolicy="no-referrer"
                         onError={() => setImagePreviewError(true)}
                       />
                     ) : (
-                      <div className="h-40 rounded-md border border-dashed border-gray-300 dark:border-gray-700 flex items-center justify-center text-sm text-gray-500 dark:text-gray-400 text-center px-4">
+                      <div className="h-40 rounded-md border border-dashed border-border flex items-center justify-center text-sm text-muted-foreground text-center px-4">
                         Preview unavailable. The link may be blocked by the image host, or it may need a direct image URL.
                       </div>
                     )}
