@@ -361,11 +361,11 @@ export const BlogAdmin = () => {
 
   if (!currentUser) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-gray-50 dark:bg-gray-900 p-4">
-        <div className="w-full max-w-md p-8 space-y-8 bg-white dark:bg-gray-800 rounded-xl shadow-md">
+      <div className="min-h-screen flex items-center justify-center bg-background p-4">
+        <div className="w-full max-w-md p-8 space-y-8 bg-card border border-border/60 rounded-2xl shadow-xl">
           <div className="text-center">
-            <h2 className="text-2xl font-bold text-gray-900 dark:text-white">Welcome to Blog Admin</h2>
-            <p className="mt-2 text-sm text-gray-600 dark:text-gray-400">Please sign in to continue</p>
+            <h2 className="text-2xl font-semibold text-foreground tracking-tight">Welcome to Blog Admin</h2>
+            <p className="mt-2 text-sm text-muted-foreground">Please sign in to continue</p>
           </div>
           <Button
             onClick={handleSignIn}
@@ -409,12 +409,12 @@ export const BlogAdmin = () => {
   }
 
   return (
-    <div className="min-h-screen bg-gray-50 dark:bg-gray-900 p-6">
+    <div className="min-h-screen bg-background p-6">
       <header className="mb-8">
         <div className="flex items-center justify-between">
           <div>
-            <h1 className="text-2xl font-bold text-gray-900 dark:text-white">Blog Dashboard</h1>
-            <p className="text-sm text-gray-500 dark:text-gray-400 mt-1">
+            <h1 className="text-2xl font-semibold text-foreground tracking-tight">Blog Dashboard</h1>
+            <p className="text-sm text-muted-foreground mt-1">
               Manage your blog posts and analytics
             </p>
           </div>
@@ -431,7 +431,7 @@ export const BlogAdmin = () => {
             </Button>
             <Button
               onClick={handleAddNew}
-              className="bg-blue-600 hover:bg-blue-700 text-white"
+              className="rounded-xl"
               disabled={isLoading}
             >
               <Plus className="h-4 w-4 mr-2" />
@@ -442,63 +442,63 @@ export const BlogAdmin = () => {
       </header>
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
-        <div className="bg-white dark:bg-gray-800 rounded-lg p-4 shadow">
+        <div className="bg-card border border-border/60 rounded-2xl p-4">
           <div className="flex items-center justify-between">
             <div>
-              <p className="text-sm font-medium text-gray-500 dark:text-gray-400">Total Blogs</p>
-              <p className="text-2xl font-semibold text-gray-900 dark:text-white">{blogs.length}</p>
+              <p className="text-[11px] font-semibold uppercase tracking-widest text-muted-foreground">Total Blogs</p>
+              <p className="text-2xl font-semibold text-foreground mt-1.5">{blogs.length}</p>
             </div>
-            <div className="p-3 rounded-full bg-blue-100 dark:bg-blue-900/30">
-              <FileText className="h-5 w-5 text-blue-600 dark:text-blue-400" />
+            <div className="p-2.5 rounded-xl bg-primary/10">
+              <FileText className="h-4 w-4 text-primary" />
             </div>
           </div>
         </div>
-        <div className="bg-white dark:bg-gray-800 rounded-lg p-4 shadow">
+        <div className="bg-card border border-border/60 rounded-2xl p-4">
           <div className="flex items-center justify-between">
             <div>
-              <p className="text-sm font-medium text-gray-500 dark:text-gray-400">Published</p>
-              <p className="text-2xl font-semibold text-green-600 dark:text-green-400">
+              <p className="text-[11px] font-semibold uppercase tracking-widest text-muted-foreground">Published</p>
+              <p className="text-2xl font-semibold text-emerald-400 mt-1.5">
                 {blogs.filter(b => b.status === 'published').length}
               </p>
             </div>
-            <div className="p-3 rounded-full bg-green-100 dark:bg-green-900/30">
-              <FileText className="h-5 w-5 text-green-600 dark:text-green-400" />
+            <div className="p-2.5 rounded-xl bg-emerald-500/10">
+              <FileText className="h-4 w-4 text-emerald-400" />
             </div>
           </div>
         </div>
-        <div className="bg-white dark:bg-gray-800 rounded-lg p-4 shadow">
+        <div className="bg-card border border-border/60 rounded-2xl p-4">
           <div className="flex items-center justify-between">
             <div>
-              <p className="text-sm font-medium text-gray-500 dark:text-gray-400">Total Views</p>
-              <p className="text-2xl font-semibold text-purple-600 dark:text-purple-400">
+              <p className="text-[11px] font-semibold uppercase tracking-widest text-muted-foreground">Total Views</p>
+              <p className="text-2xl font-semibold text-foreground mt-1.5">
                 {blogs.reduce((sum, b) => sum + (b.views || 0), 0)}
               </p>
             </div>
-            <div className="p-3 rounded-full bg-purple-100 dark:bg-purple-900/30">
-              <EyeIcon className="h-5 w-5 text-purple-600 dark:text-purple-400" />
+            <div className="p-2.5 rounded-xl bg-purple-500/10">
+              <EyeIcon className="h-4 w-4 text-purple-400" />
             </div>
           </div>
         </div>
-        <div className="bg-white dark:bg-gray-800 rounded-lg p-4 shadow">
+        <div className="bg-card border border-border/60 rounded-2xl p-4">
           <div className="flex items-center justify-between">
             <div>
-              <p className="text-sm font-medium text-gray-500 dark:text-gray-400">Total Clicks</p>
-              <p className="text-2xl font-semibold text-orange-600 dark:text-orange-400">
+              <p className="text-[11px] font-semibold uppercase tracking-widest text-muted-foreground">Total Clicks</p>
+              <p className="text-2xl font-semibold text-foreground mt-1.5">
                 {blogs.reduce((sum, b) => sum + (b.clicks || 0), 0)}
               </p>
             </div>
-            <div className="p-3 rounded-full bg-orange-100 dark:bg-orange-900/30">
-              <MousePointerClick className="h-5 w-5 text-orange-600 dark:text-orange-400" />
+            <div className="p-2.5 rounded-xl bg-orange-500/10">
+              <MousePointerClick className="h-4 w-4 text-orange-400" />
             </div>
           </div>
         </div>
       </div>
 
-      <div className="bg-white dark:bg-gray-800 rounded-md shadow overflow-hidden">
-        <div className="p-4 border-b border-gray-200 dark:border-gray-700 flex justify-between items-center">
+      <div className="bg-card border border-border/60 rounded-2xl overflow-hidden">
+        <div className="p-4 border-b border-border/60 flex justify-between items-center">
           <div className="flex items-center space-x-4">
-            <h2 className="font-medium text-gray-900 dark:text-white">All Blog Posts</h2>
-            <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200">
+            <h2 className="font-medium text-foreground">All Blog Posts</h2>
+            <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-primary/15 text-primary">
               {blogs.length} {blogs.length === 1 ? 'post' : 'posts'}
             </span>
           </div>
@@ -507,7 +507,7 @@ export const BlogAdmin = () => {
         <div className="overflow-x-auto">
           <Table>
             <TableHeader>
-              <TableRow className="bg-gray-50 dark:bg-gray-800">
+              <TableRow className="bg-muted/30">
                 <TableHead className="min-w-[200px]">Title</TableHead>
                 <TableHead>Status</TableHead>
                 <TableHead>Views</TableHead>
@@ -613,9 +613,9 @@ export const BlogAdmin = () => {
       </div>
 
       <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
-        <DialogContent className="sm:max-w-[700px] max-h-[90vh] overflow-y-auto bg-white dark:bg-gray-800">
+        <DialogContent className="sm:max-w-[700px] max-h-[90vh] overflow-y-auto bg-card border-border/60">
           <DialogHeader>
-            <DialogTitle className="text-gray-900 dark:text-white">
+            <DialogTitle className="text-foreground tracking-tight">
               {editingBlog ? 'Edit Blog Post' : 'Add New Blog Post'}
             </DialogTitle>
           </DialogHeader>
@@ -658,12 +658,12 @@ export const BlogAdmin = () => {
                 required
                 placeholder="Write your blog content here..."
               />
-              <div className="rounded-lg border border-border p-3 bg-gray-50 dark:bg-gray-900/40 space-y-3">
+              <div className="rounded-lg border border-border/60 p-3 bg-muted/20 space-y-3">
                 <div>
-                  <p className="text-xs text-gray-500 dark:text-gray-400 mb-1">
+                  <p className="text-xs text-muted-foreground mb-1">
                     Selected text
                   </p>
-                  <div className="min-h-10 rounded-md border border-dashed border-gray-300 dark:border-gray-700 px-3 py-2 text-sm text-gray-700 dark:text-gray-300 bg-white dark:bg-gray-800">
+                  <div className="min-h-10 rounded-md border border-dashed border-border px-3 py-2 text-sm text-foreground/80 bg-background/60">
                     {selectedContentText || 'Highlight text inside the content box to link it.'}
                   </div>
                 </div>
@@ -680,7 +680,7 @@ export const BlogAdmin = () => {
                   Add Link To Selected Text
                 </Button>
               </div>
-              <p className="text-xs text-gray-500 dark:text-gray-400">
+              <p className="text-xs text-muted-foreground">
                 Use `[link text](https://example.com)` for linked text, or paste a full URL to make it clickable.
               </p>
             </div>
@@ -697,21 +697,21 @@ export const BlogAdmin = () => {
                   placeholder="https://example.com/image.jpg"
                 />
                 {formData.imageUrl ? (
-                  <div className="rounded-lg border border-border p-3 bg-gray-50 dark:bg-gray-900/40">
-                    <p className="text-xs text-gray-500 dark:text-gray-400 mb-2">
+                  <div className="rounded-lg border border-border/60 p-3 bg-muted/20">
+                    <p className="text-xs text-muted-foreground mb-2">
                       Live preview
                     </p>
                     {!imagePreviewError ? (
                       <img
                         src={formData.imageUrl}
                         alt="Blog preview"
-                        className="w-full h-40 object-cover rounded-md bg-white"
+                        className="w-full h-40 object-cover rounded-md bg-background"
                         loading="lazy"
                         referrerPolicy="no-referrer"
                         onError={() => setImagePreviewError(true)}
                       />
                     ) : (
-                      <div className="h-40 rounded-md border border-dashed border-gray-300 dark:border-gray-700 flex items-center justify-center text-sm text-gray-500 dark:text-gray-400 text-center px-4">
+                      <div className="h-40 rounded-md border border-dashed border-border flex items-center justify-center text-sm text-muted-foreground text-center px-4">
                         Preview unavailable. The link may be blocked by the image host, or it may need a direct image URL.
                       </div>
                     )}
