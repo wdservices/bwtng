@@ -14,6 +14,7 @@ export interface Cohort {
   seatLimit: number;
   whatsappGroupLink: string;
   status: CohortStatus;
+  imageUrl?: string;
   createdAt?: unknown;
   updatedAt?: unknown;
 }
