@@ -3,7 +3,7 @@ import {
   setDoc, query, where, orderBy, limit, serverTimestamp, writeBatch
 } from 'firebase/firestore';
 import { db } from '@/firebase';
-import type { Cohort, Registration, PopupSettings } from '@/types/academy';
+import type { Cohort, Registration, PopupSettings, Payment } from '@/types/academy';
 
 const COHORTS = 'cohorts';
 const REGISTRATIONS = 'registrations';
@@ -70,6 +70,26 @@ export async function createRegistration(
     ...data,
     createdAt: serverTimestamp(),
   });
+  
+  // Increment seatsTaken for the cohort
+  if (data.cohortId) {
+    try {
+      const cohortRef = doc(db, COHORTS, data.cohortId);
+      const cohortSnap = await getDoc(cohortRef);
+      if (cohortSnap.exists()) {
+        const cohortData = cohortSnap.data();
+        const currentSeatsTaken = cohortData.seatsTaken || 0;
+        await updateDoc(cohortRef, { 
+          seatsTaken: currentSeatsTaken + 1,
+          updatedAt: serverTimestamp()
+        });
+      }
+    } catch (error) {
+      console.error('Error updating seatsTaken:', error);
+      // Don't fail the registration if seatsTaken update fails
+    }
+  }
+  
   return ref.id;
 }
 

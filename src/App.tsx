@@ -23,6 +23,8 @@ import MobileAppDevelopment from '@/page-content/MobileAppDevelopment';
 import SEOServices from '@/page-content/SEOServices';
 import Branding from '@/page-content/Branding';
 import NotFound from '@/page-content/NotFound';
+import AcademyPayment from '@/page-content/AcademyPayment';
+import AcademyPaymentSuccess from '@/page-content/AcademyPaymentSuccess';
 
 // Admin
 import AdminDashboard from '@/page-content/AdminDashboard';
@@ -61,6 +63,8 @@ function App() {
               <Route path="/branding" element={<Branding />} />
               <Route path="/ai-builder-academy" element={<AIBuilderAcademy />} />
               <Route path="/academy/register" element={<AcademyRegister />} />
+  <Route path="/academy/payment" element={<AcademyPayment />} />
+  <Route path="/academy/payment/success" element={<AcademyPaymentSuccess />} />
               {/* Admin routes */}
               <Route path="/admin/login" element={<AdminLogin />} />
               <Route path="/admin" element={<AdminDashboard><Dashboard apps={ADMIN_PRODUCTS} /></AdminDashboard>} />

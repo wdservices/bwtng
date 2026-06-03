@@ -10,8 +10,8 @@ export interface Cohort {
   registrationDeadline: string;
   earlyBirdPrice: number;
   regularPrice: number;
-  earlyBirdDeadline?: string;
   seatLimit: number;
+  seatsTaken: number;
   whatsappGroupLink: string;
   status: CohortStatus;
   imageUrl?: string;
@@ -37,4 +37,16 @@ export interface Registration {
 
 export interface PopupSettings {
   enabled: boolean;
+}
+
+export interface Payment {
+  id?: string;
+  reference: string;
+  amount: number;
+  email: string;
+  status: 'success' | 'failed' | 'pending';
+  gateway: 'paystack';
+  paidAt?: Date;
+  metadata?: Record<string, any>;
+  createdAt?: unknown;
 }

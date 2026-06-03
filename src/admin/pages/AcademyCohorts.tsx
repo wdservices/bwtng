@@ -9,12 +9,13 @@ import {
   listCohorts, createCohort, updateCohort, deleteCohort,
   getPopupSettings, setPopupSettings, listRegistrations
 } from '@/services/academyService';
+import { useActiveCohort } from '@/hooks/useActiveCohort';
 import type { Cohort, CohortStatus, Registration } from '@/types/academy';
 
 const empty: Omit<Cohort, 'id'> = {
   name: '', number: 1, startDate: '', endDate: '', registrationDeadline: '',
-  earlyBirdPrice: 50000, regularPrice: 55000, earlyBirdDeadline: '',
-  seatLimit: 20, whatsappGroupLink: '', status: 'draft', imageUrl: '',
+  earlyBirdPrice: 55000, regularPrice: 55000,
+  seatLimit: 20, seatsTaken: 0, whatsappGroupLink: '', status: 'draft', imageUrl: '',
 };
 
 export default function AcademyCohorts() {
@@ -27,13 +28,39 @@ export default function AcademyCohorts() {
   const [regFilter, setRegFilter] = useState('');
   const [regCohortFilter, setRegCohortFilter] = useState('');
   const [regStatusFilter, setRegStatusFilter] = useState('');
+  const { cohort: activeCohort } = useActiveCohort();
 
   const load = async () => {
     setLoading(true);
     const [list, settings, registrations] = await Promise.all([
       listCohorts(), getPopupSettings(), listRegistrations()
     ]);
-    setCohorts(list);
+    // Auto-seed first cohort if empty
+    if (list.length === 0) {
+      try {
+        const id = await createCohort({
+          name: 'AI Builder Academy Cohort 1',
+          number: 1,
+          startDate: new Date().toISOString().slice(0, 10),
+          endDate: new Date(Date.now() + 21 * 86400000).toISOString().slice(0, 10),
+          registrationDeadline: new Date(Date.now() + 14 * 86400000).toISOString().slice(0, 10),
+          earlyBirdPrice: 55000,
+          regularPrice: 55000,
+          seatLimit: 50,
+          seatsTaken: 0,
+          whatsappGroupLink: 'https://chat.whatsapp.com/',
+          status: 'active',
+          imageUrl: '',
+        });
+        const seeded = await listCohorts();
+        setCohorts(seeded);
+        toast({ title: 'Cohort created', description: 'AI Builder Academy Cohort 1 is now active and in Firestore.' });
+      } catch (e) {
+        console.error('Auto-seed failed', e);
+      }
+    } else {
+      setCohorts(list);
+    }
     setRegs(registrations);
     setPopupEnabledState(settings.enabled);
     setLoading(false);
@@ -116,16 +143,31 @@ export default function AcademyCohorts() {
 
   return (
     <div className="space-y-8">
-      {/* Header */}
-      <div className="flex flex-wrap items-center justify-between gap-3">
-        <div>
-          <h1 className="text-2xl font-semibold text-foreground font-display tracking-tight">AI Builder Academy</h1>
-          <p className="text-sm text-muted-foreground mt-1">Cohorts, popup, and registrations in one place.</p>
-        </div>
-        <Button onClick={startNew} className="rounded-xl">
-          <Plus className="w-4 h-4 mr-1.5" /> New Cohort
-        </Button>
-      </div>
+       {/* Header */}
+       <div className="flex flex-wrap items-center justify-between gap-3">
+         <div>
+           <h1 className="text-2xl font-semibold text-foreground font-display tracking-tight">AI Builder Academy</h1>
+           <p className="text-sm text-muted-foreground mt-1">Cohorts, popup, and registrations in one place.</p>
+         </div>
+         <div className="flex items-center gap-2">
+           <Button onClick={startNew} className="rounded-xl">
+             <Plus className="w-4 h-4 mr-1.5" /> New Cohort
+           </Button>
+            <Button 
+              onClick={() => {
+                const active = cohorts.find(c => c.status === 'active') || activeCohort;
+                if (active) {
+                  startEdit(active);
+                } else {
+                  toast({ title: 'No active cohort found', variant: 'destructive' });
+                }
+              }}
+              className="rounded-xl bg-primary hover:bg-primary/90 text-primary-foreground"
+            >
+              <Pencil className="w-4 h-4 mr-1.5" /> Edit Cohort Details
+            </Button>
+         </div>
+       </div>
 
       {/* Stats */}
       <div className="grid grid-cols-2 lg:grid-cols-4 gap-3">
@@ -188,8 +230,10 @@ export default function AcademyCohorts() {
                       </div>
                     </td>
                     <td className="p-4 text-muted-foreground text-xs">{c.startDate} → {c.endDate}</td>
-                    <td className="p-4 text-muted-foreground text-xs">₦{c.earlyBirdPrice.toLocaleString()} / ₦{c.regularPrice.toLocaleString()}</td>
-                    <td className="p-4 text-muted-foreground">{c.seatLimit}</td>
+                   <td className="p-4 text-muted-foreground text-xs">₦{c.earlyBirdPrice.toLocaleString()} / ₦{c.regularPrice.toLocaleString()}</td>
+                   <td className="p-4 text-muted-foreground">
+                     {c.seatsTaken} / {c.seatLimit} Seats
+                   </td>
                     <td className="p-4"><StatusBadge status={c.status} /></td>
                     <td className="p-4">
                       <div className="flex justify-end gap-1">
@@ -325,14 +369,14 @@ export default function AcademyCohorts() {
                 </div>
               </Section>
 
-              <Section title="Pricing & seats">
-                <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
-                  <div><FieldLabel>Early bird (₦)</FieldLabel><Input className="rounded-lg" type="number" value={editing.earlyBirdPrice ?? 0} onChange={e => setEditing({ ...editing, earlyBirdPrice: +e.target.value })} /></div>
-                  <div><FieldLabel>Regular (₦)</FieldLabel><Input className="rounded-lg" type="number" value={editing.regularPrice ?? 0} onChange={e => setEditing({ ...editing, regularPrice: +e.target.value })} /></div>
-                  <div><FieldLabel>Early bird deadline</FieldLabel><Input className="rounded-lg" type="date" value={editing.earlyBirdDeadline ?? ''} onChange={e => setEditing({ ...editing, earlyBirdDeadline: e.target.value })} /></div>
-                  <div><FieldLabel>Seat limit</FieldLabel><Input className="rounded-lg" type="number" value={editing.seatLimit ?? 20} onChange={e => setEditing({ ...editing, seatLimit: +e.target.value })} /></div>
-                </div>
-              </Section>
+               <Section title="Pricing & seats">
+                 <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+                   <div><FieldLabel>Early bird (₦)</FieldLabel><Input className="rounded-lg" type="number" value={editing.earlyBirdPrice ?? ''} onChange={e => setEditing({ ...editing, earlyBirdPrice: e.target.value === '' ? 0 : +e.target.value })} /></div>
+                   <div><FieldLabel>Regular (₦)</FieldLabel><Input className="rounded-lg" type="number" value={editing.regularPrice ?? ''} onChange={e => setEditing({ ...editing, regularPrice: e.target.value === '' ? 0 : +e.target.value })} /></div>
+                   <div><FieldLabel>Registration deadline</FieldLabel><Input className="rounded-lg" type="date" value={editing.registrationDeadline ?? ''} onChange={e => setEditing({ ...editing, registrationDeadline: e.target.value })} /></div>
+                   <div><FieldLabel>Seat limit</FieldLabel><Input className="rounded-lg" type="number" value={editing.seatLimit ?? 20} onChange={e => setEditing({ ...editing, seatLimit: +e.target.value })} /></div>
+                 </div>
+               </Section>
 
               <Section title="Community & status">
                 <div className="grid sm:grid-cols-3 gap-4">
@@ -361,6 +405,7 @@ export default function AcademyCohorts() {
           </div>
         </div>
       )}
+
     </div>
   );
 }

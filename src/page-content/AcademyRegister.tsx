@@ -4,7 +4,7 @@ import { Helmet } from 'react-helmet-async';
 import { Link, useNavigate } from 'react-router-dom';
 import {
   Sparkles, CheckCircle2, Clock, CalendarDays, Video,
-  ArrowRight, ArrowLeft, MessageCircle, Loader2
+  ArrowRight, ArrowLeft, MessageCircle, Loader2, Users
 } from 'lucide-react';
 import { z } from 'zod';
 import Header from '@/components/Header';
@@ -34,9 +34,10 @@ const DEFAULT_COHORT: Cohort = {
   startDate: '',
   endDate: '',
   registrationDeadline: '',
-  earlyBirdPrice: 50000,
+  earlyBirdPrice: 55000,
   regularPrice: 55000,
   seatLimit: 50,
+  seatsTaken: 0,
   whatsappGroupLink: 'https://chat.whatsapp.com/',
   status: 'active',
 };
@@ -51,7 +52,7 @@ const INCLUDED = [
 ];
 
 export default function AcademyRegister() {
-  const { cohort } = useActiveCohort();
+  const { cohort, loading: cohortLoading } = useActiveCohort();
   const navigate = useNavigate();
   const activeCohort = cohort ?? DEFAULT_COHORT;
 
@@ -63,16 +64,19 @@ export default function AcademyRegister() {
   const [submitting, setSubmitting] = useState(false);
   const [success, setSuccess] = useState(false);
 
-  const price = useMemo(() => {
-    if (activeCohort.earlyBirdDeadline && new Date() <= new Date(activeCohort.earlyBirdDeadline)) {
-      return activeCohort.earlyBirdPrice;
-    }
-    return activeCohort.regularPrice;
-  }, [activeCohort]);
+const price = useMemo(() => {
+  const now = new Date();
+  const deadline = activeCohort.registrationDeadline ? new Date(activeCohort.registrationDeadline) : null;
+  
+  if (deadline && now <= deadline) {
+    return activeCohort.earlyBirdPrice;
+  }
+  return activeCohort.regularPrice;
+}, [activeCohort]);
 
   const set = (k: string, v: string) => setForm(p => ({ ...p, [k]: v }));
 
-  const submit = async (e: React.FormEvent) => {
+    const submit = async (e: React.FormEvent) => {
     e.preventDefault();
     const parsed = schema.safeParse(form);
     if (!parsed.success) {
@@ -82,35 +86,20 @@ export default function AcademyRegister() {
       return;
     }
     setErrors({});
-    setSubmitting(true);
-    try {
-      const d = parsed.data;
-      await createRegistration({
-        cohortId: activeCohort.id,
-        cohortName: activeCohort.name,
-        fullName: d.fullName,
-        email: d.email,
-        whatsappNumber: d.whatsappNumber,
-        country: d.country,
-        skillLevel: d.skillLevel,
-        motivation: d.motivation,
-        paymentStatus: 'pending',
-        paymentReference: '',
-        amount: price,
-      });
-      setSuccess(true);
-    } catch (err) {
-      console.error(err);
-      toast({ title: 'Registration failed', description: 'Please try again.', variant: 'destructive' });
-    } finally {
-      setSubmitting(false);
-    }
+    // Store registration data in state and redirect to payment page
+    navigate(`/academy/payment`, { 
+      state: { 
+        registrationData: parsed.data,
+        cohort: activeCohort,
+        price 
+      } 
+    });
   };
 
   return (
     <div className="min-h-screen bg-background text-foreground relative overflow-hidden">
       <Helmet>
-        <title>AI Builder Cohort {activeCohort.number} Registration — AI Builder Academy</title>
+        <title>{`AI Builder Cohort ${activeCohort.number} Registration — AI Builder Academy`}</title>
         <meta name="description" content="Reserve your seat in the AI Builder Academy. Build full-stack products with AI in 21 days." />
       </Helmet>
 
@@ -119,6 +108,11 @@ export default function AcademyRegister() {
 
       <Header />
 
+      {cohortLoading ? (
+        <div className="flex items-center justify-center py-32">
+          <Loader2 className="w-8 h-8 animate-spin text-primary" />
+        </div>
+      ) : (
       <div className="relative pt-24 pb-12">
         <div className="container mx-auto px-4 sm:px-6 max-w-6xl">
           <button
@@ -147,11 +141,19 @@ export default function AcademyRegister() {
                   A live virtual masterclass. Ship a real product from idea to deployment.
                 </p>
 
-                <div className="flex flex-wrap gap-1.5 mb-7">
-                  <Pill icon={CalendarDays}>3 weeks</Pill>
-                  <Pill icon={Clock}>3× / week</Pill>
-                  <Pill icon={Video}>Live</Pill>
-                </div>
+                 <div className="flex flex-wrap gap-1.5 mb-7">
+                   <Pill icon={CalendarDays}>3 weeks</Pill>
+                   <Pill icon={Clock}>3× / week</Pill>
+                   <Pill icon={Video}>Live</Pill>
+                   <Pill icon={Users}>
+                     {activeCohort.seatsTaken} / {activeCohort.seatLimit} Seats
+                   </Pill>
+                   {activeCohort.registrationDeadline && (
+                     <Pill icon={CalendarDays}>
+                       Register by: {new Date(activeCohort.registrationDeadline).toLocaleDateString('en-US', { month: 'short', day: 'numeric' })}
+                     </Pill>
+                   )}
+                 </div>
 
                 <div className="py-5 border-y border-border/60 mb-6">
                   <div className="flex items-baseline gap-2.5">
@@ -278,8 +280,15 @@ export default function AcademyRegister() {
 
                     <div className="mt-7 rounded-xl bg-muted/20 border border-border/70 p-4 flex items-center justify-between gap-4">
                       <div>
-                        <p className="text-[11px] text-muted-foreground uppercase tracking-wider">Total</p>
+                        <p className="text-[11px] text-muted-foreground uppercase tracking-wider">
+                          {price < activeCohort.regularPrice ? 'Early Bird' : 'Total'}
+                        </p>
                         <p className="text-2xl font-semibold font-display text-foreground tracking-tight">₦{price.toLocaleString()}</p>
+                        {price < activeCohort.regularPrice && (
+                          <p className="text-[11px] text-muted-foreground mt-0.5">
+                            Regular: <span className="line-through">₦{activeCohort.regularPrice.toLocaleString()}</span>
+                          </p>
+                        )}
                       </div>
                       <div className="text-right text-[11px] text-muted-foreground">
                         <p>Reserved as pending</p>
@@ -307,7 +316,8 @@ export default function AcademyRegister() {
             </motion.section>
           </div>
         </div>
-      </div>
+        </div>
+          )}
 
       <Footer />
     </div>

@@ -552,7 +552,7 @@ export const BlogAdmin = () => {
                           )}
                         </div>
                         <div>
-                          <p className="text-sm font-medium text-gray-900 dark:text-white">{blog?.title || 'Untitled'}</p>
+                          <p className="text-sm font-semibold text-white">{blog?.title || 'Untitled'}</p>
                           <div className="flex flex-wrap gap-1 mt-1">
                             {blog.tags?.slice(0, 2).map((tag, i) => (
                               <Badge key={i} variant="outline" className="text-xs">

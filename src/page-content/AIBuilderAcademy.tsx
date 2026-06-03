@@ -51,10 +51,10 @@ export default function AIBuilderAcademy() {
     return () => clearInterval(id);
   }, [cohort]);
 
-  const price = cohort
-    ? (cohort.earlyBirdDeadline && new Date() <= new Date(cohort.earlyBirdDeadline)
-        ? cohort.earlyBirdPrice : cohort.regularPrice)
-    : 50000;
+   const price = cohort
+     ? (new Date() <= new Date(cohort.registrationDeadline)
+         ? cohort.earlyBirdPrice : cohort.regularPrice)
+     : 50000;
 
   const seatsLeft = cohort ? Math.max(cohort.seatLimit - registered, 0) : 50;
 
