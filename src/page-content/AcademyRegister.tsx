@@ -74,10 +74,10 @@ export default function AcademyRegister() {
   const [success, setSuccess] = useState(false);
 
   const price = useMemo(() => {
-    if (!activeCohort.earlyBirdDeadline) return activeCohort.earlyBirdPrice;
-    return new Date() <= new Date(activeCohort.earlyBirdDeadline)
-      ? activeCohort.earlyBirdPrice
-      : activeCohort.regularPrice;
+    if (activeCohort.earlyBirdDeadline && new Date() <= new Date(activeCohort.earlyBirdDeadline)) {
+      return activeCohort.earlyBirdPrice;
+    }
+    return activeCohort.regularPrice;
   }, [activeCohort]);
 
   const set = (k: string, v: string) => setForm(p => ({ ...p, [k]: v }));
