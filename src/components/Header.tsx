@@ -47,7 +47,7 @@ const Header = () => {
 
   return (
     <header className={`fixed top-0 w-full z-50 transition-all duration-500 ${
-      scrolled
+      scrolled || isMenuOpen
         ? 'bg-background/80 backdrop-blur-xl border-b border-border shadow-sm'
         : 'bg-transparent'
     }`}>
@@ -124,7 +124,7 @@ const Header = () => {
         </div>
 
         {isMenuOpen && (
-          <nav className="md:hidden mt-4 pb-4 pt-4 border-t border-border space-y-1 animate-fade-in">
+          <nav className="md:hidden mt-4 pb-4 pt-4 border-t border-border space-y-1 animate-fade-in bg-background/95 backdrop-blur-xl rounded-b-xl">
             {navItems.map((item) => (
               <div key={item.label}>
                 <Link

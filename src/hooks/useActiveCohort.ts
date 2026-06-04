@@ -16,8 +16,12 @@ export function useActiveCohort() {
       setCohort(c);
       setPopupEnabled(s.enabled);
       if (c) {
-        const n = await countRegistrations(c.id);
-        if (alive) setRegistered(n);
+        try {
+          const n = await countRegistrations(c.id);
+          if (alive) setRegistered(n);
+        } catch (e) {
+          console.error('countRegistrations error', e);
+        }
       }
       setLoading(false);
     })();

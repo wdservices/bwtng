@@ -1,82 +1,161 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
+import { motion, AnimatePresence } from 'framer-motion';
+import lottie from 'lottie-web';
+import { Helmet } from 'react-helmet-async';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import { Button } from '@/components/ui/button';
-import { Loader2, CheckCircle2, MessageCircle } from 'lucide-react';
-import { toast } from '@/hooks/use-toast';
+import { MessageCircle, ArrowRight, CheckCircle2 } from 'lucide-react';
+
+const WHATSAPP_LINK = 'https://chat.whatsapp.com/K0TNMYiZnDJCysoAP2d7ZE';
 
 export default function AcademyPaymentSuccess() {
   const navigate = useNavigate();
   const location = useLocation();
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState<string | null>(null);
+  const animContainer = useRef<HTMLDivElement>(null);
+  const [showContent, setShowContent] = useState(false);
+  const [lottieFailed, setLottieFailed] = useState(false);
 
   const registrationData = location.state?.registrationData || {};
   const cohort = location.state?.cohort || null;
   const paymentVerified = location.state?.paymentVerified || false;
   const reference = new URLSearchParams(window.location.search).get('reference');
-  const email = new URLSearchParams(window.location.search).get('email');
 
   useEffect(() => {
-    // Show success message immediately since verification happened in payment page
     if (!paymentVerified) {
-      setError('Payment verification status not found');
+      navigate('/academy/register');
+      return;
     }
-  }, [paymentVerified]);
 
-  if (error) {
-    return (
-      <div className="min-h-screen flex items-center justify-center bg-background p-6">
-        <div className="text-center text-destructive">
-          <h2 className="text-xl font-semibold mb-4">Payment Verification Failed</h2>
-          <p className="mb-4">{error}</p>
-          <div className="space-y-4">
-            <Button variant="outline" onClick={() => {
-              navigate('/academy/payment', { 
-                state: { registrationData, cohort } 
-              }); 
-            }}>
-              Try Payment Again
-            </Button>
-            <Button onClick={() => {
-              navigate('/ai-builder-academy');
-            }}>
-              Back to Academy
-            </Button>
+    let anim: any = null;
+    let fallbackTimer: ReturnType<typeof setTimeout>;
+
+    if (animContainer.current) {
+      try {
+        anim = lottie.loadAnimation({
+          container: animContainer.current,
+          renderer: 'svg',
+          loop: false,
+          autoplay: true,
+          path: '/lottie/payment-success.json',
+        });
+        anim.addEventListener('complete', () => {
+          setShowContent(true);
+        });
+        anim.addEventListener('error', () => {
+          setLottieFailed(true);
+          setShowContent(true);
+        });
+      } catch {
+        setLottieFailed(true);
+        setShowContent(true);
+      }
+    }
+
+    // Fallback: show content after 4s regardless of lottie status
+    fallbackTimer = setTimeout(() => {
+      setShowContent(true);
+    }, 4000);
+
+    return () => {
+      if (anim) anim.destroy();
+      clearTimeout(fallbackTimer);
+    };
+  }, [paymentVerified, navigate]);
+
+  if (!paymentVerified) return null;
+
+  const cohortName = cohort?.name || 'AI Builder Academy';
+
+  return (
+    <div className="min-h-screen bg-background text-foreground relative overflow-hidden">
+      <Helmet>
+        <title>{`Payment Successful — ${cohortName}`}</title>
+      </Helmet>
+
+      <div className="absolute -top-40 -right-40 w-[520px] h-[520px] bg-primary/10 blur-[140px] rounded-full pointer-events-none" />
+      <div className="absolute -bottom-40 -left-40 w-[520px] h-[520px] bg-primary/5 blur-[140px] rounded-full pointer-events-none" />
+
+      <Header />
+
+      <div className="relative pt-24 pb-12 flex items-center justify-center min-h-[80vh]">
+        <div className="w-full max-w-md mx-4">
+          <div className="rounded-2xl bg-card/50 backdrop-blur-xl border border-border/50 overflow-hidden shadow-2xl">
+            <div className="h-1 w-full bg-gradient-to-r from-emerald-500 via-primary to-emerald-500" />
+
+            <div className="p-8 sm:p-10 text-center">
+              {/* Lottie animation container */}
+              <div
+                ref={animContainer}
+                className={`mx-auto -mt-2 mb-2 ${lottieFailed ? 'hidden' : 'w-48 h-48 sm:w-56 sm:h-56'}`}
+              />
+
+              {/* Fallback icon if lottie fails */}
+              {lottieFailed && (
+                <motion.div
+                  initial={{ scale: 0 }}
+                  animate={{ scale: 1 }}
+                  transition={{ type: 'spring', stiffness: 200, damping: 15 }}
+                  className="mx-auto w-20 h-20 rounded-full bg-emerald-500/15 border border-emerald-500/30 flex items-center justify-center mb-6"
+                >
+                  <CheckCircle2 className="w-10 h-10 text-emerald-500" />
+                </motion.div>
+              )}
+
+              {/* Content */}
+              <AnimatePresence>
+                {showContent && (
+                  <motion.div
+                    initial={{ opacity: 0, y: 15 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.5 }}
+                  >
+                    <h1 className="text-2xl sm:text-3xl font-semibold font-display tracking-tight mb-1">
+                      Congratulations!
+                    </h1>
+
+                    <p className="text-base font-medium text-foreground mb-1">
+                      Payment is successful
+                    </p>
+
+                    <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-primary/10 border border-primary/20 text-xs font-medium text-primary mb-4">
+                      {cohortName}
+                    </div>
+
+                    {reference && (
+                      <p className="text-[11px] text-muted-foreground/60 mb-5">
+                        Ref: {reference}
+                      </p>
+                    )}
+
+                    <p className="text-sm text-muted-foreground leading-relaxed mb-6">
+                      Click the button below to join the Cohort 1 WhatsApp group for onboarding details.
+                    </p>
+
+                    <a href={WHATSAPP_LINK} target="_blank" rel="noopener noreferrer" className="block">
+                      <Button className="w-full h-12 rounded-xl bg-[#25D366] hover:bg-[#1ebe5a] text-white font-medium text-sm shadow-lg shadow-[#25D366]/20 transition-all hover:shadow-[#25D366]/30">
+                        <MessageCircle className="w-4 h-4 mr-2" />
+                        Join Cohort 1 WhatsApp Group
+                        <ArrowRight className="w-4 h-4 ml-2" />
+                      </Button>
+                    </a>
+
+                    <button
+                      onClick={() => navigate('/ai-builder-academy')}
+                      className="mt-5 text-xs text-muted-foreground hover:text-foreground transition-colors"
+                    >
+                      Back to Academy
+                    </button>
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </div>
           </div>
         </div>
       </div>
-    );
-  }
 
-  return (
-    <div className="min-h-screen flex items-center justify-center bg-background p-6">
-      <div className="text-center space-y-6">
-        <div className="mx-auto w-20 h-20 rounded-full bg-primary/15 border border-primary/30 flex items-center justify-center mb-5">
-          <CheckCircle2 className="w-8 h-8 text-primary" />
-        </div>
-        <h2 className="text-2xl font-semibold font-display mb-2 tracking-tight">Payment Successful!</h2>
-        <p className="text-sm text-muted-foreground mb-6">
-          Onboarding details will arrive via WhatsApp and email within 24 hours.
-        </p>
-        {cohort?.whatsappGroupLink && (
-          <Button 
-            onClick={() => window.open(cohort.whatsappGroupLink, '_blank')}
-            className="w-full h-12 rounded-xl bg-[#25D366] hover:bg-[#1ebe5a] text-white font-medium"
-          >
-            <MessageCircle className="w-4 h-4 mr-2" /> Join WhatsApp Group
-          </Button>
-        )}
-        <Button 
-          onClick={() => {
-            navigate('/ai-builder-academy');
-          }}
-          className="w-full mt-4 h-12 rounded-xl bg-muted/50 hover:bg-muted/100 text-foreground font-medium"
-        >
-          Back to Academy
-        </Button>
-      </div>
+      <Footer />
     </div>
   );
 }
