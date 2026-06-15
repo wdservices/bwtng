@@ -5,6 +5,7 @@
     <link rel="icon" type="image/png" href="/logo.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="theme-color" content="#0b1326" />
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; font-src 'self' fonts.gstatic.com fonts.googleapis.com data:; style-src 'self' 'unsafe-inline' fonts.googleapis.com; img-src 'self' data: https:; script-src 'self' 'unsafe-inline' 'unsafe-eval'; connect-src 'self' https://firestore.googleapis.com https://api.paystack.co https://fonts.googleapis.com https://fonts.gstatic.com; frame-src 'none';" />
     <title>Bluewaves Technology | Web Development, Mobile Apps & AI Solutions Nigeria</title>
     <meta name="description" content="Bluewaves Technology is a leading digital solutions company in Nigeria. We build web apps, mobile apps, AI tools, SEO services and branding solutions for businesses across Port Harcourt and Nigeria." />
     <meta name="keywords" content="web development Nigeria, mobile app development Port Harcourt, AI solutions Nigeria, SEO services Nigeria, software company Port Harcourt, Bluewaves Technology" />
@@ -26,12 +27,9 @@
     <meta name="twitter:title" content="Bluewaves Technology | Nigeria's Digital Solutions Company" />
     <meta name="twitter:description" content="Web development, mobile apps, AI solutions & SEO in Nigeria. 756+ projects delivered." />
     <meta name="twitter:image" content="https://www.bwtng.live/og-image.png" />
-    <!-- Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet" media="print" onload="this.media='all'" />
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" media="print" onload="this.media='all'" />
+    <!-- Fonts — self-hosted -->
+    <link rel="preload" href="/fonts/Inter-400.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="/fonts/SpaceGrotesk-400.woff2" as="font" type="font/woff2" crossorigin />
     <!-- Schema.org: Organization -->
     <script type="application/ld+json">
     {

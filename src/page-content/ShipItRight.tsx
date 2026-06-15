@@ -199,6 +199,7 @@ const ShipItRight: React.FC = () => {
   const [showAllFaqs, setShowAllFaqs] = useState(false);
 
   useEffect(() => {
+    window.scrollTo(0, 0);
     const onScroll = () => setShowSticky(window.scrollY > 700);
     window.addEventListener('scroll', onScroll);
     return () => window.removeEventListener('scroll', onScroll);
