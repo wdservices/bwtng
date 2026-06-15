@@ -2,4 +2,20 @@ User-agent: *
 Allow: /
 Disallow: /admin/
 
+# AI Agent Rules
+User-agent: GPTBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Bytespider
+Allow: /
+
 Sitemap: https://www.bwtng.live/sitemap.xml

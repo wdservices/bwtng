@@ -36,7 +36,7 @@ const FAQs: React.FC = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-background text-foreground">
+    <main className="min-h-screen bg-background text-foreground">
       <Helmet>
         <title>Frequently Asked Questions | Bluewaves Technology Nigeria</title>
         <meta name="description" content="Find answers to common questions about Bluewaves Technology's web development, mobile app, AI, SEO and branding services in Nigeria." />
@@ -108,7 +108,7 @@ const FAQs: React.FC = () => {
     }` }} />
       </Helmet>
       <Header />
-      <main className="pt-32 pb-20">
+      <section className="pt-32 pb-20">
         <div className="container mx-auto px-6">
           <div className="max-w-3xl mx-auto text-center mb-16">
             <h1 className="text-4xl md:text-5xl font-bold mb-6">
@@ -145,9 +145,9 @@ const FAQs: React.FC = () => {
             ))}
           </div>
         </div>
-      </main>
+      </section>
       <Footer />
-    </div>
+    </main>
   );
 };
 

@@ -16,10 +16,10 @@ const Branding: React.FC = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-background text-foreground">
+    <main className="min-h-screen bg-background text-foreground">
       <Helmet>
         <title>Branding Services Nigeria | Logo Design & Brand Identity | Bluewaves Technology</title>
-        <meta name="description" content="Professional branding services in Nigeria including logo design, brand identity, visual design and brand strategy. Create a powerful brand that stands out in Nigeria's competitive market." />
+        <meta name="description" content="Professional branding services in Nigeria. Logo design, brand identity, visual design and brand strategy to make your business stand out." />
         <meta name="keywords" content="branding services Nigeria, logo design Nigeria, brand identity Nigeria, graphic design Port Harcourt" />
         <meta name="robots" content="index, follow" />
         <link rel="canonical" href="https://www.bwtng.live/branding" />
@@ -34,7 +34,7 @@ const Branding: React.FC = () => {
         <meta name="twitter:image" content="https://www.bwtng.live/og-image.png" />
       </Helmet>
       <Header />
-      <main className="pt-32 pb-20">
+      <section className="pt-32 pb-20">
         <div className="container mx-auto px-6">
           {/* Hero Section */}
           <div className="max-w-4xl mx-auto text-center mb-16">
@@ -100,9 +100,9 @@ const Branding: React.FC = () => {
             </Button>
           </div>
         </div>
-      </main>
+      </section>
       <Footer />
-    </div>
+    </main>
   );
 };
 

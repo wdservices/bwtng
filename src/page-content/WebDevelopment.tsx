@@ -16,10 +16,10 @@ const WebDevelopment: React.FC = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-background text-foreground">
+    <main className="min-h-screen bg-background text-foreground">
       <Helmet>
         <title>Web Development Services Nigeria | Custom Websites & Web Apps | Bluewaves Technology</title>
-        <meta name="description" content="Professional web development services in Nigeria. We build fast, responsive, SEO-ready websites and web applications using React, Next.js and modern tech for businesses in Port Harcourt and across Nigeria." />
+        <meta name="description" content="Professional web development in Nigeria. Fast, responsive, SEO-ready websites and web apps using React, Next.js and modern tech." />
         <meta name="keywords" content="web development Nigeria, website development Port Harcourt, custom web application Nigeria, professional website design Nigeria" />
         <meta name="robots" content="index, follow" />
         <link rel="canonical" href="https://www.bwtng.live/web-development" />
@@ -43,7 +43,7 @@ const WebDevelopment: React.FC = () => {
     }` }} />
       </Helmet>
       <Header />
-      <main className="pt-32 pb-20">
+      <section className="pt-32 pb-20">
         <div className="container mx-auto px-6">
           {/* Hero Section */}
           <div className="max-w-4xl mx-auto text-center mb-16">
@@ -107,9 +107,9 @@ const WebDevelopment: React.FC = () => {
             </Button>
           </div>
         </div>
-      </main>
+      </section>
       <Footer />
-    </div>
+    </main>
   );
 };
 

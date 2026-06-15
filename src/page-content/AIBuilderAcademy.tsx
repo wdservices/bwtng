@@ -4,7 +4,7 @@ import { Helmet } from 'react-helmet-async';
 import { Link } from 'react-router-dom';
 import {
   Sparkles, Rocket, Brain, Code, Users, Award, GraduationCap,
-  CheckCircle2, Clock, CalendarDays, Video, ArrowRight
+  CheckCircle2, Clock, CalendarDays, Video, ArrowRight, BookOpen
 } from 'lucide-react';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
@@ -59,11 +59,13 @@ export default function AIBuilderAcademy() {
   const seatsLeft = cohort ? Math.max(cohort.seatLimit - registered, 0) : 50;
 
   return (
-    <div className="min-h-screen bg-background text-foreground">
+    <main className="min-h-screen bg-background text-foreground">
       <Helmet>
         <title>AI Builder Academy — Build Full-Stack Products with AI in 21 Days</title>
         <meta name="description" content="Live 3-week masterclass to build real full-stack software products using AI-assisted development. Frontend, backend, databases, deployment." />
-        <link rel="canonical" href="https://bluewavestech.com/ai-builder-academy" />
+        <meta name="robots" content="index,follow" />
+        <link rel="canonical" href="https://www.bwtng.live/ai-builder-academy" />
+        <meta property="og:url" content="https://www.bwtng.live/ai-builder-academy" />
       </Helmet>
 
       <Header />
@@ -153,6 +155,83 @@ export default function AIBuilderAcademy() {
         </div>
       </section>
 
+      {/* INSTRUCTOR */}
+      <section className="py-20 border-t border-border/50">
+        <div className="container mx-auto px-6 max-w-5xl">
+          <h2 className="text-3xl sm:text-4xl font-bold font-display text-center mb-12">Meet Your Instructor</h2>
+          <div className="flex flex-col md:flex-row items-center gap-10 p-8 sm:p-10 rounded-3xl bg-card border border-border">
+            <div className="shrink-0">
+              <img
+                src="/image/Gospel-ononwi.png"
+                alt="Gospel Ononwi, Founder of Bluewaves Technology and Instructor at AI Builder Academy"
+                className="w-48 h-48 md:w-56 md:h-56 rounded-2xl object-cover border-2 border-primary/30 shadow-lg"
+              />
+            </div>
+            <div className="text-center md:text-left">
+              <h3 className="text-2xl font-bold mb-1">Gospel Ononwi</h3>
+              <p className="text-primary font-medium mb-4">Software Engineer · AI Product Builder · Founder, Bluewaves Technology</p>
+              <p className="text-muted-foreground leading-relaxed mb-3">
+                Gospel Ononwi is a Software Engineer, AI Product Builder, and Founder of Bluewaves Technology. He specializes in building modern web applications, AI-powered solutions, business software, and scalable digital products using cutting-edge development tools and AI-assisted workflows.
+              </p>
+              <p className="text-muted-foreground leading-relaxed mb-3">
+                With hands-on experience developing real-world applications and working with technologies such as React, Node.js, Firebase, databases, and AI coding assistants, Gospel is passionate about helping aspiring developers and entrepreneurs turn ideas into working products.
+              </p>
+              <p className="text-muted-foreground leading-relaxed">
+                Through AI Builder Academy, his mission is to teach practical, real-world product development by guiding students through the complete journey of planning, building, deploying, and launching software solutions that solve real problems.
+              </p>
+              <p className="mt-4 text-sm font-semibold text-primary italic">"Learn by building."</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* SCHEDULE */}
+      <section className="py-20 border-t border-border/50">
+        <div className="container mx-auto px-6 max-w-5xl">
+          <h2 className="text-3xl sm:text-4xl font-bold font-display text-center mb-4">Cohort 1 Schedule</h2>
+          <p className="text-center text-muted-foreground mb-12">4 weeks · 10 live sessions · 2 hours each</p>
+
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5 mb-10">
+            {[
+              { week: 'Week 1', dates: ['Wed, July 1', 'Fri, July 3'], sessions: 2 },
+              { week: 'Week 2', dates: ['Mon, July 6', 'Wed, July 8', 'Fri, July 10'], sessions: 3 },
+              { week: 'Week 3', dates: ['Mon, July 13', 'Wed, July 15', 'Fri, July 17'], sessions: 3 },
+              { week: 'Week 4', dates: ['Mon, July 20', 'Wed, July 22', 'Fri, July 24'], sessions: 3 },
+            ].map((w) => (
+              <div key={w.week} className="p-6 rounded-2xl bg-card border border-border">
+                <div className="flex items-center gap-2 mb-4">
+                  <CalendarDays className="w-4 h-4 text-primary" />
+                  <h3 className="font-bold text-foreground">{w.week}</h3>
+                </div>
+                <ul className="space-y-2">
+                  {w.dates.map(d => (
+                    <li key={d} className="flex items-center gap-2 text-sm text-muted-foreground">
+                      <CheckCircle2 className="w-3.5 h-3.5 text-primary shrink-0" />
+                      {d}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </div>
+
+          <div className="flex flex-wrap items-center justify-center gap-4 text-sm text-muted-foreground">
+            <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-card border border-border">
+              <Clock className="w-4 h-4 text-primary" />
+              2 Hours Per Session
+            </span>
+            <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-card border border-border">
+              <Video className="w-4 h-4 text-primary" />
+              Live Virtual Training
+            </span>
+            <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-card border border-border">
+              <Award className="w-4 h-4 text-primary" />
+              Certificate of Completion
+            </span>
+          </div>
+        </div>
+      </section>
+
       {/* OUTCOMES */}
       <section className="py-20 border-t border-border/50">
         <div className="container mx-auto px-6 max-w-4xl">
@@ -206,7 +285,7 @@ export default function AIBuilderAcademy() {
       </section>
 
       <Footer />
-    </div>
+    </main>
   );
 }
 

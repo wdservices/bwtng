@@ -80,10 +80,10 @@ const Portfolio: React.FC = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-background text-foreground">
+    <main className="min-h-screen bg-background text-foreground">
       <Helmet>
         <title>Portfolio | Our Projects & Products | Bluewaves Technology Nigeria</title>
-        <meta name="description" content="Browse Bluewaves Technology's portfolio of software products, web development, mobile apps and AI solutions. Explore PrepVerse, BakeBook, Drafta, HerbalStrength and more." />
+        <meta name="description" content="Browse Bluewaves Technology's portfolio of web development, mobile apps and AI solutions. Explore PrepVerse, BakeBook, Drafta and more." />
         <meta name="keywords" content="Bluewaves Technology portfolio, software projects Nigeria, PrepVerse, BakeBook, Drafta, HerbalStrength" />
         <meta name="robots" content="index, follow" />
         <link rel="canonical" href="https://www.bwtng.live/portfolio" />
@@ -98,7 +98,7 @@ const Portfolio: React.FC = () => {
         <meta name="twitter:image" content="https://www.bwtng.live/og-image.png" />
       </Helmet>
       <Header />
-      <main className="pt-32 pb-20">
+      <section className="pt-32 pb-20">
         <div className="container mx-auto px-6">
           <div className="max-w-4xl mx-auto text-center mb-16">
             <h1 className="text-4xl md:text-5xl font-bold mb-6">
@@ -191,9 +191,9 @@ const Portfolio: React.FC = () => {
             </div>
           </div>
         </div>
-      </main>
+      </section>
       <Footer />
-    </div>
+    </main>
   );
 };
 

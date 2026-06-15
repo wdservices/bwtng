@@ -36,6 +36,7 @@ const BlogDetail = () => {
       el.setAttribute('content', attrs.content);
     };
     upsertMeta('meta[name="description"]', { name: 'description', content: desc });
+    upsertMeta('meta[name="robots"]', { name: 'robots', content: 'index,follow' });
     upsertMeta('meta[property="og:title"]', { property: 'og:title', content: blog.title });
     upsertMeta('meta[property="og:description"]', { property: 'og:description', content: desc });
     upsertMeta('meta[property="og:type"]', { property: 'og:type', content: 'article' });
@@ -123,7 +124,7 @@ const BlogDetail = () => {
   }
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <main className="min-h-screen bg-gray-50">
       <div className="container mx-auto px-4 py-12">
         <Link to="/blog" className="inline-flex items-center text-blue-600 hover:text-blue-800 mb-8">
           <ArrowLeft className="h-4 w-4 mr-2" />
@@ -261,7 +262,7 @@ const BlogDetail = () => {
           </aside>
         </div>
       </div>
-    </div>
+    </main>
   );
 };
 

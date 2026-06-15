@@ -80,8 +80,16 @@ app.get('/api/health', (_req, res) => {
   res.json({ status: 'ok' });
 });
 
-// Serve the built frontend
+// Serve pre-rendered static HTML (SSG) without trailing slash redirect
 const distPath = path.join(__dirname, '..');
+app.use((req, res, next) => {
+  if (req.method !== 'GET') return next();
+  const filePath = path.join(distPath, req.path, 'index.html');
+  if (req.path !== '/' && fs.existsSync(filePath)) {
+    return res.sendFile(filePath);
+  }
+  next();
+});
 app.use(express.static(distPath));
 app.get('*', (_req, res) => {
   res.sendFile(path.join(distPath, 'index.html'));

@@ -16,10 +16,10 @@ const MobileAppDevelopment: React.FC = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-background text-foreground">
+    <main className="min-h-screen bg-background text-foreground">
       <Helmet>
         <title>Mobile App Development Nigeria | iOS & Android Apps | Bluewaves Technology</title>
-        <meta name="description" content="Custom mobile app development for iOS and Android in Nigeria. Native and cross-platform apps built by expert developers in Port Harcourt. React Native, Flutter, Swift and Kotlin." />
+        <meta name="description" content="Custom mobile app development for iOS and Android in Nigeria. Native and cross-platform apps built with React Native, Flutter, Swift and Kotlin." />
         <meta name="keywords" content="mobile app development Nigeria, iOS app development Nigeria, Android app development Nigeria, React Native developer Nigeria" />
         <meta name="robots" content="index, follow" />
         <link rel="canonical" href="https://www.bwtng.live/mobile-app-development" />
@@ -43,7 +43,7 @@ const MobileAppDevelopment: React.FC = () => {
     }` }} />
       </Helmet>
       <Header />
-      <main className="pt-32 pb-20">
+      <section className="pt-32 pb-20">
         <div className="container mx-auto px-6">
           {/* Hero Section */}
           <div className="max-w-4xl mx-auto text-center mb-16">
@@ -108,9 +108,9 @@ const MobileAppDevelopment: React.FC = () => {
             </Button>
           </div>
         </div>
-      </main>
+      </section>
       <Footer />
-    </div>
+    </main>
   );
 };
 

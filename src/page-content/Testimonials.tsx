@@ -46,10 +46,10 @@ const Testimonials: React.FC = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-background text-foreground">
+    <main className="min-h-screen bg-background text-foreground">
       <Helmet>
         <title>Client Testimonials | Reviews of Bluewaves Technology Nigeria</title>
-        <meta name="description" content="See what our clients say about Bluewaves Technology. Real reviews from businesses across Nigeria including Golden Tulip Hotel, EmergenSee, Oak Park and Gardens and more." />
+        <meta name="description" content="See what our clients say about Bluewaves Technology. Real reviews from businesses across Nigeria including Golden Tulip, EmergenSee and more." />
         <meta name="keywords" content="Bluewaves Technology reviews, client testimonials Nigeria, software company reviews Port Harcourt" />
         <meta name="robots" content="index, follow" />
         <link rel="canonical" href="https://www.bwtng.live/testimonials" />
@@ -64,7 +64,7 @@ const Testimonials: React.FC = () => {
         <meta name="twitter:image" content="https://www.bwtng.live/og-image.png" />
       </Helmet>
       <Header />
-      <main className="pt-32 pb-20">
+      <section className="pt-32 pb-20">
         <div className="container mx-auto px-6">
           <div className="max-w-4xl mx-auto text-center mb-16">
             <p className="text-sm font-semibold text-primary uppercase tracking-widest mb-3">Testimonials</p>
@@ -96,9 +96,9 @@ const Testimonials: React.FC = () => {
             ))}
           </div>
         </div>
-      </main>
+      </section>
       <Footer />
-    </div>
+    </main>
   );
 };
 

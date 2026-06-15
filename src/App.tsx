@@ -22,6 +22,11 @@ import WebDevelopment from '@/page-content/WebDevelopment';
 import MobileAppDevelopment from '@/page-content/MobileAppDevelopment';
 import SEOServices from '@/page-content/SEOServices';
 import Branding from '@/page-content/Branding';
+import UIUXDesign from '@/page-content/UIUXDesign';
+import BusinessConsultation from '@/page-content/BusinessConsultation';
+import DigitalMarketing from '@/page-content/DigitalMarketing';
+import DigitalTools from '@/page-content/DigitalTools';
+import AIServices from '@/page-content/AIServices';
 import NotFound from '@/page-content/NotFound';
 import AcademyPayment from '@/page-content/AcademyPayment';
 import AcademyPaymentSuccess from '@/page-content/AcademyPaymentSuccess';
@@ -61,6 +66,11 @@ function App() {
               <Route path="/mobile-app-development" element={<MobileAppDevelopment />} />
               <Route path="/seo-services" element={<SEOServices />} />
               <Route path="/branding" element={<Branding />} />
+              <Route path="/ui-ux-design" element={<UIUXDesign />} />
+              <Route path="/business-consultation" element={<BusinessConsultation />} />
+              <Route path="/digital-marketing" element={<DigitalMarketing />} />
+              <Route path="/digital-tools" element={<DigitalTools />} />
+              <Route path="/ai-services" element={<AIServices />} />
               <Route path="/ai-builder-academy" element={<AIBuilderAcademy />} />
               <Route path="/academy/register" element={<AcademyRegister />} />
   <Route path="/academy/payment" element={<AcademyPayment />} />

@@ -1,0 +1,39 @@
+{
+  "name": "Bluewaves Technology",
+  "url": "https://bwtng.live",
+  "description": "Digital solutions company specializing in web development, mobile apps, AI solutions, SEO, and branding in Nigeria.",
+  "version": "1.0",
+  "contact": {
+    "email": "info@bwtng.live",
+    "website": "https://bwtng.live/contact"
+  },
+  "endpoints": {
+    "services": "https://bwtng.live/services",
+    "portfolio": "https://bwtng.live/portfolio",
+    "pricing": "https://bwtng.live/pricing",
+    "blog": "https://bwtng.live/blog",
+    "academy": "https://bwtng.live/ai-builder-academy",
+    "contact": "https://bwtng.live/contact"
+  },
+  "crawlable": true,
+  "sitemap": "https://bwtng.live/sitemap.xml",
+  "respectRobotsTxt": true,
+  "aiAgents": {
+    "GPTBot": {
+      "allowed": true,
+      "description": "OpenAI GPT crawler"
+    },
+    "ClaudeBot": {
+      "allowed": true,
+      "description": "Anthropic Claude crawler"
+    },
+    "Google-Extended": {
+      "allowed": true,
+      "description": "Google AI training crawler"
+    },
+    "PerplexityBot": {
+      "allowed": true,
+      "description": "Perplexity AI crawler"
+    }
+  }
+}

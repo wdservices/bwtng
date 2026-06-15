@@ -106,10 +106,10 @@ const ServicesPage: React.FC = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-background text-foreground">
+    <main className="min-h-screen bg-background text-foreground">
       <Helmet>
         <title>Our Services | Web, Mobile, AI & SEO Solutions | Bluewaves Technology Nigeria</title>
-        <meta name="description" content="Explore Bluewaves Technology's full range of services: web development, mobile app development, AI solutions, SEO, branding, chatbots and digital transformation for businesses in Nigeria." />
+        <meta name="description" content="Explore Bluewaves Technology's services: web development, mobile apps, AI solutions, SEO, branding and digital transformation in Nigeria." />
         <meta name="keywords" content="web development Nigeria, mobile app development Nigeria, AI solutions Nigeria, digital services Port Harcourt" />
         <meta name="robots" content="index, follow" />
         <link rel="canonical" href="https://www.bwtng.live/services" />
@@ -122,9 +122,121 @@ const ServicesPage: React.FC = () => {
         <meta name="twitter:title" content="Our Services | Web, Mobile, AI & SEO Solutions | Bluewaves Technology Nigeria" />
         <meta name="twitter:description" content="Explore Bluewaves Technology's full range of services: web development, mobile app development, AI solutions, SEO, branding, chatbots and digital transformation for businesses in Nigeria." />
         <meta name="twitter:image" content="https://www.bwtng.live/og-image.png" />
+        <script type="application/ld+json">
+          {JSON.stringify([
+            {
+              "@context": "https://schema.org",
+              "@type": "ItemList",
+              "name": "Bluewaves Technology Services",
+              "description": "Premium digital solutions, software engineering, and automation services in Nigeria.",
+              "url": "https://www.bwtng.live/services",
+              "numberOfItems": 4,
+              "itemListElement": [
+                {
+                  "@type": "ListItem",
+                  "position": 1,
+                  "item": {
+                    "@type": "Service",
+                    "name": "Web Application Development",
+                    "description": "High-performance web development utilizing cutting-edge technologies like React, Vite, Tailwind CSS, and Node.js.",
+                    "image": "https://www.bwtng.live/image/web-dev-hero.jpg",
+                    "provider": {
+                      "@type": "Organization",
+                      "name": "Bluewaves Technology",
+                      "url": "https://www.bwtng.live"
+                    }
+                  }
+                },
+                {
+                  "@type": "ListItem",
+                  "position": 2,
+                  "item": {
+                    "@type": "Service",
+                    "name": "Mobile App Development",
+                    "description": "Scalable native and cross-platform iOS and Android mobile apps designed to maximize user engagement and business efficiency.",
+                    "image": "https://www.bwtng.live/image/mobile-app-hero.jpg",
+                    "provider": {
+                      "@type": "Organization",
+                      "name": "Bluewaves Technology",
+                      "url": "https://www.bwtng.live"
+                    }
+                  }
+                },
+                {
+                  "@type": "ListItem",
+                  "position": 3,
+                  "item": {
+                    "@type": "Service",
+                    "name": "AI Solutions & Automation",
+                    "description": "Custom smart features, predictive analytics workflows, and specialized AI automation configurations built to streamline business systems.",
+                    "image": "https://www.bwtng.live/image/ai-solutions-hero.jpg",
+                    "provider": {
+                      "@type": "Organization",
+                      "name": "Bluewaves Technology",
+                      "url": "https://www.bwtng.live"
+                    }
+                  }
+                },
+                {
+                  "@type": "ListItem",
+                  "position": 4,
+                  "item": {
+                    "@type": "Service",
+                    "name": "SEO & Branding Solutions",
+                    "description": "Comprehensive search engine optimization strategies and modern visual brand identities designed to maximize corporate reach.",
+                    "image": "https://www.bwtng.live/image/branding-hero.jpg",
+                    "provider": {
+                      "@type": "Organization",
+                      "name": "Bluewaves Technology",
+                      "url": "https://www.bwtng.live"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "@context": "https://schema.org",
+              "@type": "FAQPage",
+              "mainEntity": [
+                {
+                  "@type": "Question",
+                  "name": "What technologies does Bluewaves Technology use for web development?",
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "We build modern, high-performance web applications using cutting-edge frameworks like React, Vite, Next.js, Tailwind CSS, and robust backend systems powered by Node.js."
+                  }
+                },
+                {
+                  "@type": "Question",
+                  "name": "How long does it take to develop a custom mobile application?",
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "The timeline depends on the project scope and complexity. Typically, a standard custom cross-platform iOS and Android app takes between 4 to 12 weeks from initial design to deployment."
+                  }
+                },
+                {
+                  "@type": "Question",
+                  "name": "Can you integrate AI and automation features into existing business software?",
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Yes, we specialize in integrating custom AI solutions, automation workflows, and predictive analytics modules seamlessly into your existing tech infrastructure to improve efficiency."
+                  }
+                },
+                {
+                  "@type": "Question",
+                  "name": "Do your digital services include post-launch support?",
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Absolutely. We provide dedicated technical support, performance maintenance, security monitoring, and regular updates post-deployment to ensure your platform runs perfectly."
+                  }
+                }
+              ]
+            }
+          ])}
+        </script>
       </Helmet>
       <Header />
-      <main className="pt-32 pb-20">
+      <section className="pt-32 pb-20">
         <div className="container mx-auto px-6">
           <div className="max-w-4xl mx-auto text-center mb-16">
             <p className="text-sm font-semibold text-primary uppercase tracking-widest mb-3">What We Do</p>
@@ -177,9 +289,9 @@ const ServicesPage: React.FC = () => {
             </div>
           </div>
         </div>
-      </main>
+      </section>
       <Footer />
-    </div>
+    </main>
   );
 };
 

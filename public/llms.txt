@@ -1,0 +1,30 @@
+# Bluewaves Technology - AI Discovery File
+
+## About
+Bluewaves Technology is a Nigerian digital solutions company specializing in web development, mobile app development, AI solutions, SEO, and branding services. Based in Port Harcourt, Nigeria.
+
+## Services
+- Web Application Development (React, Vite, Next.js, Node.js)
+- Mobile App Development (iOS, Android, React Native, Flutter)
+- AI Solutions & Automation (Machine Learning, Predictive Analytics, Chatbots)
+- SEO & Digital Marketing
+- Branding & Visual Identity
+- Business Consulting
+
+## AI Builder Academy
+Bluewaves Technology runs an AI Builder Academy offering training in AI and software development. Cohorts run with early bird and regular pricing tiers.
+
+## Contact
+- Website: https://bwtng.live
+- Email: info@bwtng.live
+- WhatsApp: Available via website contact form
+
+## Technology Stack
+- Frontend: React, Vite, TypeScript, Tailwind CSS
+- Backend: Node.js, Express
+- Database: Firebase Firestore
+- Payment: Paystack
+- Hosting: Namecheap
+
+## AI Agents
+We welcome AI agents to crawl and index our content. See agents.json for structured API information.

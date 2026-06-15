@@ -97,10 +97,13 @@ const price = useMemo(() => {
   };
 
   return (
-    <div className="min-h-screen bg-background text-foreground relative overflow-hidden">
+    <main className="min-h-screen bg-background text-foreground relative overflow-hidden">
       <Helmet>
         <title>{`AI Builder Cohort ${activeCohort.number} Registration — AI Builder Academy`}</title>
         <meta name="description" content="Reserve your seat in the AI Builder Academy. Build full-stack products with AI in 21 days." />
+        <meta name="robots" content="index,follow" />
+        <link rel="canonical" href="https://www.bwtng.live/academy/register" />
+        <meta property="og:url" content="https://www.bwtng.live/academy/register" />
       </Helmet>
 
       <div className="absolute -top-40 -right-40 w-[520px] h-[520px] bg-primary/10 blur-[140px] rounded-full pointer-events-none" />
@@ -320,7 +323,7 @@ const price = useMemo(() => {
           )}
 
       <Footer />
-    </div>
+    </main>
   );
 }
 

@@ -6,6 +6,7 @@
     "dev": "vite",
     "dev:server": "node --watch server/index.js",
     "build": "tsc -b && vite build",
+    "build:ssg": "tsc -b && vite-react-ssg build",
     "start": "node server/index.js"
   },
   "dependencies": {
@@ -85,6 +86,7 @@
     "tailwindcss": "^3.4.11",
     "typescript": "^5.5.3",
     "typescript-eslint": "^8.0.1",
-    "vite": "^5.4.1"
+    "vite": "^5.4.1",
+    "vite-react-ssg": "^0.9.1-beta.1"
   }
 }

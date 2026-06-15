@@ -61,10 +61,10 @@ const Pricing: React.FC = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-background text-foreground">
+    <main className="min-h-screen bg-background text-foreground">
       <Helmet>
         <title>Website Development Pricing Nigeria | Web & App Packages | Bluewaves Technology</title>
-        <meta name="description" content="Transparent pricing for website development in Nigeria. Starter sites from ₦650,000. Business websites from ₦850,000. Custom enterprise solutions. Get a quote from Bluewaves Technology." />
+        <meta name="description" content="Transparent pricing for website development in Nigeria. Starter sites from ₦650K, business sites from ₦850K. Get a free quote today." />
         <meta name="keywords" content="website development cost Nigeria, web development pricing Nigeria, how much does a website cost Nigeria, software development pricing Nigeria" />
         <meta name="robots" content="index, follow" />
         <link rel="canonical" href="https://www.bwtng.live/pricing" />
@@ -79,7 +79,7 @@ const Pricing: React.FC = () => {
         <meta name="twitter:image" content="https://www.bwtng.live/og-image.png" />
       </Helmet>
       <Header />
-      <main className="pt-32 pb-20">
+      <section className="pt-32 pb-20">
         <div className="container mx-auto px-6">
           <div className="max-w-4xl mx-auto text-center mb-16">
             <p className="text-sm font-semibold text-primary uppercase tracking-widest mb-3">Pricing</p>
@@ -129,9 +129,9 @@ const Pricing: React.FC = () => {
             </p>
           </div>
         </div>
-      </main>
+      </section>
       <Footer />
-    </div>
+    </main>
   );
 };
 

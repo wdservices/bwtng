@@ -21,7 +21,7 @@ const AboutUs: React.FC = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-background text-foreground">
+    <main className="min-h-screen bg-background text-foreground">
       <Helmet>
         <title>About Us | Bluewaves Technology — Nigeria's Digital Innovation Company</title>
         <meta name="description" content="Bluewaves Technology is a leading software and digital solutions company in Port Harcourt, Nigeria. 500+ clients, 756+ projects. Meet our story and values." />
@@ -39,7 +39,7 @@ const AboutUs: React.FC = () => {
         <meta name="twitter:image" content="https://www.bwtng.live/og-image.png" />
       </Helmet>
       <Header />
-      <main className="pt-32 pb-20">
+      <section className="pt-32 pb-20">
         <div className="container mx-auto px-6">
           <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-center mb-20">
             <div>
@@ -104,9 +104,9 @@ const AboutUs: React.FC = () => {
             </div>
           </div>
         </div>
-      </main>
+      </section>
       <Footer />
-    </div>
+    </main>
   );
 };
 

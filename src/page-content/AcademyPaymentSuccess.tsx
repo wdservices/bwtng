@@ -69,9 +69,11 @@ export default function AcademyPaymentSuccess() {
   const cohortName = cohort?.name || 'AI Builder Academy';
 
   return (
-    <div className="min-h-screen bg-background text-foreground relative overflow-hidden">
+    <main className="min-h-screen bg-background text-foreground relative overflow-hidden">
       <Helmet>
         <title>{`Payment Successful — ${cohortName}`}</title>
+        <meta name="robots" content="noindex,follow" />
+        <link rel="canonical" href="https://www.bwtng.live/academy/payment/success" />
       </Helmet>
 
       <div className="absolute -top-40 -right-40 w-[520px] h-[520px] bg-primary/10 blur-[140px] rounded-full pointer-events-none" />
@@ -156,6 +158,6 @@ export default function AcademyPaymentSuccess() {
       </div>
 
       <Footer />
-    </div>
+    </main>
   );
 }

@@ -11,39 +11,38 @@ const SEOServices: React.FC = () => {
     { icon: Search, title: 'Keyword Research', description: 'Find the best keywords to target your audience' },
     { icon: Target, title: 'On-Page SEO', description: 'Optimize your website content and structure' },
     { icon: BarChart3, title: 'Analytics', description: 'Track performance and measure results' },
-    { icon: Users, title: 'Local SEO', description: 'Rank in local searches in Port Harcourt and Nigeria' },
+    { icon: Users, title: 'Local SEO', description: 'Rank in local searches in your area' },
     { icon: Zap, title: 'Technical SEO', description: 'Improve site speed and technical performance' }
   ];
 
   return (
-    <div className="min-h-screen bg-background text-foreground">
+    <main className="min-h-screen bg-background text-foreground">
       <Helmet>
-        <title>SEO Services Nigeria | Rank Higher on Google | Bluewaves Technology Port Harcourt</title>
-        <meta name="description" content="Professional SEO services in Nigeria to grow your online visibility. Technical SEO, keyword research, on-page optimization, link building and local SEO for businesses in Port Harcourt and Nigeria." />
-        <meta name="keywords" content="SEO services Nigeria, SEO company Port Harcourt, search engine optimization Nigeria, local SEO Nigeria, Google ranking Nigeria" />
+        <title>SEO Services | Rank Higher on Google | Bluewaves Technology</title>
+        <meta name="description" content="Professional SEO services. Technical SEO, keyword research, on-page optimization, link building and local SEO for businesses." />
+        <meta name="keywords" content="SEO services, SEO company, search engine optimization, local SEO, Google ranking" />
         <meta name="robots" content="index, follow" />
         <link rel="canonical" href="https://www.bwtng.live/seo-services" />
-        <meta property="og:title" content="SEO Services Nigeria | Rank Higher on Google | Bluewaves Technology Port Harcourt" />
-        <meta property="og:description" content="Professional SEO services in Nigeria to grow your online visibility. Technical SEO, keyword research, on-page optimization, link building and local SEO for businesses in Port Harcourt and Nigeria." />
+        <meta property="og:title" content="SEO Services | Rank Higher on Google | Bluewaves Technology" />
+        <meta property="og:description" content="Professional SEO services to grow your online visibility. Technical SEO, keyword research, on-page optimization, link building and local SEO for businesses." />
         <meta property="og:url" content="https://www.bwtng.live/seo-services" />
         <meta property="og:type" content="website" />
         <meta property="og:image" content="https://www.bwtng.live/og-image.png" />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="SEO Services Nigeria | Rank Higher on Google | Bluewaves Technology Port Harcourt" />
-        <meta name="twitter:description" content="Professional SEO services in Nigeria to grow your online visibility. Technical SEO, keyword research, on-page optimization, link building and local SEO for businesses in Port Harcourt and Nigeria." />
+        <meta name="twitter:title" content="SEO Services | Rank Higher on Google | Bluewaves Technology" />
+        <meta name="twitter:description" content="Professional SEO services to grow your online visibility. Technical SEO, keyword research, on-page optimization, link building and local SEO for businesses." />
         <meta name="twitter:image" content="https://www.bwtng.live/og-image.png" />
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: `{
       "@context": "https://schema.org",
       "@type": "Service",
       "name": "SEO Services",
       "provider": { "@type": "Organization", "name": "Bluewaves Technology", "url": "https://www.bwtng.live" },
-      "areaServed": "Nigeria",
-      "description": "Professional SEO services to improve search rankings, drive organic traffic and grow online visibility for Nigerian businesses.",
+      "description": "Professional SEO services to improve search rankings, drive organic traffic and grow online visibility for businesses.",
       "url": "https://www.bwtng.live/seo-services"
     }` }} />
       </Helmet>
       <Header />
-      <main className="pt-32 pb-20">
+      <section className="pt-32 pb-20">
         <div className="container mx-auto px-6">
           {/* Hero Section */}
           <div className="max-w-4xl mx-auto text-center mb-16">
@@ -52,7 +51,7 @@ const SEOServices: React.FC = () => {
               <span className="text-sm font-medium">SEO Services</span>
             </div>
             <h1 className="text-4xl md:text-5xl font-bold mb-6">
-              Professional <span className="text-primary">SEO Services</span> in Nigeria
+              Professional <span className="text-primary">SEO Services</span>
             </h1>
             <p className="text-xl text-muted-foreground mb-8">
               Improve your search rankings, drive organic traffic, and grow your business online.
@@ -84,7 +83,7 @@ const SEOServices: React.FC = () => {
                 'Keyword research and strategy',
                 'On-page optimization',
                 'Technical SEO improvements',
-                'Local SEO for Port Harcourt and Rivers State',
+                'Local SEO for your area',
                 'Content strategy and optimization',
                 'Link building services',
                 'Monthly reporting and analytics',
@@ -109,9 +108,9 @@ const SEOServices: React.FC = () => {
             </Button>
           </div>
         </div>
-      </main>
+      </section>
       <Footer />
-    </div>
+    </main>
   );
 };
 
