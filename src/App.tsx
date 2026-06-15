@@ -42,6 +42,7 @@ import AIBuilderAcademy from '@/page-content/AIBuilderAcademy';
 import AcademyRegister from '@/page-content/AcademyRegister';
 import AcademyCohorts from '@/admin/pages/AcademyCohorts';
 import AcademyRegistrations from '@/admin/pages/AcademyRegistrations';
+import ShipItRight from '@/page-content/ShipItRight';
 
 const queryClient = new QueryClient();
 
@@ -75,6 +76,7 @@ function App() {
               <Route path="/academy/register" element={<AcademyRegister />} />
   <Route path="/academy/payment" element={<AcademyPayment />} />
   <Route path="/academy/payment/success" element={<AcademyPaymentSuccess />} />
+              <Route path="/ship-it-right" element={<ShipItRight />} />
               {/* Admin routes */}
               <Route path="/admin/login" element={<AdminLogin />} />
               <Route path="/admin" element={<AdminDashboard><Dashboard apps={ADMIN_PRODUCTS} /></AdminDashboard>} />
