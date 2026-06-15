@@ -32,6 +32,7 @@ const Header = () => {
     { label: 'About', path: '/about-us' },
     { label: 'Services', path: '/services', hasDropdown: true },
     { label: 'Academy', path: '/ai-builder-academy' },
+    { label: 'Book', path: '/ship-it-right' },
     { label: 'Portfolio', path: '/portfolio' },
     { label: 'Pricing', path: '/pricing' },
     { label: 'Testimonials', path: '/testimonials' },
