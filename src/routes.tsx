@@ -32,6 +32,7 @@ import ProductAdmin from '@/admin/pages/ProductAdmin'
 import { ADMIN_PRODUCTS } from '@/page-content/AdminDashboard'
 import AcademyCohorts from '@/admin/pages/AcademyCohorts'
 import AcademyRegistrations from '@/admin/pages/AcademyRegistrations'
+import ShipItRight from '@/page-content/ShipItRight'
 
 export const routes: RouteRecord[] = [
   {
@@ -60,6 +61,7 @@ export const routes: RouteRecord[] = [
       { path: '/academy/register', element: <AcademyRegister /> },
       { path: '/academy/payment', element: <AcademyPayment /> },
       { path: '/academy/payment/success', element: <AcademyPaymentSuccess /> },
+      { path: '/ship-it-right', element: <ShipItRight /> },
       { path: '/admin/login', element: <AdminLogin /> },
       { path: '/admin', element: <AdminDashboard><Dashboard apps={ADMIN_PRODUCTS} /></AdminDashboard> },
       { path: '/admin/blog', element: <AdminDashboard><BlogAdmin /></AdminDashboard> },
