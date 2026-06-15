@@ -29,7 +29,7 @@ const Products = () => (
             <div className="flex items-start gap-4 mb-5">
               <div className="w-14 h-14 rounded-2xl bg-primary/10 flex items-center justify-center shrink-0 overflow-hidden">
                 {product.logo ? (
-                  <img src={product.logo} alt={product.name} className="w-10 h-10 object-contain" />
+                  <img src={product.logo} alt={product.name} className="w-10 h-10 object-contain" loading="lazy" />
                 ) : product.icon ? (
                   <product.icon className="w-6 h-6 text-primary" />
                 ) : null}

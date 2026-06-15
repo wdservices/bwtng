@@ -123,7 +123,7 @@ const Portfolio: React.FC = () => {
                       <div className="flex items-center gap-4">
                         {product.logo ? (
                           <div className="w-12 h-12 rounded-xl bg-white flex items-center justify-center p-1.5 shadow-sm group-hover:scale-110 transition-transform duration-300">
-                            <img src={product.logo} alt={`${product.name} logo`} className="h-full w-full object-contain" />
+                            <img src={product.logo} alt={`${product.name} logo`} className="h-full w-full object-contain" loading="lazy" />
                           </div>
                         ) : (
                           <div className={`w-12 h-12 rounded-xl bg-muted/50 flex items-center justify-center ${product.color} group-hover:scale-110 transition-transform duration-300`}>

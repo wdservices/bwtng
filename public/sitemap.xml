@@ -85,6 +85,22 @@
     <changefreq>weekly</changefreq>
   </url>
   <url>
+    <loc>https://www.bwtng.live/ship-it-right</loc>
+    <lastmod>2026-06-15</lastmod>
+    <priority>0.9</priority>
+    <changefreq>weekly</changefreq>
+    <image:image>
+      <image:loc>https://www.bwtng.live/image/ship-it-right.png</image:loc>
+      <image:title>Ship It Right — The Production Readiness Checklist for Vibe-Built Apps by Gospel Ononwi</image:title>
+      <image:caption>A practical guide covering security, performance, scalability, SEO, legal, payments, analytics, and DevOps for apps built with AI tools like Cursor, Bolt, Lovable, and Replit.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.bwtng.live/image/Gospel-ononwi.png</image:loc>
+      <image:title>Gospel Ononwi — Author of Ship It Right and Founder of Bluewaves Technology</image:title>
+      <image:caption>Gospel Ononwi is a product builder, AI developer, and entrepreneur who has shipped multiple real-world products including HerbalStrength, PrepVerse, and CitiTour.</image:caption>
+    </image:image>
+  </url>
+  <url>
     <loc>https://www.bwtng.live/portfolio</loc>
     <lastmod>2025-05-01</lastmod>
     <priority>0.8</priority>

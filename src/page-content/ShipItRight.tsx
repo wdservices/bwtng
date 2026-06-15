@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { Helmet } from 'react-helmet-async';
 import { Link } from 'react-router-dom';
-import bookCover from '@/assets/ship-it-right-cover.png.asset.json';
+
+const bookCover = '/image/ship-it-right3.png';
 
 const CHAPTERS = [
   {
@@ -166,13 +167,36 @@ const FAQS = [
     q: 'Where can I buy Ship It Right?',
     a: 'Available on Amazon (Kindle and paperback), Gumroad, and Selar. See the Buy Now section above for direct links.',
   },
+  {
+    q: 'Can a vibe-coded app handle real users, or is it just for demos?',
+    a: 'This is one of the most searched anxieties. The gap between a working demo and a production-grade application is where most vibe-coded projects quietly fail — not with a dramatic crash, but with slow page loads that drive users away, unhandled errors that silently eat data, and security holes that invite exploitation. Ship It Right gives you the exact checklist to close that gap before you go live.',
+  },
+  {
+    q: 'What are the most common security mistakes in vibe-coded apps?',
+    a: 'The primary risks include hardcoded secrets like API keys in the repository, severe injection vulnerabilities such as SQL/XSS, insecure data storage, and compliance violations due to improper data handling. Ship It Right walks you through how to catch and fix each of these before a single user touches your app.',
+  },
+  {
+    q: 'Does my vibe-coded app need to be GDPR or HIPAA compliant?',
+    a: 'Most consumer vibe coding tools run on US-based shared cloud. If your app handles EU citizen data, you may be in GDPR violation the moment the AI deploys it. If you\'re handling healthcare data under HIPAA, financial data under SOX, or personal data under GDPR, you can\'t deploy software that lacks proper access controls, audit trails, and data handling policies — and vibe-coded applications generated without these requirements in mind don\'t become compliant through iteration. They require fundamental architectural changes. The book covers exactly what to do before you hit that wall.',
+  },
+  {
+    q: 'Will my vibe-coded app break when it scales?',
+    a: 'At 50 users, no monitoring, no alerting, and no structured logging is fine. At 5,000, it\'s a liability. At 50,000, it\'s an incident. The AI cannot anticipate scale requirements — an app might work fine during testing with 50 records but would not hold up with 10,000+ users in production. Ship It Right shows you how to build for the scale you\'re aiming for, not just the demo you built.',
+  },
+  {
+    q: 'Can I maintain or update my vibe-coded app after launch?',
+    a: 'Making a change to one part breaks something in another. The AI doesn\'t know the history — you ask it to add a feature and it introduces a regression elsewhere. Code generated today needs to be understood, modified, and debugged by engineers next month or next year. AI-generated code often lacks comments, uses unfamiliar patterns, or implements logic in ways that aren\'t idiomatic for your team\'s stack. The book addresses how to structure your app so it stays maintainable as it grows.',
+  },
 ];
+
+const INITIAL_FAQS = 5;
 
 const ShipItRight: React.FC = () => {
   const [openChapter, setOpenChapter] = useState<number | null>(0);
   const [openFaq, setOpenFaq] = useState<number | null>(0);
   const [quiz, setQuiz] = useState<boolean[]>(Array(5).fill(false));
   const [showSticky, setShowSticky] = useState(false);
+  const [showAllFaqs, setShowAllFaqs] = useState(false);
 
   useEffect(() => {
     const onScroll = () => setShowSticky(window.scrollY > 700);
@@ -187,7 +211,7 @@ const ShipItRight: React.FC = () => {
     score >= 1 ? `${score}/5 — You've got work to do.` :
     "0/5 — Let's get started.";
 
-  const coverUrl = bookCover.url;
+  const coverUrl = bookCover;
 
   return (
     <>
@@ -466,8 +490,8 @@ const ShipItRight: React.FC = () => {
                 className="absolute inset-0 blur-2xl opacity-50"
                 style={{ background: 'radial-gradient(circle, #00CFFF 0%, transparent 70%)' }}
               />
-              <div className="relative w-64 h-64 rounded-2xl border-2 border-[#00CFFF]/30 bg-gradient-to-br from-[#0D1B3E] to-[#1a2b5e] flex items-center justify-center text-7xl font-bold text-[#00CFFF]/40 shadow-[0_20px_60px_-15px_rgba(0,207,255,0.4)]">
-                GO
+              <div className="relative w-64 h-64 rounded-2xl border-2 border-[#00CFFF]/30 bg-gradient-to-br from-[#0D1B3E] to-[#1a2b5e] overflow-hidden shadow-[0_20px_60px_-15px_rgba(0,207,255,0.4)]">
+                <img src="/image/Gospel-ononwi.png" alt="Gospel Ononwi — author of Ship It Right" className="w-full h-full object-cover" loading="lazy" />
               </div>
             </div>
             <div>
@@ -499,7 +523,7 @@ const ShipItRight: React.FC = () => {
               Frequently Asked Questions
             </h2>
             <div className="space-y-3">
-              {FAQS.map((f, i) => {
+              {FAQS.slice(0, showAllFaqs ? FAQS.length : INITIAL_FAQS).map((f, i) => {
                 const isOpen = openFaq === i;
                 return (
                   <div
@@ -527,6 +551,14 @@ const ShipItRight: React.FC = () => {
                 );
               })}
             </div>
+            {!showAllFaqs && FAQS.length > INITIAL_FAQS && (
+              <button
+                onClick={() => setShowAllFaqs(true)}
+                className="mt-6 w-full text-center py-3 rounded-xl border border-[#00CFFF]/30 text-[#00CFFF] hover:bg-[#00CFFF]/10 font-semibold transition-all"
+              >
+                Show All {FAQS.length} Questions
+              </button>
+            )}
           </div>
         </section>
 

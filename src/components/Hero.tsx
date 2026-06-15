@@ -59,8 +59,8 @@ const Hero = () => {
               <div key={li} className="flex flex-wrap justify-center gap-x-5">
                 {line.words.map((word, wi) => (
                   <motion.span key={word}
-                    initial={{ opacity: 0, y: 48, filter: 'blur(12px)' }}
-                    animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
+                    initial={{ opacity: 0, y: 48 }}
+                    animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.85, delay: line.delay + wi * 0.12, ease: [0.22, 1, 0.36, 1] }}
                     className={`inline-block text-6xl sm:text-7xl lg:text-8xl font-bold tracking-tight leading-[1.05] font-display
                       ${li === 1 ? 'text-primary' : 'text-foreground'}`}

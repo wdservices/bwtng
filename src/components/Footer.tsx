@@ -13,7 +13,7 @@ const Footer = () => {
           {/* Brand + contact */}
           <div className="lg:col-span-2">
             <Link to="/" className="flex items-center space-x-3 mb-5">
-              <img src="/logo.png" alt="Bluewaves Technology" className="w-8 h-8 object-contain rounded-lg" />
+              <img src="/logo.png" alt="Bluewaves Technology" className="w-8 h-8 object-contain rounded-lg" loading="lazy" />
               <span className="text-base font-bold text-foreground font-display">
                 Bluewaves <span className="text-primary">Technology</span>
               </span>

@@ -7,6 +7,9 @@ RewriteRule ^(.*)$ https://%{HTTP_HOST}/$1 [R=301,L]
 RewriteCond %{HTTP_HOST} ^bwtng\.live [NC]
 RewriteRule ^(.*)$ https://www.bwtng.live/$1 [R=301,L]
 
+# Content Security Policy — allow Google Fonts, self, and common CDNs
+Header set Content-Security-Policy "default-src 'self'; font-src 'self' fonts.gstatic.com fonts.googleapis.com; style-src 'self' 'unsafe-inline' fonts.googleapis.com; img-src 'self' data: https:; script-src 'self' 'unsafe-inline' 'unsafe-eval'; connect-src 'self' https://firestore.googleapis.com https://api.paystack.co; frame-src 'none';"
+
 # SPA fallback
 RewriteRule ^index\.html$ - [L]
 RewriteCond %{REQUEST_FILENAME} !-f

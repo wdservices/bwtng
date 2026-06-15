@@ -1,8 +1,15 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap');
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@font-face {
+  font-family: 'Inter';
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Space Grotesk';
+  font-display: swap;
+}
 
 @layer base {
   :root {
@@ -45,6 +52,10 @@
     --sidebar-accent-foreground: 210 40% 92%;
     --sidebar-border: 222 30% 15%;
     --sidebar-ring: 217 91% 60%;
+  }
+
+  html {
+    scroll-behavior: smooth;
   }
 }
 
