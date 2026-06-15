@@ -6,6 +6,7 @@
     "dev": "vite",
     "dev:server": "node --watch server/index.js",
     "build": "tsc -b && vite build",
+    "build:dev": "vite build --mode development",
     "build:ssg": "tsc -b && vite-react-ssg build",
     "start": "node server/index.js"
   },
