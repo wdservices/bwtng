@@ -96,7 +96,16 @@ app.get('/api/health', (_req, res) => {
   res.json({ status: 'ok' });
 });
 
-const distPath = path.join(__dirname, '..', 'dist');
+// Serve built assets. Prefer ../dist (standard Vite output), but fall back to
+// the parent directory itself when files have been flattened into the app root
+// (e.g. cPanel deploys where index.html lives alongside the server folder).
+const distCandidates = [
+  path.join(__dirname, '..', 'dist'),
+  path.join(__dirname, '..'),
+];
+const distPath = distCandidates.find(
+  (p) => fs.existsSync(path.join(p, 'index.html'))
+) || distCandidates[0];
 app.use((req, res, next) => {
   if (req.method !== 'GET') return next();
   const filePath = path.join(distPath, req.path, 'index.html');
