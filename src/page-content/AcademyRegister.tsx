@@ -34,7 +34,7 @@ const DEFAULT_COHORT: Cohort = {
   startDate: '',
   endDate: '',
   registrationDeadline: '',
-  earlyBirdPrice: 55000,
+  earlyBirdPrice: 50000,
   regularPrice: 55000,
   seatLimit: 50,
   seatsTaken: 0,
@@ -65,13 +65,7 @@ export default function AcademyRegister() {
   const [success, setSuccess] = useState(false);
 
 const price = useMemo(() => {
-  const now = new Date();
-  const deadline = activeCohort.registrationDeadline ? new Date(activeCohort.registrationDeadline) : null;
-  
-  if (deadline && now <= deadline) {
-    return activeCohort.earlyBirdPrice;
-  }
-  return activeCohort.regularPrice;
+  return activeCohort.earlyBirdPrice;
 }, [activeCohort]);
 
   const set = (k: string, v: string) => setForm(p => ({ ...p, [k]: v }));
@@ -284,14 +278,12 @@ const price = useMemo(() => {
                     <div className="mt-7 rounded-xl bg-muted/20 border border-border/70 p-4 flex items-center justify-between gap-4">
                       <div>
                         <p className="text-[11px] text-muted-foreground uppercase tracking-wider">
-                          {price < activeCohort.regularPrice ? 'Early Bird' : 'Total'}
+                          Early Bird
                         </p>
                         <p className="text-2xl font-semibold font-display text-foreground tracking-tight">₦{price.toLocaleString()}</p>
-                        {price < activeCohort.regularPrice && (
                           <p className="text-[11px] text-muted-foreground mt-0.5">
-                            Regular: <span className="line-through">₦{activeCohort.regularPrice.toLocaleString()}</span>
+                            Late Registration: <span className="line-through">₦{activeCohort.regularPrice.toLocaleString()}</span>
                           </p>
-                        )}
                       </div>
                       <div className="text-right text-[11px] text-muted-foreground">
                         <p>Reserved as pending</p>

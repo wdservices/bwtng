@@ -62,7 +62,7 @@ export default function AcademyPopup({ cohort, registered, onClose }: Props) {
                   <p className="text-lg font-bold text-primary">₦{cohort.earlyBirdPrice.toLocaleString()}</p>
                 </div>
                 <div className="rounded-xl bg-white/5 border border-white/10 p-3">
-                  <p className="text-[10px] uppercase tracking-wider text-white/50 mb-1">Regular</p>
+                  <p className="text-[10px] uppercase tracking-wider text-white/50 mb-1">Late Registration</p>
                   <p className="text-lg font-bold text-white/90 line-through opacity-60">₦{cohort.regularPrice.toLocaleString()}</p>
                 </div>
               </div>

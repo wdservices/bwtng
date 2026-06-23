@@ -262,7 +262,7 @@ export default function AIBuilderAcademy() {
                 <p className="text-4xl font-bold text-foreground">₦{(cohort?.earlyBirdPrice ?? 50000).toLocaleString()}</p>
               </div>
               <div className="p-5 rounded-2xl bg-background/60 border border-border">
-                <p className="text-xs uppercase tracking-widest text-muted-foreground font-semibold mb-2">Regular</p>
+                <p className="text-xs uppercase tracking-widest text-muted-foreground font-semibold mb-2">Late Registration</p>
                 <p className="text-4xl font-bold text-muted-foreground">₦{(cohort?.regularPrice ?? 55000).toLocaleString()}</p>
               </div>
             </div>

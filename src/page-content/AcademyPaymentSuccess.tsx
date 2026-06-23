@@ -1,7 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
-import lottie from 'lottie-web';
 import { Helmet } from 'react-helmet-async';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
@@ -30,35 +29,43 @@ export default function AcademyPaymentSuccess() {
 
     let anim: any = null;
     let fallbackTimer: ReturnType<typeof setTimeout>;
+    let cancelled = false;
 
-    if (animContainer.current) {
-      try {
-        anim = lottie.loadAnimation({
-          container: animContainer.current,
-          renderer: 'svg',
-          loop: false,
-          autoplay: true,
-          path: '/lottie/payment-success.json',
-        });
-        anim.addEventListener('complete', () => {
-          setShowContent(true);
-        });
-        anim.addEventListener('error', () => {
-          setLottieFailed(true);
-          setShowContent(true);
-        });
-      } catch {
-        setLottieFailed(true);
-        setShowContent(true);
+    (async () => {
+      if (animContainer.current) {
+        try {
+          const lottie = (await import('lottie-web')).default;
+          if (cancelled) return;
+          anim = lottie.loadAnimation({
+            container: animContainer.current,
+            renderer: 'svg',
+            loop: false,
+            autoplay: true,
+            path: '/lottie/payment-success.json',
+          });
+          anim.addEventListener('complete', () => {
+            setShowContent(true);
+          });
+          anim.addEventListener('error', () => {
+            setLottieFailed(true);
+            setShowContent(true);
+          });
+        } catch {
+          if (!cancelled) {
+            setLottieFailed(true);
+            setShowContent(true);
+          }
+        }
       }
-    }
 
-    // Fallback: show content after 4s regardless of lottie status
-    fallbackTimer = setTimeout(() => {
-      setShowContent(true);
-    }, 4000);
+      // Fallback: show content after 4s regardless of lottie status
+      fallbackTimer = setTimeout(() => {
+        setShowContent(true);
+      }, 4000);
+    })();
 
     return () => {
+      cancelled = true;
       if (anim) anim.destroy();
       clearTimeout(fallbackTimer);
     };

@@ -14,7 +14,7 @@ import type { Cohort, CohortStatus, Registration } from '@/types/academy';
 
 const empty: Omit<Cohort, 'id'> = {
   name: '', number: 1, startDate: '', endDate: '', registrationDeadline: '',
-  earlyBirdPrice: 55000, regularPrice: 55000,
+  earlyBirdPrice: 50000, regularPrice: 55000,
   seatLimit: 20, seatsTaken: 0, whatsappGroupLink: '', status: 'draft', imageUrl: '',
 };
 
@@ -44,7 +44,7 @@ export default function AcademyCohorts() {
           startDate: new Date().toISOString().slice(0, 10),
           endDate: new Date(Date.now() + 21 * 86400000).toISOString().slice(0, 10),
           registrationDeadline: new Date(Date.now() + 14 * 86400000).toISOString().slice(0, 10),
-          earlyBirdPrice: 55000,
+          earlyBirdPrice: 50000,
           regularPrice: 55000,
           seatLimit: 50,
           seatsTaken: 0,
@@ -372,7 +372,7 @@ export default function AcademyCohorts() {
                <Section title="Pricing & seats">
                  <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
                    <div><FieldLabel>Early bird (₦)</FieldLabel><Input className="rounded-lg" type="number" value={editing.earlyBirdPrice ?? ''} onChange={e => setEditing({ ...editing, earlyBirdPrice: e.target.value === '' ? 0 : +e.target.value })} /></div>
-                   <div><FieldLabel>Regular (₦)</FieldLabel><Input className="rounded-lg" type="number" value={editing.regularPrice ?? ''} onChange={e => setEditing({ ...editing, regularPrice: e.target.value === '' ? 0 : +e.target.value })} /></div>
+                    <div><FieldLabel>Late Registration (₦)</FieldLabel><Input className="rounded-lg" type="number" value={editing.regularPrice ?? ''} onChange={e => setEditing({ ...editing, regularPrice: e.target.value === '' ? 0 : +e.target.value })} /></div>
                    <div><FieldLabel>Registration deadline</FieldLabel><Input className="rounded-lg" type="date" value={editing.registrationDeadline ?? ''} onChange={e => setEditing({ ...editing, registrationDeadline: e.target.value })} /></div>
                    <div><FieldLabel>Seat limit</FieldLabel><Input className="rounded-lg" type="number" value={editing.seatLimit ?? 20} onChange={e => setEditing({ ...editing, seatLimit: +e.target.value })} /></div>
                  </div>

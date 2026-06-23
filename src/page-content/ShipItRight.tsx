@@ -187,6 +187,10 @@ const FAQS = [
     q: 'Can I maintain or update my vibe-coded app after launch?',
     a: 'Making a change to one part breaks something in another. The AI doesn\'t know the history — you ask it to add a feature and it introduces a regression elsewhere. Code generated today needs to be understood, modified, and debugged by engineers next month or next year. AI-generated code often lacks comments, uses unfamiliar patterns, or implements logic in ways that aren\'t idiomatic for your team\'s stack. The book addresses how to structure your app so it stays maintainable as it grows.',
   },
+  {
+    q: 'How do I add SEO to an app built with Lovable or Bolt?',
+    a: 'Most AI coding tools generate apps with zero SEO setup — no meta tags, no structured data, no sitemap, no Open Graph tags. Search engines can\'t see your app, and when people share it on social media, there\'s no preview. Chapter 4 of Ship It Right walks you through exactly what to add: meta titles and descriptions, Open Graph and Twitter Card tags, XML sitemaps, robots.txt, canonical URLs, and structured data — all without needing to understand code.',
+  },
 ];
 
 const INITIAL_FAQS = 5;
@@ -581,9 +585,9 @@ const ShipItRight: React.FC = () => {
             </p>
             <div className="grid sm:grid-cols-3 gap-4 max-w-3xl mx-auto">
               {[
-                { name: 'Amazon', sub: 'Kindle & Paperback', primary: true, href: '#' },
-                { name: 'Gumroad', sub: 'Instant PDF Download', href: '#' },
-                { name: 'Selar', sub: 'For Nigerian & African Readers (₦)', href: '#' },
+                { name: 'Amazon', sub: 'Kindle & Paperback', primary: true, href: 'https://www.amazon.com/dp/B0H2JNJ7W1/ref=sr_1_1?crid=3DQ68VCYDNXN8&dib=eyJ2IjoiMSJ9.FmJJ4ErAChr4MdZd1xDlHXkG75N-xe4_JZqZrJvy-cMt5D2CwNIq_6z9DgeE-Jz9hFNzrMfPOHuN8U7_z61z6-Cv428xWcV2dx1O8BL35CDgbz0xocBzYgOSHixzo0FGOaER43nnIdwv3qC_SK3AxE0aUbv9izVJjhYA7cWrKJQ8-x_FlQZbSNAjdosFhSynJ1OJiRlS05nvYdvH9w1Z-jVttu_4Qqyy8xdhLlK3smI.p-fz1Ap5yDy3vop94CmtxTnqVOQFfQO5pMCtQwZtzQw&dib_tag=se&keywords=Ship+It+Right%3A+The+Production+Readiness+Checklist+for+Vibe-Built+Apps+%E2%80%94+Security%2C+SEO%2C+Scalability%2C+Legal%2C+Payments%2C+Analytics%2C+and+DevOps+for+Non-Technical+Founders&nsdOptOutParam=true&qid=1781736396&sprefix=ship+it+right+the+production+readiness+checklist+for+vibe-built+apps+security%2C+seo%2C+scalability%2C+legal%2C+payments%2C+analytics%2C+and+devops+for+non-technical+founders%2Caps%2C324&sr=8-1' },
+                { name: 'Gumroad', sub: 'Instant PDF Download', href: 'https://spellz49.gumroad.com/l/ship-it-right' },
+                { name: 'Selar', sub: 'For Nigerian & African Readers (₦)', href: 'https://selar.com/8py1156847' },
               ].map(b => (
                 <a
                   key={b.name}

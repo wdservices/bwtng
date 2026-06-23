@@ -58,14 +58,7 @@ export default function AcademyPayment() {
   };
 
   const initializePaystackPayment = () => {
-    const amount = Math.round(((state.price ?? (() => {
-      const now = new Date();
-      const deadline = cohort.registrationDeadline ? new Date(cohort.registrationDeadline) : null;
-      if (deadline && now <= deadline) {
-        return cohort.earlyBirdPrice || 50000;
-      }
-      return cohort.regularPrice || 55000;
-    })()) * 100));
+    const amount = Math.round(((state.price ?? (cohort.earlyBirdPrice || 50000)) * 100));
 
     const paystackOptions = {
       key: import.meta.env.VITE_PAYSTACK_PUBLIC_KEY as string,
