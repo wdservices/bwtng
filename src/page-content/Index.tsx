@@ -8,6 +8,7 @@ import About from "@/components/About";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
 import ClientShowcase from "@/components/ClientShowcase";
+import Team from "@/components/Team";
 import PopupController from "@/components/PopupController";
 
 const Index = () => {
@@ -25,6 +26,7 @@ const Index = () => {
       <Hero />
       <Services />
       <ClientShowcase />
+      <Team />
       <Products />
       <About />
       <Contact />

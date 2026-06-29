@@ -54,7 +54,8 @@ const Products = () => (
             <p className="text-sm text-muted-foreground leading-relaxed mb-5">{product.description}</p>
             {product.url && (
               <a href={product.url} target="_blank" rel="noopener noreferrer"
-                className="inline-flex items-center gap-1.5 text-sm font-semibold text-primary hover:gap-2.5 transition-all duration-200 group">
+                className="inline-flex items-center gap-1.5 text-sm font-semibold text-primary hover:gap-2.5 transition-all duration-200 group"
+                aria-label={`Visit ${product.name}`}>
                 Visit Product <ArrowRight className="h-3.5 w-3.5 group-hover:translate-x-0.5 transition-transform" />
               </a>
             )}

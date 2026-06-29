@@ -63,6 +63,7 @@ const WelcomePopup: React.FC = () => {
               <button
                 onClick={handleClose}
                 className="absolute top-4 right-4 w-10 h-10 flex items-center justify-center rounded-full hover:bg-surface-variant/50 transition-colors z-10"
+                aria-label="Close popup"
               >
                 <span className="material-symbols-outlined text-on-surface-variant">close</span>
               </button>

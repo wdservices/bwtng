@@ -145,7 +145,7 @@ const Portfolio: React.FC = () => {
                     </p>
 
                     {product.url ? (
-                      <a href={product.url} target="_blank" rel="noopener noreferrer">
+                      <a href={product.url} target="_blank" rel="noopener noreferrer" aria-label={`Visit ${product.name}`}>
                         <Button variant="outline" size="sm" className="rounded-full group-hover:bg-primary group-hover:text-primary-foreground group-hover:border-primary transition-all duration-300">
                           {product.ctaLabel || "Visit Product"}
                           <ExternalLink className="ml-2 h-3.5 w-3.5" />

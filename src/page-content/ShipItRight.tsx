@@ -221,26 +221,26 @@ const ShipItRight: React.FC = () => {
   return (
     <>
       <Helmet>
-        <title>Ship It Right: Production Readiness Checklist for Vibe-Built Apps | Gospel Ononwi</title>
-        <meta name="description" content="Built an app with Cursor, Bolt, Lovable, or Replit? Ship It Right is the complete production readiness checklist covering security, SEO, scalability, legal, and payments — written for non-technical founders and indie hackers." />
-        <link rel="canonical" href="https://bwtng.live/ship-it-right" />
+        <title>Ship It Right: Production Readiness Checklist for Vibe-Built Apps | Gospel Ononwi — Nigeria</title>
+        <meta name="description" content="Built an app with Cursor, Bolt, Lovable, or Replit? Ship It Right by Gospel Ononwi (Nigeria) is the complete production readiness checklist covering security, SEO, scalability, legal, and payments — written for non-technical founders and indie hackers." />
+        <link rel="canonical" href="https://www.bwtng.live/ship-it-right" />
         <meta property="og:title" content="Ship It Right — The Production Readiness Checklist for Vibe-Built Apps" />
-        <meta property="og:description" content="The book every vibe coder needs before going live. Security, performance, scalability, SEO, legal, payments, analytics, and DevOps — all in plain English." />
-        <meta property="og:url" content="https://bwtng.live/ship-it-right" />
+        <meta property="og:description" content="The book every vibe coder needs before going live. Security, performance, scalability, SEO, legal, payments, analytics, and DevOps — all in plain English. By Gospel Ononwi, Nigeria." />
+        <meta property="og:url" content="https://www.bwtng.live/ship-it-right" />
         <meta property="og:type" content="book" />
         <meta property="og:image" content={coverUrl} />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="Ship It Right — The Production Readiness Checklist for Vibe-Built Apps" />
-        <meta name="twitter:description" content="Security, SEO, payments, legal — the production checklist for AI-built apps." />
+        <meta name="twitter:description" content="Security, SEO, payments, legal — the production checklist for AI-built apps. By Gospel Ononwi, Nigeria." />
         <meta name="twitter:image" content={coverUrl} />
         <script type="application/ld+json">{JSON.stringify({
           "@context": "https://schema.org",
           "@type": "Book",
           "name": "Ship It Right: The Production Readiness Checklist for Vibe-Built Apps",
-          "author": { "@type": "Person", "name": "Gospel Ononwi" },
-          "publisher": { "@type": "Organization", "name": "Bluewaves Technology" },
+          "author": { "@type": "Person", "name": "Gospel Ononwi", "nationality": { "@type": "Country", "name": "Nigeria" } },
+          "publisher": { "@type": "Organization", "name": "Bluewaves Technology", "address": { "@type": "PostalAddress", "addressCountry": "NG" } },
           "genre": "Technology / Software Development",
-          "url": "https://bwtng.live/ship-it-right",
+          "url": "https://www.bwtng.live/ship-it-right",
           "image": coverUrl,
           "inLanguage": "en",
           "bookFormat": "https://schema.org/EBook",

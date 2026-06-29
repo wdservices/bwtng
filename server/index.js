@@ -96,6 +96,35 @@ app.get('/api/health', (_req, res) => {
   res.json({ status: 'ok' });
 });
 
+// Blog view tracking
+const blogViewsPath = path.join(__dirname, 'blog-views.json');
+
+function readBlogViews() {
+  try {
+    if (fs.existsSync(blogViewsPath)) {
+      return JSON.parse(fs.readFileSync(blogViewsPath, 'utf-8'));
+    }
+  } catch {}
+  return {};
+}
+
+function writeBlogViews(data) {
+  fs.writeFileSync(blogViewsPath, JSON.stringify(data, null, 2));
+}
+
+app.get('/api/blog-views/:slug', (req, res) => {
+  const views = readBlogViews();
+  res.json({ slug: req.params.slug, views: views[req.params.slug] || 0 });
+});
+
+app.post('/api/blog-views/:slug', (req, res) => {
+  const views = readBlogViews();
+  const slug = req.params.slug;
+  views[slug] = (views[slug] || 0) + 1;
+  writeBlogViews(views);
+  res.json({ slug, views: views[slug] });
+});
+
 // Serve built assets. Prefer ../dist (standard Vite output), but fall back to
 // the parent directory itself when files have been flattened into the app root
 // (e.g. cPanel deploys where index.html lives alongside the server folder).

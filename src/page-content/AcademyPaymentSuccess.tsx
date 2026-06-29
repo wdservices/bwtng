@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Helmet } from 'react-helmet-async';
@@ -12,9 +12,7 @@ const WHATSAPP_LINK = 'https://chat.whatsapp.com/K0TNMYiZnDJCysoAP2d7ZE';
 export default function AcademyPaymentSuccess() {
   const navigate = useNavigate();
   const location = useLocation();
-  const animContainer = useRef<HTMLDivElement>(null);
   const [showContent, setShowContent] = useState(false);
-  const [lottieFailed, setLottieFailed] = useState(false);
 
   const registrationData = location.state?.registrationData || {};
   const cohort = location.state?.cohort || null;
@@ -27,48 +25,8 @@ export default function AcademyPaymentSuccess() {
       return;
     }
 
-    let anim: any = null;
-    let fallbackTimer: ReturnType<typeof setTimeout>;
-    let cancelled = false;
-
-    (async () => {
-      if (animContainer.current) {
-        try {
-          const lottie = (await import('lottie-web')).default;
-          if (cancelled) return;
-          anim = lottie.loadAnimation({
-            container: animContainer.current,
-            renderer: 'svg',
-            loop: false,
-            autoplay: true,
-            path: '/lottie/payment-success.json',
-          });
-          anim.addEventListener('complete', () => {
-            setShowContent(true);
-          });
-          anim.addEventListener('error', () => {
-            setLottieFailed(true);
-            setShowContent(true);
-          });
-        } catch {
-          if (!cancelled) {
-            setLottieFailed(true);
-            setShowContent(true);
-          }
-        }
-      }
-
-      // Fallback: show content after 4s regardless of lottie status
-      fallbackTimer = setTimeout(() => {
-        setShowContent(true);
-      }, 4000);
-    })();
-
-    return () => {
-      cancelled = true;
-      if (anim) anim.destroy();
-      clearTimeout(fallbackTimer);
-    };
+    const timer = setTimeout(() => setShowContent(true), 500);
+    return () => clearTimeout(timer);
   }, [paymentVerified, navigate]);
 
   if (!paymentVerified) return null;
@@ -94,23 +52,15 @@ export default function AcademyPaymentSuccess() {
             <div className="h-1 w-full bg-gradient-to-r from-emerald-500 via-primary to-emerald-500" />
 
             <div className="p-8 sm:p-10 text-center">
-              {/* Lottie animation container */}
-              <div
-                ref={animContainer}
-                className={`mx-auto -mt-2 mb-2 ${lottieFailed ? 'hidden' : 'w-48 h-48 sm:w-56 sm:h-56'}`}
-              />
-
-              {/* Fallback icon if lottie fails */}
-              {lottieFailed && (
-                <motion.div
-                  initial={{ scale: 0 }}
-                  animate={{ scale: 1 }}
-                  transition={{ type: 'spring', stiffness: 200, damping: 15 }}
-                  className="mx-auto w-20 h-20 rounded-full bg-emerald-500/15 border border-emerald-500/30 flex items-center justify-center mb-6"
-                >
-                  <CheckCircle2 className="w-10 h-10 text-emerald-500" />
-                </motion.div>
-              )}
+              {/* Success icon */}
+              <motion.div
+                initial={{ scale: 0 }}
+                animate={{ scale: 1 }}
+                transition={{ type: 'spring', stiffness: 200, damping: 15 }}
+                className="mx-auto w-20 h-20 rounded-full bg-emerald-500/15 border border-emerald-500/30 flex items-center justify-center mb-6"
+              >
+                <CheckCircle2 className="w-10 h-10 text-emerald-500" />
+              </motion.div>
 
               {/* Content */}
               <AnimatePresence>

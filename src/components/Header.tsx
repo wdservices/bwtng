@@ -55,7 +55,7 @@ const Header = () => {
       <div className="container mx-auto px-6 py-4">
         <div className="flex items-center justify-between">
           <Link to="/" className="flex items-center space-x-3 group">
-            <img src="/logo.png" alt="Bluewaves Technology Logo" className="w-9 h-9 object-contain rounded-lg" />
+            <img src="/logo.png" alt="" className="w-9 h-9 object-contain rounded-lg" aria-hidden="true" />
             <span className="text-lg font-bold text-foreground tracking-tight font-display">
               Bluewaves <span className="text-primary">Technology</span>
             </span>
@@ -118,14 +118,14 @@ const Header = () => {
           </nav>
 
           <div className="md:hidden flex items-center gap-2">
-            <button className="text-foreground p-1" onClick={() => setIsMenuOpen(!isMenuOpen)}>
+            <button className="text-foreground p-1" onClick={() => setIsMenuOpen(!isMenuOpen)} aria-label={isMenuOpen ? 'Close menu' : 'Open menu'}>
               {isMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
             </button>
           </div>
         </div>
 
         {isMenuOpen && (
-          <nav className="md:hidden mt-4 pb-4 pt-4 border-t border-border space-y-1 animate-fade-in bg-background/95 backdrop-blur-xl rounded-b-xl">
+          <nav className="md:hidden mt-4 pb-4 pt-4 border-t border-border space-y-1 animate-fade-in bg-background/95 backdrop-blur-xl rounded-b-xl max-h-[calc(100vh-80px)] overflow-y-auto">
             {navItems.map((item) => (
               <div key={item.label}>
                 <Link

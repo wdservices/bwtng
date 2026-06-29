@@ -39,7 +39,7 @@ export default function AIBuilderAcademy() {
     if (!cohort?.registrationDeadline) return;
     const tick = () => {
       const diff = new Date(cohort.registrationDeadline).getTime() - Date.now();
-      if (diff <= 0) return setCountdown('Registration closed');
+      if (diff <= 0) return setCountdown('');
       const d = Math.floor(diff / 86400000);
       const h = Math.floor((diff / 3600000) % 24);
       const m = Math.floor((diff / 60000) % 60);
@@ -51,10 +51,7 @@ export default function AIBuilderAcademy() {
     return () => clearInterval(id);
   }, [cohort]);
 
-   const price = cohort
-     ? (new Date() <= new Date(cohort.registrationDeadline)
-         ? cohort.earlyBirdPrice : cohort.regularPrice)
-     : 50000;
+   const price = cohort?.earlyBirdPrice ?? 50000;
 
   const seatsLeft = cohort ? Math.max(cohort.seatLimit - registered, 0) : 50;
 
@@ -263,11 +260,12 @@ export default function AIBuilderAcademy() {
               </div>
               <div className="p-5 rounded-2xl bg-background/60 border border-border">
                 <p className="text-xs uppercase tracking-widest text-muted-foreground font-semibold mb-2">Late Registration</p>
-                <p className="text-4xl font-bold text-muted-foreground">₦{(cohort?.regularPrice ?? 55000).toLocaleString()}</p>
+                <p className="text-4xl font-bold text-muted-foreground line-through">₦{(cohort?.regularPrice ?? 55000).toLocaleString()}</p>
+                <p className="text-lg font-bold text-primary mt-1">₦{(cohort?.earlyBirdPrice ?? 50000).toLocaleString()}</p>
               </div>
             </div>
 
-            {cohort?.registrationDeadline && (
+            {cohort?.registrationDeadline && countdown && (
               <div className="relative mb-6 text-center">
                 <p className="text-xs uppercase tracking-widest text-muted-foreground mb-1">Registration closes in</p>
                 <p className="text-2xl font-bold font-display text-foreground tabular-nums">{countdown}</p>

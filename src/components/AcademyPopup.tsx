@@ -39,7 +39,8 @@ export default function AcademyPopup({ cohort, registered, onClose }: Props) {
             <div className="absolute -bottom-20 -left-20 w-60 h-60 bg-purple-500/30 blur-3xl rounded-full pointer-events-none" />
 
             <button onClick={close}
-              className="absolute top-4 right-4 z-10 w-9 h-9 rounded-full bg-white/5 hover:bg-white/10 flex items-center justify-center">
+              className="absolute top-4 right-4 z-10 w-9 h-9 rounded-full bg-white/5 hover:bg-white/10 flex items-center justify-center"
+              aria-label="Close popup">
               <X className="w-4 h-4 text-white/80" />
             </button>
 

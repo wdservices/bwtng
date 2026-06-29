@@ -10,6 +10,7 @@ const FloatingWhatsApp: React.FC = () => {
       target="_blank"
       rel="noopener noreferrer"
       className="fixed bottom-6 right-6 z-[9999] group"
+      aria-label="Chat on WhatsApp"
     >
       <div className="relative">
         <div className="absolute -inset-2 rounded-full animate-ping opacity-30 bg-gradient-to-r from-green-400 via-green-500 to-emerald-500"></div>

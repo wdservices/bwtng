@@ -47,7 +47,7 @@ export const routes: RouteRecord[] = [
       { path: '/faqs', element: <FAQs /> },
       { path: '/contact', element: <ContactPage /> },
       { path: '/blog', element: <Blog /> },
-      { path: '/blog/:id', element: <BlogDetail /> },
+      { path: '/blog/:slug', element: <BlogDetail /> },
       { path: '/web-development', element: <WebDevelopment /> },
       { path: '/mobile-app-development', element: <MobileAppDevelopment /> },
       { path: '/seo-services', element: <SEOServices /> },

@@ -87,7 +87,7 @@ const Hero = () => {
             className="flex flex-col sm:flex-row gap-4 justify-center mb-20"
           >
             <Button size="lg"
-              className="bg-primary hover:bg-primary/90 text-primary-foreground rounded-full px-10 h-12 text-base glow-md group font-semibold"
+              className="bg-primary hover:bg-primary/90 text-white rounded-full px-10 h-12 text-base glow-md group font-semibold"
               onClick={() => scrollToSection('services')}
             >
               Explore Services

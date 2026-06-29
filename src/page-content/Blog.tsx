@@ -1,35 +1,22 @@
-import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { Blog as BlogType, BlogStatus } from '@/types/admin';
-import { firestoreApi } from '@/admin/services/firestoreService';
-import { FileText, Calendar, Eye, Tag } from 'lucide-react';
+import { allPosts } from '@/data/blog-posts';
+import { FileText, Calendar, Tag, Eye } from 'lucide-react';
 import { Helmet } from 'react-helmet-async';
+import { useBlogViews } from '@/hooks/useBlogViews';
 
+function PostViews({ slug }: { slug: string }) {
+  const views = useBlogViews(slug);
+  return (
+    <span className="inline-flex items-center gap-1">
+      <Eye className="h-3.5 w-3.5" />
+      {views !== null ? views.toLocaleString() : '—'}
+    </span>
+  );
+}
 
 const Blog = () => {
-  const [blogs, setBlogs] = useState<BlogType[]>([]);
-  const [isLoading, setIsLoading] = useState(true);
-
-  useEffect(() => {
-    loadBlogs();
-  }, []);
-
-  const loadBlogs = async () => {
-    try {
-      setIsLoading(true);
-      const allBlogs = await firestoreApi.getBlogs();
-      const publishedBlogs = allBlogs.filter(blog => blog.status === BlogStatus.PUBLISHED);
-      setBlogs(publishedBlogs);
-    } catch (error) {
-      console.error('Error loading blogs:', error);
-    } finally {
-      setIsLoading(false);
-    }
-  };
-
-  if (isLoading) {
-    return (
-      <div className="min-h-screen flex items-center justify-center">
+  return (
+    <main className="min-h-screen bg-gray-50">
       <Helmet>
         <title>Blog | Tech Insights, Web Dev & AI Tips | Bluewaves Technology Nigeria</title>
         <meta name="description" content="Read the latest articles on web development, mobile apps, AI, SEO and digital transformation from Bluewaves Technology — Nigeria's leading digital solutions company." />
@@ -46,13 +33,7 @@ const Blog = () => {
         <meta name="twitter:description" content="Read the latest articles on web development, mobile apps, AI, SEO and digital transformation from Bluewaves Technology — Nigeria's leading digital solutions company." />
         <meta name="twitter:image" content="https://www.bwtng.live/og-image.png" />
       </Helmet>
-        <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-blue-500"></div>
-      </div>
-    );
-  }
 
-  return (
-    <main className="min-h-screen bg-gray-50">
       <div className="container mx-auto px-4 py-12">
         <div className="text-center mb-12">
           <h1 className="text-4xl font-bold text-gray-900 mb-4">Our Blog</h1>
@@ -61,7 +42,7 @@ const Blog = () => {
           </p>
         </div>
 
-        {blogs.length === 0 ? (
+        {allPosts.length === 0 ? (
           <div className="text-center py-12">
             <FileText className="h-16 w-16 text-gray-400 mx-auto mb-4" />
             <h3 className="text-xl font-semibold text-gray-700 mb-2">No blog posts yet</h3>
@@ -69,32 +50,30 @@ const Blog = () => {
           </div>
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {blogs.filter((b) => b.id).map((blog) => (
-              <Link 
-                key={blog.id} 
-                to={`/blog/${blog.id}`}
-                onClick={() => {
-                  if (blog.id) {
-                    firestoreApi.incrementBlogClicks(blog.id);
-                  }
-                }}
+            {allPosts.map((post) => (
+              <Link
+                key={post.slug}
+                to={`/blog/${post.slug}`}
                 className="group bg-white rounded-md shadow-md overflow-hidden hover:shadow-xl transition-shadow duration-300"
               >
-                {blog.imageUrl && (
+                {post.coverImage ? (
                   <div className="h-48 overflow-hidden">
-                    <img 
-                      src={blog.imageUrl} 
-                      alt={blog.title}
+                    <img
+                      src={post.coverImage}
+                      alt={post.title}
                       className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                       loading="lazy"
-                      referrerPolicy="no-referrer"
                     />
+                  </div>
+                ) : (
+                  <div className="h-48 overflow-hidden bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center">
+                    <span className="text-white text-4xl font-bold opacity-30">{post.title.charAt(0)}</span>
                   </div>
                 )}
                 <div className="p-6">
                   <div className="flex flex-wrap gap-2 mb-3">
-                    {blog.tags?.slice(0, 2).map((tag, index) => (
-                      <span 
+                    {post.tags?.slice(0, 2).map((tag, index) => (
+                      <span
                         key={index}
                         className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-blue-100 text-blue-800"
                       >
@@ -104,24 +83,25 @@ const Blog = () => {
                     ))}
                   </div>
                   <h3 className="text-xl font-semibold text-gray-900 mb-2 group-hover:text-blue-600 transition-colors">
-                    {blog.title}
+                    {post.title}
                   </h3>
-                  {blog.excerpt && (
+                  {post.excerpt && (
                     <p className="text-gray-600 text-sm mb-4 line-clamp-3">
-                      {blog.excerpt}
+                      {post.excerpt}
                     </p>
                   )}
-                  <div className="flex items-center justify-between text-sm text-gray-500">
+                  <div className="flex items-center justify-between text-sm text-gray-500 mt-auto">
                     <div className="flex items-center">
                       <Calendar className="h-4 w-4 mr-1" />
                       <span>
-                        {blog.createdDate || (blog.createdAt ? new Date(blog.createdAt as any).toLocaleDateString() : 'No date')}
+                        {new Date(post.date).toLocaleDateString('en-US', {
+                          year: 'numeric',
+                          month: 'long',
+                          day: 'numeric',
+                        })}
                       </span>
                     </div>
-                    <div className="flex items-center">
-                      <Eye className="h-4 w-4 mr-1" />
-                      <span>{blog.views || 0} views</span>
-                    </div>
+                    <PostViews slug={post.slug} />
                   </div>
                 </div>
               </Link>
