@@ -1,38 +1,18 @@
-import React from 'react';
-import { Head as Helmet } from 'vite-react-ssg';
-import Header from "@/components/Header";
-import Hero from "@/components/Hero";
-import Services from "@/components/Services";
-import Products from "@/components/Products";
-import About from "@/components/About";
-import Contact from "@/components/Contact";
-import Footer from "@/components/Footer";
-import ClientShowcase from "@/components/ClientShowcase";
-import Team from "@/components/Team";
-import PopupController from "@/components/PopupController";
+import { Head as Helmet } from 'vite-react-ssg'
+import RedesignHome from '@/components/RedesignHome'
 
-const Index = () => {
-  return (
-    <main className="min-h-screen bg-background text-foreground transition-colors">
-      <Helmet>
-        <title>Bluewaves Technology — Web, Mobile, AI & Digital Solutions Nigeria</title>
-        <meta name="description" content="Bluewaves Technology delivers web development, mobile apps, AI solutions, SEO and branding services for businesses in Nigeria." />
-        <meta name="robots" content="index,follow" />
-        <link rel="canonical" href="https://www.bwtng.live/" />
-        <meta property="og:url" content="https://www.bwtng.live/" />
-      </Helmet>
-      <PopupController />
-      <Header />
-      <Hero />
-      <Services />
-      <ClientShowcase />
-      <Team />
-      <Products />
-      <About />
-      <Contact />
-      <Footer />
-    </main>
-  );
-};
-
-export default Index;
+export default function Index() {
+  return <>
+    <Helmet>
+      <title>Bluewaves Technology — Digital innovation studio in Nigeria</title>
+      <meta name="description" content="Bluewaves Technology builds serious software for ambitious ideas: websites, mobile applications, AI products, business systems, and immersive digital experiences." />
+      <meta name="robots" content="index,follow" />
+      <link rel="canonical" href="https://www.bwtng.live/" />
+      <meta property="og:title" content="Bluewaves Technology — Digital innovation studio" />
+      <meta property="og:description" content="Serious software for ambitious ideas." />
+      <meta property="og:url" content="https://www.bwtng.live/" />
+      <meta property="og:type" content="website" />
+    </Helmet>
+    <RedesignHome />
+  </>
+}
