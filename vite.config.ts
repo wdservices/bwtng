@@ -13,6 +13,9 @@ const blogSlugs = blogFiles.map(f => {
 
 export default defineConfig({
   plugins: [react()],
+  server: {
+    allowedHosts: ['.vercel.run'],
+  },
   resolve: {
     alias: {
       '@': path.resolve(__dirname, './src'),
@@ -43,6 +46,7 @@ export default defineConfig({
       '/branding', '/ui-ux-design', '/business-consultation',
       '/digital-marketing', '/digital-tools', '/ai-services',
       '/ai-builder-academy', '/academy/register',
+      '/academy/payment', '/academy/payment/success',
       '/ship-it-right',
       ...blogSlugs,
     ],
