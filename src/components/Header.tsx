@@ -29,14 +29,13 @@ const Header = () => {
 
   const navItems = [
     { label: 'Home', path: '/' },
-    { label: 'About', path: '/about-us' },
     { label: 'Services', path: '/services', hasDropdown: true },
+    { label: 'Our Work', path: '/portfolio' },
+    { label: 'Our Products', path: '/digital-tools' },
+    { label: 'Digital Museum', path: 'https://sankofa-wing.vercel.app/', external: true },
     { label: 'Academy', path: '/ai-builder-academy' },
-    { label: 'Book', path: '/ship-it-right' },
-    { label: 'Portfolio', path: '/portfolio' },
-    { label: 'Pricing', path: '/pricing' },
-    { label: 'Testimonials', path: '/testimonials' },
-    { label: 'FAQs', path: '/faqs' },
+    { label: 'About', path: '/about-us' },
+    { label: 'Contact', path: '/contact' },
   ];
 
   const serviceItems = [
