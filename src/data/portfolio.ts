@@ -116,7 +116,7 @@ export const products: Product[] = [
       'A product-authentication solution designed to help identify genuine products and distinguish them from counterfeits using product tags.',
     cta: 'Explore Asemi',
     status: 'live',
-    image: asemiImage.url,
+    image: new URL(asemiImage.url, 'https://id-preview--d13ef275-8c16-4f27-a914-8cb4797c635a.lovable.app').href,
   },
   {
     slug: 'eventdesk',
