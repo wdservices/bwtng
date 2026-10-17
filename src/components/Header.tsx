@@ -27,16 +27,15 @@ const Header = () => {
     setIsMenuOpen(false);
   };
 
-  const navItems = [
+  const navItems: { label: string; path: string; hasDropdown?: boolean; external?: boolean }[] = [
     { label: 'Home', path: '/' },
-    { label: 'About', path: '/about-us' },
     { label: 'Services', path: '/services', hasDropdown: true },
+    { label: 'Our Work', path: '/portfolio' },
+    { label: 'Our Products', path: '/digital-tools' },
+    { label: 'Digital Museum', path: 'https://sankofa-wing.vercel.app/', external: true },
     { label: 'Academy', path: '/ai-builder-academy' },
-    { label: 'Book', path: '/ship-it-right' },
-    { label: 'Portfolio', path: '/portfolio' },
-    { label: 'Pricing', path: '/pricing' },
-    { label: 'Testimonials', path: '/testimonials' },
-    { label: 'FAQs', path: '/faqs' },
+    { label: 'About', path: '/about-us' },
+    { label: 'Contact', path: '/contact' },
   ];
 
   const serviceItems = [
@@ -64,7 +63,16 @@ const Header = () => {
           <nav className="hidden md:flex items-center gap-1">
             {navItems.map((item) => (
               <div key={item.label} className="relative group">
-                {item.hasDropdown ? (
+                {item.external ? (
+                  <a
+                    href={item.path}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="px-4 py-2 text-sm font-medium text-muted-foreground hover:text-foreground transition-colors rounded-lg hover:bg-muted/50"
+                  >
+                    {item.label}
+                  </a>
+                ) : item.hasDropdown ? (
                   <div
                     onMouseEnter={() => setServicesOpen(true)}
                     onMouseLeave={() => setServicesOpen(false)}
@@ -110,11 +118,11 @@ const Header = () => {
               Asemi
             </a>
             <div className="w-px h-5 bg-border mx-2" />
-            <Link to="/blog">
+            <a href="/#start">
               <Button size="sm" className="ml-2 bg-primary hover:bg-primary/90 text-primary-foreground rounded-full px-5 glow-sm">
-                Blog
+                Start a Project
               </Button>
-            </Link>
+            </a>
           </nav>
 
           <div className="md:hidden flex items-center gap-2">
@@ -128,13 +136,25 @@ const Header = () => {
           <nav className="md:hidden mt-4 pb-4 pt-4 border-t border-border space-y-1 animate-fade-in bg-background/95 backdrop-blur-xl rounded-b-xl max-h-[calc(100vh-80px)] overflow-y-auto">
             {navItems.map((item) => (
               <div key={item.label}>
-                <Link
-                  to={item.path}
-                  className="block w-full text-left px-4 py-3 text-sm font-medium text-muted-foreground hover:text-foreground hover:bg-muted/50 rounded-lg transition-colors"
-                  onClick={() => setIsMenuOpen(false)}
-                >
-                  {item.label}
-                </Link>
+                {item.external ? (
+                  <a
+                    href={item.path}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="block w-full text-left px-4 py-3 text-sm font-medium text-muted-foreground hover:text-foreground hover:bg-muted/50 rounded-lg transition-colors"
+                    onClick={() => setIsMenuOpen(false)}
+                  >
+                    {item.label}
+                  </a>
+                ) : (
+                  <Link
+                    to={item.path}
+                    className="block w-full text-left px-4 py-3 text-sm font-medium text-muted-foreground hover:text-foreground hover:bg-muted/50 rounded-lg transition-colors"
+                    onClick={() => setIsMenuOpen(false)}
+                  >
+                    {item.label}
+                  </Link>
+                )}
                 {item.hasDropdown && (
                   <div className="pl-4 space-y-1">
                     {serviceItems.map((service) => (
@@ -161,9 +181,9 @@ const Header = () => {
               Asemi
             </a>
             <div className="pt-2">
-              <Link to="/blog" onClick={() => setIsMenuOpen(false)}>
-                <Button className="w-full bg-primary hover:bg-primary/90 text-primary-foreground rounded-full">Blog</Button>
-              </Link>
+              <a href="/#start" onClick={() => setIsMenuOpen(false)}>
+                <Button className="w-full bg-primary hover:bg-primary/90 text-primary-foreground rounded-full">Start a Project</Button>
+              </a>
             </div>
           </nav>
         )}
