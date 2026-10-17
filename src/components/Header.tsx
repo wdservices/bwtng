@@ -136,13 +136,25 @@ const Header = () => {
           <nav className="md:hidden mt-4 pb-4 pt-4 border-t border-border space-y-1 animate-fade-in bg-background/95 backdrop-blur-xl rounded-b-xl max-h-[calc(100vh-80px)] overflow-y-auto">
             {navItems.map((item) => (
               <div key={item.label}>
-                <Link
-                  to={item.path}
-                  className="block w-full text-left px-4 py-3 text-sm font-medium text-muted-foreground hover:text-foreground hover:bg-muted/50 rounded-lg transition-colors"
-                  onClick={() => setIsMenuOpen(false)}
-                >
-                  {item.label}
-                </Link>
+                {item.external ? (
+                  <a
+                    href={item.path}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="block w-full text-left px-4 py-3 text-sm font-medium text-muted-foreground hover:text-foreground hover:bg-muted/50 rounded-lg transition-colors"
+                    onClick={() => setIsMenuOpen(false)}
+                  >
+                    {item.label}
+                  </a>
+                ) : (
+                  <Link
+                    to={item.path}
+                    className="block w-full text-left px-4 py-3 text-sm font-medium text-muted-foreground hover:text-foreground hover:bg-muted/50 rounded-lg transition-colors"
+                    onClick={() => setIsMenuOpen(false)}
+                  >
+                    {item.label}
+                  </Link>
+                )}
                 {item.hasDropdown && (
                   <div className="pl-4 space-y-1">
                     {serviceItems.map((service) => (
@@ -169,9 +181,9 @@ const Header = () => {
               Asemi
             </a>
             <div className="pt-2">
-              <Link to="/blog" onClick={() => setIsMenuOpen(false)}>
-                <Button className="w-full bg-primary hover:bg-primary/90 text-primary-foreground rounded-full">Blog</Button>
-              </Link>
+              <a href="/#start" onClick={() => setIsMenuOpen(false)}>
+                <Button className="w-full bg-primary hover:bg-primary/90 text-primary-foreground rounded-full">Start a Project</Button>
+              </a>
             </div>
           </nav>
         )}
