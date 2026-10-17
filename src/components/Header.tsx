@@ -27,7 +27,7 @@ const Header = () => {
     setIsMenuOpen(false);
   };
 
-  const navItems = [
+  const navItems: { label: string; path: string; hasDropdown?: boolean; external?: boolean }[] = [
     { label: 'Home', path: '/' },
     { label: 'Services', path: '/services', hasDropdown: true },
     { label: 'Our Work', path: '/portfolio' },
