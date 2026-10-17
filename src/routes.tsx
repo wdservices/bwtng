@@ -1,4 +1,5 @@
 import type { RouteRecord } from 'vite-react-ssg'
+import { Navigate } from 'react-router-dom'
 import Layout from './Layout'
 import Index from '@/page-content/Index'
 import AboutUs from '@/page-content/AboutUs'
@@ -39,6 +40,7 @@ export const routes: RouteRecord[] = [
     element: <Layout />,
     children: [
       { path: '/', element: <Index /> },
+      { path: '/index', element: <Navigate to="/" replace /> },
       { path: '/about-us', element: <AboutUs /> },
       { path: '/services', element: <Services /> },
       { path: '/portfolio', element: <Portfolio /> },

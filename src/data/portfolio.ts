@@ -1,3 +1,5 @@
+import asemiImage from '@/assets/asemi-website.jpg.asset.json';
+
 // Central source of truth for client projects and in-house products.
 export type ClientProject = {
   slug: string;
@@ -114,6 +116,7 @@ export const products: Product[] = [
       'A product-authentication solution designed to help identify genuine products and distinguish them from counterfeits using product tags.',
     cta: 'Explore Asemi',
     status: 'live',
+    image: new URL(asemiImage.url, 'https://id-preview--d13ef275-8c16-4f27-a914-8cb4797c635a.lovable.app').href,
   },
   {
     slug: 'eventdesk',
