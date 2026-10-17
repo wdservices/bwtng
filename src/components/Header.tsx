@@ -63,7 +63,16 @@ const Header = () => {
           <nav className="hidden md:flex items-center gap-1">
             {navItems.map((item) => (
               <div key={item.label} className="relative group">
-                {item.hasDropdown ? (
+                {item.external ? (
+                  <a
+                    href={item.path}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="px-4 py-2 text-sm font-medium text-muted-foreground hover:text-foreground transition-colors rounded-lg hover:bg-muted/50"
+                  >
+                    {item.label}
+                  </a>
+                ) : item.hasDropdown ? (
                   <div
                     onMouseEnter={() => setServicesOpen(true)}
                     onMouseLeave={() => setServicesOpen(false)}
@@ -109,11 +118,11 @@ const Header = () => {
               Asemi
             </a>
             <div className="w-px h-5 bg-border mx-2" />
-            <Link to="/blog">
+            <a href="/#start">
               <Button size="sm" className="ml-2 bg-primary hover:bg-primary/90 text-primary-foreground rounded-full px-5 glow-sm">
-                Blog
+                Start a Project
               </Button>
-            </Link>
+            </a>
           </nav>
 
           <div className="md:hidden flex items-center gap-2">
