@@ -2,125 +2,260 @@ import React from 'react';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import { Button } from '@/components/ui/button';
-import { Users, Check, Lightbulb, BarChart3, Target, Shield, TrendingUp } from 'lucide-react';
+import {
+  Users, Check, Lightbulb, BarChart3, Target, Shield, TrendingUp,
+  ArrowRight, ShieldCheck, CheckCircle2, Layers, Cpu, FileText
+} from 'lucide-react';
 import { Head as Helmet } from 'vite-react-ssg';
 import ServiceFAQ from '@/components/ServiceFAQ';
-import ConsultingBuildScene from '@/components/scenes/ConsultingBuildScene';
+import ConsultingShowcase from '@/components/showcases/ConsultingShowcase';
+import { Link } from 'react-router-dom';
+
+const CONSULTING_DELIVERABLES = [
+  {
+    title: 'Software Requirement Specs (SRS) & Architecture Maps',
+    desc: 'Transform ambiguous product visions into rigorous engineering contracts: data schemas, API contracts, entity-relationship diagrams, and sprint schedules.',
+    image: '/image/tech-wizard-hero.jpg',
+    tag: 'SRS Documentation · Schemas · Scope',
+    features: ['Entity relationship diagrams & database schema design', 'API endpoint contracts & integration boundaries', 'Eliminates costly developer misunderstandings'],
+  },
+  {
+    title: 'Legacy System & Database Modernization',
+    desc: 'Architect seamless migration paths moving legacy on-premise databases, manual spreadsheets, and outdated PHP/ASP apps onto scalable cloud clusters.',
+    image: '/image/work/megavantage-dynamic.jpg',
+    tag: 'Cloud Migration · Zero Downtime',
+    features: ['Step-by-step phased rollout roadmap', 'Zero data-loss replication safeguards', 'Drastic cloud infrastructure cost reductions'],
+  },
+  {
+    title: 'Security Auditing & Penetration Review',
+    desc: 'Comprehensive penetration tests, database permission auditing, OWASP Top-10 security analysis, and role-based access validation.',
+    image: '/image/work/citivas.jpg',
+    tag: 'Pen Testing · OWASP · Compliance',
+    features: ['Vulnerability risk severity matrix', 'Remediation code snippets for engineers', 'Compliance ready reports for executives'],
+  },
+];
+
+const CONSULTING_SPECS = [
+  { title: 'Engagement Model', tech: 'Bi-weekly advisory sprints, technical sprint leadership, or fixed-scope architectural audit' },
+  { title: 'Architectural Deliverables', tech: 'Comprehensive SRS document, ERD diagrams, OpenAPI 3.0 schemas, cloud infrastructure blueprints' },
+  { title: 'Tech Stack Advisory', tech: 'Neutral, pragmatic selection across Cloud SQL, Supabase, Next.js, Flutter, AWS, and GCP' },
+  { title: 'Cost Engineering', tech: 'Auditing server compute, database over-provisioning, and 3P SaaS tool overlap to slash burn' },
+  { title: 'Team Enablement', tech: 'Pair programming, code reviews, and git workflow enforcement for internal engineering teams' },
+  { title: 'Direct Access', tech: 'Private Slack / WhatsApp advisory channel directly with Bluewaves principal architects' },
+];
 
 const BusinessConsultation: React.FC = () => {
-  const features = [
-    { icon: Lightbulb, title: 'Digital Strategy', description: 'Strategic roadmaps to transform and grow your business in the digital age' },
-    { icon: BarChart3, title: 'Business Analysis', description: 'In-depth analysis of your operations to identify efficiency improvements' },
-    { icon: Target, title: 'Growth Planning', description: 'Data-driven growth strategies tailored to your market and goals' },
-    { icon: Shield, title: 'Risk Assessment', description: 'Identify and mitigate risks in your digital transformation journey' },
-    { icon: TrendingUp, title: 'Performance Optimization', description: 'Streamline processes and maximize ROI across your business operations' }
-  ];
-
   return (
-    <main className="min-h-screen bg-background text-foreground">
+    <main className="min-h-screen bg-background text-foreground transition-colors">
       <Helmet>
-        <title>Business Consultation | Digital Strategy & Transformation | Bluewaves Technology</title>
-        <meta name="description" content="Expert business consultation services. Digital strategy, business analysis, growth planning and digital transformation consulting for businesses." />
-        <meta name="keywords" content="business consultation, digital strategy, business consulting, digital transformation consulting" />
-        <meta name="robots" content="index, follow" />
+        <title>Business &amp; Tech Consultation Services | Digital Strategy | Bluewaves Technology</title>
+        <meta name="description" content="Expert tech consultation and digital transformation advisory in Nigeria. Software architecture, database schema design, and cloud strategy by Bluewaves Technology." />
         <link rel="canonical" href="https://www.bwtng.live/business-consultation" />
-        <meta property="og:title" content="Business Consultation | Digital Strategy & Transformation | Bluewaves Technology" />
-        <meta property="og:description" content="Expert business consultation services. Digital strategy, business analysis, growth planning and digital transformation consulting to accelerate your business growth." />
-        <meta property="og:url" content="https://www.bwtng.live/business-consultation" />
-        <meta property="og:type" content="website" />
-        <meta property="og:image" content="https://www.bwtng.live/og-image.png" />
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Business Consultation | Digital Strategy & Transformation | Bluewaves Technology" />
-        <meta name="twitter:description" content="Expert business consultation services. Digital strategy, business analysis, growth planning and digital transformation consulting to accelerate your business growth." />
-        <meta name="twitter:image" content="https://www.bwtng.live/og-image.png" />
-        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: `{
-      "@context": "https://schema.org",
-      "@type": "Service",
-      "name": "Business Consultation Services",
-      "provider": { "@type": "Organization", "name": "Bluewaves Technology", "url": "https://www.bwtng.live" },
-      "description": "Expert business consultation services including digital strategy, business analysis, growth planning and digital transformation consulting.",
-      "url": "https://www.bwtng.live/business-consultation"
-    }` }} />
       </Helmet>
       <Header />
-      <section className="pt-32 pb-20">
+
+      {/* Hero Section with High-Resolution Image Banner */}
+      <section className="pt-36 pb-20 relative overflow-hidden bg-gradient-to-b from-background via-card/30 to-background">
         <div className="container mx-auto px-6">
-          <div className="max-w-4xl mx-auto text-center mb-16">
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 text-primary mb-6">
-              <Users className="w-4 h-4" />
-              <span className="text-sm font-medium">Business Consultation</span>
+          <div className="grid lg:grid-cols-12 gap-12 items-center">
+            <div className="lg:col-span-7 space-y-6">
+              <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-primary/10 border border-primary/20 text-primary text-xs font-mono font-semibold">
+                <Users className="w-3.5 h-3.5" />
+                <span>TECHNOLOGY STRATEGY &amp; ARCHITECTURE ADVISORY</span>
+              </div>
+
+              <h1 className="font-display text-4xl sm:text-5xl md:text-6xl font-black uppercase text-foreground tracking-tight leading-[1.05]">
+                Pragmatic <span className="text-primary">Tech Consultation</span> &amp; Digital Roadmapping.
+              </h1>
+
+              <p className="text-lg text-muted-foreground leading-relaxed max-w-xl">
+                Avoid costly technical debt and failed engineering hires. We review schemas, architect bulletproof systems, and provide seasoned guidance before you write code.
+              </p>
+
+              <div className="flex flex-wrap items-center gap-4 pt-2">
+                <Button asChild size="lg" className="rounded-full px-8 h-12 font-semibold bg-primary hover:bg-primary/90 text-primary-foreground shadow-lg shadow-primary/20">
+                  <a href="https://wa.me/2347051551543?text=Hi%20Bluewaves%2C%20I%20want%20to%20book%20a%20technology%20consultation%20session." target="_blank" rel="noopener noreferrer">
+                    Book Architecture Consultation <ArrowRight className="ml-2 w-4 h-4" />
+                  </a>
+                </Button>
+                <Button asChild size="lg" variant="outline" className="rounded-full px-7 h-12 font-semibold bg-card/60 backdrop-blur-md">
+                  <Link to="/portfolio">Explore Case Studies</Link>
+                </Button>
+              </div>
+
+              <div className="flex items-center gap-6 text-xs font-mono text-muted-foreground pt-4 border-t border-border/60">
+                <span>📋 Comprehensive SRS Specs</span>
+                <span className="text-border">·</span>
+                <span>🛡️ Zero Cloud Vendor Lock-In</span>
+                <span className="text-border">·</span>
+                <span>🤝 Direct Principal Architect Access</span>
+              </div>
             </div>
-            <h1 className="text-4xl md:text-5xl font-bold mb-6">
-              Expert <span className="text-primary">Business Consultation</span>
-            </h1>
-            <p className="text-xl text-muted-foreground mb-8">
-              Navigate the digital landscape with expert guidance that accelerates your business growth.
+
+            {/* Visual Hero Image Representation */}
+            <div className="lg:col-span-5">
+              <div className="relative rounded-3xl overflow-hidden border border-border/80 shadow-2xl bg-card">
+                <img
+                  src="/image/tech-wizard-hero.jpg"
+                  alt="Senior software architects conducting technical roadmap and system architecture review"
+                  loading="lazy"
+                  width={800}
+                  height={520}
+                  className="w-full h-auto object-cover object-center"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-transparent to-transparent" />
+                <div className="absolute bottom-4 inset-x-4 p-4 rounded-2xl bg-background/90 backdrop-blur-md border border-border/60 flex items-center justify-between text-xs font-mono">
+                  <div className="flex items-center gap-2">
+                    <span className="w-2 h-2 rounded-full bg-violet-400 animate-pulse" />
+                    <span className="text-foreground font-semibold">Strategic Practice: Advisory</span>
+                  </div>
+                  <span className="text-primary font-bold">100% Impartial</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Interactive Consultation Showcase Workbench */}
+      <section className="py-16 bg-card/40 border-y border-border/60">
+        <div className="container mx-auto px-6">
+          <div className="text-center max-w-2xl mx-auto mb-12">
+            <span className="text-xs font-mono text-primary uppercase font-bold tracking-wider">Diagnostic Sandbox</span>
+            <h2 className="font-display text-3xl font-bold uppercase text-foreground mt-2">
+              Interactive Tech Readiness Evaluator
+            </h2>
+            <p className="text-sm text-muted-foreground mt-2">
+              Simulate operational friction points, evaluate cloud maturity, and calculate estimated delivery windows.
             </p>
-            <Button className="bg-primary hover:bg-primary/90 text-primary-foreground rounded-full px-8 py-6 text-lg">
-              Get Started Today
-            </Button>
+          </div>
+          <ConsultingShowcase />
+        </div>
+      </section>
+
+      {/* Visual Deliverables Grid */}
+      <section className="py-24">
+        <div className="container mx-auto px-6">
+          <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-16">
+            <div>
+              <span className="text-xs font-mono text-primary uppercase font-bold tracking-wider">Advisory Deliverables</span>
+              <h2 className="font-display text-3xl sm:text-4xl font-bold uppercase text-foreground mt-2">
+                Tangible roadmaps we construct.
+              </h2>
+            </div>
+            <p className="text-sm text-muted-foreground max-w-md">
+              Concrete architectural assets, schema diagrams, and risk models that protect capital and guarantee smooth delivery.
+            </p>
           </div>
 
-          {/* Scroll-linked build scene */}
-          <ConsultingBuildScene />
+          <div className="grid md:grid-cols-3 gap-8">
+            {CONSULTING_DELIVERABLES.map((del, idx) => (
+              <div
+                key={idx}
+                className="group rounded-3xl border border-border/80 bg-card/60 backdrop-blur-xl overflow-hidden hover:border-primary/50 transition-all duration-300 hover:shadow-xl flex flex-col justify-between"
+              >
+                <div>
+                  <div className="relative aspect-[16/10] overflow-hidden bg-muted/20 border-b border-border/60">
+                    <img
+                      src={del.image}
+                      alt={del.title}
+                      loading="lazy"
+                      width={640}
+                      height={400}
+                      className="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-105"
+                    />
+                    <div className="absolute top-3 right-3 px-2.5 py-1 rounded-full bg-background/90 backdrop-blur-md border border-border/60 text-[10px] font-mono text-primary font-bold">
+                      {del.tag}
+                    </div>
+                  </div>
 
-          <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto mb-20">
-            {features.map((feature, index) => (
-              <div key={index} className="bg-card p-8 rounded-2xl border border-border">
-                <div className="w-14 h-14 bg-primary/10 rounded-2xl flex items-center justify-center mb-6">
-                  <feature.icon className="w-7 h-7 text-primary" />
+                  <div className="p-6">
+                    <h3 className="font-display text-xl font-bold text-foreground mb-2 group-hover:text-primary transition-colors">
+                      {del.title}
+                    </h3>
+                    <p className="text-sm text-muted-foreground leading-relaxed mb-6">
+                      {del.desc}
+                    </p>
+
+                    <div className="space-y-2 pt-4 border-t border-border/60">
+                      {del.features.map((feat, fIdx) => (
+                        <div key={fIdx} className="flex items-center gap-2 text-xs text-foreground/85">
+                          <CheckCircle2 className="w-3.5 h-3.5 text-primary shrink-0" />
+                          <span>{feat}</span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
                 </div>
-                <h3 className="text-xl font-bold mb-3">{feature.title}</h3>
-                <p className="text-muted-foreground">{feature.description}</p>
+
+                <div className="p-6 pt-0">
+                  <Button asChild variant="outline" className="w-full rounded-xl text-xs font-semibold h-10 hover:bg-primary hover:text-primary-foreground hover:border-primary transition-all">
+                    <Link to="/portfolio">Review Advisory Outcomes</Link>
+                  </Button>
+                </div>
               </div>
             ))}
           </div>
-
-          <div className="max-w-4xl mx-auto mb-20">
-            <h2 className="text-3xl font-bold text-center mb-12">What We Offer</h2>
-            <div className="space-y-4">
-              {[
-                'Digital transformation strategy and roadmapping',
-                'Business process analysis and optimization',
-                'Technology stack assessment and recommendations',
-                'Market research and competitive analysis',
-                'Revenue model and monetization strategy',
-                'Operational efficiency consulting',
-                'Change management and team training',
-                'Vendor evaluation and technology procurement',
-                'KPI development and performance tracking'
-              ].map((item, index) => (
-                <div key={index} className="flex items-start gap-4 p-6 bg-card rounded-2xl border border-border">
-                  <Check className="w-6 h-6 text-primary flex-shrink-0 mt-1" />
-                  <p className="text-lg">{item}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          <div className="max-w-3xl mx-auto text-center bg-card p-12 rounded-3xl border border-border">
-            <h2 className="text-3xl font-bold mb-6">Ready to Transform Your Business?</h2>
-            <p className="text-muted-foreground mb-8 text-lg">
-              Let's develop a clear strategy that drives measurable results for your business!
-            </p>
-            <Button className="bg-primary hover:bg-primary/90 text-primary-foreground rounded-full px-8 py-6 text-lg">
-              Contact Us Now
-            </Button>
-          </div>
-
-          {/* SEO FAQ */}
-          <ServiceFAQ
-            pageUrl="https://www.bwtng.live/business-consultation"
-            faqs={[
-              { question: "What areas of business do you consult on?", answer: "Digital strategy, technology adoption, process optimization, and go-to-market planning for businesses looking to grow using digital tools." },
-              { question: "Is this a one-time consultation or ongoing?", answer: "Both options are available \u2014 a one-time strategy session, or an ongoing advisory relationship depending on what you need." },
-              { question: "Do you help with digital transformation strategy?", answer: "Yes, this is one of our core consulting areas \u2014 helping traditional businesses modernize their operations with the right digital tools." },
-              { question: "Can you help a startup validate an idea?", answer: "Yes, we help early-stage founders validate ideas, define an MVP scope, and plan a realistic path to launch." },
-              { question: "How much does business consultation cost?", answer: "Pricing depends on scope and engagement length. Contact us for a free initial conversation about your goals." }
-            ]}
-          />
         </div>
       </section>
+
+      {/* Technical Architecture Specs Matrix */}
+      <section className="py-20 bg-card/60 border-y border-border/60">
+        <div className="container mx-auto px-6">
+          <div className="max-w-2xl mb-12">
+            <span className="text-xs font-mono text-primary uppercase font-bold tracking-wider">Advisory Framework</span>
+            <h2 className="font-display text-3xl font-bold uppercase text-foreground mt-2">
+              Our Consultation Engagement Structure
+            </h2>
+          </div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {CONSULTING_SPECS.map((spec, i) => (
+              <div key={i} className="p-6 rounded-2xl bg-background/90 border border-border/80">
+                <span className="text-xs font-mono text-primary font-bold block mb-2">{spec.title}</span>
+                <p className="text-sm font-medium text-foreground leading-relaxed">{spec.tech}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* FAQ Section */}
+      <section className="py-24">
+        <div className="container mx-auto px-6 max-w-4xl">
+          <div className="text-center mb-16">
+            <span className="text-xs font-mono text-primary uppercase font-bold tracking-wider">Common Inquiries</span>
+            <h2 className="font-display text-3xl font-bold uppercase text-foreground mt-2">
+              Technology Consultation FAQ
+            </h2>
+          </div>
+          <ServiceFAQ serviceName="business-consultation" />
+        </div>
+      </section>
+
+      {/* Final Callout Bar */}
+      <section className="pb-28">
+        <div className="container mx-auto px-6">
+          <div className="rounded-3xl border border-primary/30 bg-gradient-to-r from-card via-card/90 to-primary/10 p-8 md:p-12 shadow-2xl flex flex-col md:flex-row items-center justify-between gap-8">
+            <div className="space-y-2 text-center md:text-left">
+              <span className="text-xs font-mono uppercase text-primary font-bold tracking-wider block">Align Your Engineering</span>
+              <h3 className="font-display text-2xl md:text-3xl font-bold uppercase text-foreground">
+                Ready to de-risk your technology strategy?
+              </h3>
+              <p className="text-sm text-muted-foreground max-w-xl">
+                Connect directly with our principal software architects on WhatsApp to schedule an exploratory discovery session.
+              </p>
+            </div>
+
+            <Button asChild size="lg" className="rounded-full px-8 h-12 font-semibold bg-primary hover:bg-primary/90 text-primary-foreground shadow-lg shadow-primary/20 shrink-0">
+              <a href="https://wa.me/2347051551543?text=Hi%20Bluewaves%2C%20let%27s%20schedule%20a%20tech%20consultation." target="_blank" rel="noopener noreferrer">
+                Chat on WhatsApp <ArrowRight className="ml-2 w-4 h-4" />
+              </a>
+            </Button>
+          </div>
+        </div>
+      </section>
+
       <Footer />
     </main>
   );

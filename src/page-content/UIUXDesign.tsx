@@ -2,125 +2,260 @@ import React from 'react';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import { Button } from '@/components/ui/button';
-import { Palette, Check, PenTool, Layout, MousePointer, Layers, Eye } from 'lucide-react';
+import {
+  Palette, Check, PenTool, Layout, MousePointer, Layers, Eye,
+  ArrowRight, ShieldCheck, CheckCircle2, Sparkles, Sliders
+} from 'lucide-react';
 import { Head as Helmet } from 'vite-react-ssg';
 import ServiceFAQ from '@/components/ServiceFAQ';
-import UIUXBuildScene from '@/components/scenes/UIUXBuildScene';
+import UIUXShowcase from '@/components/showcases/UIUXShowcase';
+import { Link } from 'react-router-dom';
+
+const UIUX_DELIVERABLES = [
+  {
+    title: 'Enterprise Figma Design Systems',
+    desc: 'Scalable typography hierarchies, color token aliases, auto-layout components, and dark/light mode variants.',
+    image: '/image/uiux-design-hero.jpg',
+    tag: 'Figma Tokens · Auto-Layout · WCAG AA',
+    features: ['Atomic design hierarchy & reusable variants', 'Synchronized code tokens for Tailwind CSS', 'Interactive component state matrix'],
+  },
+  {
+    title: 'Mobile App Wireframes & Interactive Flows',
+    desc: 'High-fidelity mobile prototypes that simulate native gestures, bottom sheets, navigation transitions, and real micro-interactions.',
+    image: '/image/work/prepverse.jpg',
+    tag: 'iOS & Android Guidelines · Native Feel',
+    features: ['Clickable prototype sharing links', 'Zero ambiguity for developers', 'Tested against human thumb zones'],
+  },
+  {
+    title: 'SaaS Dashboard & Portal Experience Design',
+    desc: 'Dense, clean, information-rich user interfaces that turn complex operational data into effortless administrative workflows.',
+    image: '/image/work/citivas.jpg',
+    tag: 'SaaS Portals · Data Density · Clean Layout',
+    features: ['Balanced whitespace and typographic hierarchy', 'Zero-pill discipline with crisp semantic dividers', 'Keyboard accessibility & focus indicators'],
+  },
+];
+
+const UIUX_SPECS = [
+  { title: 'Design Environment', tech: 'Figma (Variables, Component Sets, Auto-Layout v5, Dev Mode)' },
+  { title: 'Accessibility Standard', tech: 'WCAG 2.1 Level AA Compliant Contrast, Focus States, Screen Reader Labels' },
+  { title: 'Motion & Physics', tech: 'Framer Motion specs, Easing curves (cubic-bezier), Spring dampening values' },
+  { title: 'Design Constitution', tech: 'Anti-AI-slop standard: purposeful typography, intentional color theory, real copy' },
+  { title: 'Developer Handoff', tech: 'Tokenized CSS variables, React component prop schemas, SVG asset exports' },
+  { title: 'Usability Validation', tech: 'Unmoderated user testing, Hotjar session audits, Conversion funnel friction logs' },
+];
 
 const UIUXDesign: React.FC = () => {
-  const features = [
-    { icon: PenTool, title: 'Wireframing & Prototyping', description: 'Interactive wireframes and prototypes to visualize your product before development' },
-    { icon: Layout, title: 'User Interface Design', description: 'Beautiful, pixel-perfect interfaces that align with your brand identity' },
-    { icon: MousePointer, title: 'User Experience Research', description: 'Data-driven UX decisions based on real user behavior and testing' },
-    { icon: Layers, title: 'Design Systems', description: 'Scalable component libraries and design tokens for consistent products' },
-    { icon: Eye, title: 'Usability Testing', description: 'Validate designs with real users to ensure intuitive navigation and flow' }
-  ];
-
   return (
-    <main className="min-h-screen bg-background text-foreground">
+    <main className="min-h-screen bg-background text-foreground transition-colors">
       <Helmet>
-        <title>UI/UX Design Services | User Interface & Experience Design | Bluewaves Technology</title>
-        <meta name="description" content="Professional UI/UX design services. Wireframing, prototyping, user interface design, UX research and design systems for web and mobile apps." />
-        <meta name="keywords" content="UI/UX design, user interface design, UX research, app design, web design UX" />
-        <meta name="robots" content="index, follow" />
+        <title>UI/UX Design Services Nigeria | Product Design &amp; Figma Systems | Bluewaves Technology</title>
+        <meta name="description" content="Professional UI/UX product design in Nigeria. Figma design systems, wireframing, high-fidelity prototypes, and mobile app UI engineered by Bluewaves Technology." />
         <link rel="canonical" href="https://www.bwtng.live/ui-ux-design" />
-        <meta property="og:title" content="UI/UX Design Services | User Interface & Experience Design | Bluewaves Technology" />
-        <meta property="og:description" content="Professional UI/UX design services. We create intuitive, beautiful interfaces through wireframing, prototyping, UX research and design systems." />
-        <meta property="og:url" content="https://www.bwtng.live/ui-ux-design" />
-        <meta property="og:type" content="website" />
-        <meta property="og:image" content="https://www.bwtng.live/og-image.png" />
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="UI/UX Design Services | User Interface & Experience Design | Bluewaves Technology" />
-        <meta name="twitter:description" content="Professional UI/UX design services. We create intuitive, beautiful interfaces through wireframing, prototyping, UX research and design systems." />
-        <meta name="twitter:image" content="https://www.bwtng.live/og-image.png" />
-        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: `{
-      "@context": "https://schema.org",
-      "@type": "Service",
-      "name": "UI/UX Design Services",
-      "provider": { "@type": "Organization", "name": "Bluewaves Technology", "url": "https://www.bwtng.live" },
-      "description": "Professional UI/UX design services including wireframing, prototyping, user interface design, UX research and design systems for web and mobile applications.",
-      "url": "https://www.bwtng.live/ui-ux-design"
-    }` }} />
       </Helmet>
       <Header />
-      <section className="pt-32 pb-20">
+
+      {/* Hero Section with High-Resolution Image Banner */}
+      <section className="pt-36 pb-20 relative overflow-hidden bg-gradient-to-b from-background via-card/30 to-background">
         <div className="container mx-auto px-6">
-          <div className="max-w-4xl mx-auto text-center mb-16">
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 text-primary mb-6">
-              <Palette className="w-4 h-4" />
-              <span className="text-sm font-medium">UI/UX Design</span>
+          <div className="grid lg:grid-cols-12 gap-12 items-center">
+            <div className="lg:col-span-7 space-y-6">
+              <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-primary/10 border border-primary/20 text-primary text-xs font-mono font-semibold">
+                <Palette className="w-3.5 h-3.5" />
+                <span>PRODUCT DESIGN &amp; UI/UX PRACTICE</span>
+              </div>
+
+              <h1 className="font-display text-4xl sm:text-5xl md:text-6xl font-black uppercase text-foreground tracking-tight leading-[1.05]">
+                Distinctive <span className="text-primary">UI/UX Design</span> &amp; Scalable Design Systems.
+              </h1>
+
+              <p className="text-lg text-muted-foreground leading-relaxed max-w-xl">
+                We craft intentional, high-utility digital interfaces that eliminate user friction. No generic AI templates—every pixel is engineered for clarity, emotion, and commercial conversion.
+              </p>
+
+              <div className="flex flex-wrap items-center gap-4 pt-2">
+                <Button asChild size="lg" className="rounded-full px-8 h-12 font-semibold bg-primary hover:bg-primary/90 text-primary-foreground shadow-lg shadow-primary/20">
+                  <a href="https://wa.me/2347051551543?text=Hi%20Bluewaves%2C%20I%20want%20to%20consult%20on%20UI%2FUX%20product%20design." target="_blank" rel="noopener noreferrer">
+                    Initiate Design Scoping <ArrowRight className="ml-2 w-4 h-4" />
+                  </a>
+                </Button>
+                <Button asChild size="lg" variant="outline" className="rounded-full px-7 h-12 font-semibold bg-card/60 backdrop-blur-md">
+                  <Link to="/portfolio">Explore Visual Portfolio</Link>
+                </Button>
+              </div>
+
+              <div className="flex items-center gap-6 text-xs font-mono text-muted-foreground pt-4 border-t border-border/60">
+                <span>🎨 100% Figma Source Files</span>
+                <span className="text-border">·</span>
+                <span>♿ WCAG 2.1 AA Compliant</span>
+                <span className="text-border">·</span>
+                <span>📐 Tokenized Design Systems</span>
+              </div>
             </div>
-            <h1 className="text-4xl md:text-5xl font-bold mb-6">
-              Professional <span className="text-primary">UI/UX Design</span>
-            </h1>
-            <p className="text-xl text-muted-foreground mb-8">
-              Create intuitive, beautiful digital experiences that users love and drive business results.
+
+            {/* Visual Hero Image Representation */}
+            <div className="lg:col-span-5">
+              <div className="relative rounded-3xl overflow-hidden border border-border/80 shadow-2xl bg-card">
+                <img
+                  src="/image/uiux-design-hero.jpg"
+                  alt="Modern UI/UX design studio workstation with curved display showing Figma design system and mobile prototypes"
+                  loading="lazy"
+                  width={800}
+                  height={520}
+                  className="w-full h-auto object-cover object-center"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-transparent to-transparent" />
+                <div className="absolute bottom-4 inset-x-4 p-4 rounded-2xl bg-background/90 backdrop-blur-md border border-border/60 flex items-center justify-between text-xs font-mono">
+                  <div className="flex items-center gap-2">
+                    <span className="w-2 h-2 rounded-full bg-rose-400 animate-pulse" />
+                    <span className="text-foreground font-semibold">Standard: Zero-AI-Slop</span>
+                  </div>
+                  <span className="text-primary font-bold">Figma Pro</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Interactive UI/UX Engineering Workbench */}
+      <section className="py-16 bg-card/40 border-y border-border/60">
+        <div className="container mx-auto px-6">
+          <div className="text-center max-w-2xl mx-auto mb-12">
+            <span className="text-xs font-mono text-primary uppercase font-bold tracking-wider">Design System Sandbox</span>
+            <h2 className="font-display text-3xl font-bold uppercase text-foreground mt-2">
+              Interactive Design System Workbench
+            </h2>
+            <p className="text-sm text-muted-foreground mt-2">
+              Explore dynamic theme tokens, elevation shadows, typographic contrast, and component states.
             </p>
-            <Button className="bg-primary hover:bg-primary/90 text-primary-foreground rounded-full px-8 py-6 text-lg">
-              Get Started Today
-            </Button>
+          </div>
+          <UIUXShowcase />
+        </div>
+      </section>
+
+      {/* Visual Deliverables Grid */}
+      <section className="py-24">
+        <div className="container mx-auto px-6">
+          <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-16">
+            <div>
+              <span className="text-xs font-mono text-primary uppercase font-bold tracking-wider">Design Deliverables</span>
+              <h2 className="font-display text-3xl sm:text-4xl font-bold uppercase text-foreground mt-2">
+                What our product design studio delivers.
+              </h2>
+            </div>
+            <p className="text-sm text-muted-foreground max-w-md">
+              From raw concept wireframes to interactive Figma prototypes and production design tokens ready for React.
+            </p>
           </div>
 
-          {/* Scroll-linked build scene */}
-          <UIUXBuildScene />
+          <div className="grid md:grid-cols-3 gap-8">
+            {UIUX_DELIVERABLES.map((del, idx) => (
+              <div
+                key={idx}
+                className="group rounded-3xl border border-border/80 bg-card/60 backdrop-blur-xl overflow-hidden hover:border-primary/50 transition-all duration-300 hover:shadow-xl flex flex-col justify-between"
+              >
+                <div>
+                  <div className="relative aspect-[16/10] overflow-hidden bg-muted/20 border-b border-border/60">
+                    <img
+                      src={del.image}
+                      alt={del.title}
+                      loading="lazy"
+                      width={640}
+                      height={400}
+                      className="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-105"
+                    />
+                    <div className="absolute top-3 right-3 px-2.5 py-1 rounded-full bg-background/90 backdrop-blur-md border border-border/60 text-[10px] font-mono text-primary font-bold">
+                      {del.tag}
+                    </div>
+                  </div>
 
-          <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto mb-20">
-            {features.map((feature, index) => (
-              <div key={index} className="bg-card p-8 rounded-2xl border border-border">
-                <div className="w-14 h-14 bg-primary/10 rounded-2xl flex items-center justify-center mb-6">
-                  <feature.icon className="w-7 h-7 text-primary" />
+                  <div className="p-6">
+                    <h3 className="font-display text-xl font-bold text-foreground mb-2 group-hover:text-primary transition-colors">
+                      {del.title}
+                    </h3>
+                    <p className="text-sm text-muted-foreground leading-relaxed mb-6">
+                      {del.desc}
+                    </p>
+
+                    <div className="space-y-2 pt-4 border-t border-border/60">
+                      {del.features.map((feat, fIdx) => (
+                        <div key={fIdx} className="flex items-center gap-2 text-xs text-foreground/85">
+                          <CheckCircle2 className="w-3.5 h-3.5 text-primary shrink-0" />
+                          <span>{feat}</span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
                 </div>
-                <h3 className="text-xl font-bold mb-3">{feature.title}</h3>
-                <p className="text-muted-foreground">{feature.description}</p>
+
+                <div className="p-6 pt-0">
+                  <Button asChild variant="outline" className="w-full rounded-xl text-xs font-semibold h-10 hover:bg-primary hover:text-primary-foreground hover:border-primary transition-all">
+                    <Link to="/portfolio">View Design Case Studies</Link>
+                  </Button>
+                </div>
               </div>
             ))}
           </div>
-
-          <div className="max-w-4xl mx-auto mb-20">
-            <h2 className="text-3xl font-bold text-center mb-12">What We Offer</h2>
-            <div className="space-y-4">
-              {[
-                'User research and persona development',
-                'Information architecture and sitemap planning',
-                'Low-fidelity and high-fidelity wireframing',
-                'Interactive prototype development',
-                'User interface design for web and mobile',
-                'Design system and component library creation',
-                'Usability testing and heuristic evaluation',
-                'Responsive design for all screen sizes',
-                'Design handoff and developer collaboration'
-              ].map((item, index) => (
-                <div key={index} className="flex items-start gap-4 p-6 bg-card rounded-2xl border border-border">
-                  <Check className="w-6 h-6 text-primary flex-shrink-0 mt-1" />
-                  <p className="text-lg">{item}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          <div className="max-w-3xl mx-auto text-center bg-card p-12 rounded-3xl border border-border">
-            <h2 className="text-3xl font-bold mb-6">Ready to Elevate Your User Experience?</h2>
-            <p className="text-muted-foreground mb-8 text-lg">
-              Let's design interfaces that are not only beautiful but also intuitive and conversion-focused!
-            </p>
-            <Button className="bg-primary hover:bg-primary/90 text-primary-foreground rounded-full px-8 py-6 text-lg">
-              Contact Us Now
-            </Button>
-          </div>
-
-          {/* SEO FAQ */}
-          <ServiceFAQ
-            pageUrl="https://www.bwtng.live/ui-ux-design"
-            faqs={[
-              { question: "What's the difference between UI and UX design?", answer: "UX design is how a product works and feels to use \u2014 the flow and structure. UI design is how it looks \u2014 the visuals, layout, and interactive elements." },
-              { question: "Do you design in Figma?", answer: "Yes, Figma is our primary design tool, which makes it easy to share, review, and hand off designs directly to development." },
-              { question: "Do you conduct user research and testing?", answer: "Yes, depending on project scope we include user research, wireframing, and usability testing to validate design decisions before development." },
-              { question: "Can you redesign an existing app or website?", answer: "Yes, we regularly audit existing products and redesign the experience to improve usability, conversion, and overall polish." },
-              { question: "How long does a UI/UX project take?", answer: "A focused UI/UX project typically takes 2-5 weeks depending on the number of screens and whether user research is included." }
-            ]}
-          />
         </div>
       </section>
+
+      {/* Technical Architecture Specs Matrix */}
+      <section className="py-20 bg-card/60 border-y border-border/60">
+        <div className="container mx-auto px-6">
+          <div className="max-w-2xl mb-12">
+            <span className="text-xs font-mono text-primary uppercase font-bold tracking-wider">Engineering Specs</span>
+            <h2 className="font-display text-3xl font-bold uppercase text-foreground mt-2">
+              Our Product Design Standards
+            </h2>
+          </div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {UIUX_SPECS.map((spec, i) => (
+              <div key={i} className="p-6 rounded-2xl bg-background/90 border border-border/80">
+                <span className="text-xs font-mono text-primary font-bold block mb-2">{spec.title}</span>
+                <p className="text-sm font-medium text-foreground leading-relaxed">{spec.tech}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* FAQ Section */}
+      <section className="py-24">
+        <div className="container mx-auto px-6 max-w-4xl">
+          <div className="text-center mb-16">
+            <span className="text-xs font-mono text-primary uppercase font-bold tracking-wider">Common Inquiries</span>
+            <h2 className="font-display text-3xl font-bold uppercase text-foreground mt-2">
+              UI/UX Design FAQ
+            </h2>
+          </div>
+          <ServiceFAQ serviceName="ui-ux-design" />
+        </div>
+      </section>
+
+      {/* Final Callout Bar */}
+      <section className="pb-28">
+        <div className="container mx-auto px-6">
+          <div className="rounded-3xl border border-primary/30 bg-gradient-to-r from-card via-card/90 to-primary/10 p-8 md:p-12 shadow-2xl flex flex-col md:flex-row items-center justify-between gap-8">
+            <div className="space-y-2 text-center md:text-left">
+              <span className="text-xs font-mono uppercase text-primary font-bold tracking-wider block">Transform User Experience</span>
+              <h3 className="font-display text-2xl md:text-3xl font-bold uppercase text-foreground">
+                Ready to elevate your product design?
+              </h3>
+              <p className="text-sm text-muted-foreground max-w-xl">
+                Chat with our UI/UX design directors to review your current product screens or initiate a new Figma design sprint.
+              </p>
+            </div>
+
+            <Button asChild size="lg" className="rounded-full px-8 h-12 font-semibold bg-primary hover:bg-primary/90 text-primary-foreground shadow-lg shadow-primary/20 shrink-0">
+              <a href="https://wa.me/2347051551543?text=Hi%20Bluewaves%2C%20let%27s%20discuss%20a%20UI%2FUX%20design%20project." target="_blank" rel="noopener noreferrer">
+                Chat on WhatsApp <ArrowRight className="ml-2 w-4 h-4" />
+              </a>
+            </Button>
+          </div>
+        </div>
+      </section>
+
       <Footer />
     </main>
   );

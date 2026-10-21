@@ -6,6 +6,7 @@ import { AuthProvider } from '@/contexts/AuthContext';
 import { Toaster } from '@/components/ui/toaster';
 import { Toaster as Sonner } from '@/components/ui/sonner';
 import FloatingWhatsApp from '@/components/FloatingWhatsApp';
+import SmartHighlightCursor from '@/components/SmartHighlightCursor';
 
 // Pages
 import Index from '@/page-content/Index';
@@ -87,6 +88,7 @@ function App() {
               <Route path="/admin/products/:appId" element={<AdminDashboard><ProductAdmin apps={ADMIN_PRODUCTS} /></AdminDashboard>} />
               <Route path="*" element={<NotFound />} />
             </Routes>
+            <SmartHighlightCursor />
             <FloatingWhatsApp />
             <Toaster />
             <Sonner />

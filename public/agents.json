@@ -1,39 +1,67 @@
 {
   "name": "Bluewaves Technology",
-  "url": "https://bwtng.live",
-  "description": "Digital solutions company specializing in web development, mobile apps, AI solutions, SEO, and branding in Nigeria.",
-  "version": "1.0",
+  "url": "https://www.bwtng.live",
+  "description": "High-performance software studio specializing in web applications, mobile apps, AI solutions, WebGL spatial experiences, SEO, and technical branding in Nigeria.",
+  "version": "1.1",
+  "founder": "Gospel Ononwi",
   "contact": {
     "email": "info@bwtng.live",
-    "website": "https://bwtng.live/contact"
+    "telephone": "+234-810-851-0085",
+    "website": "https://www.bwtng.live/contact"
   },
   "endpoints": {
-    "services": "https://bwtng.live/services",
-    "portfolio": "https://bwtng.live/portfolio",
-    "pricing": "https://bwtng.live/pricing",
-    "blog": "https://bwtng.live/blog",
-    "academy": "https://bwtng.live/ai-builder-academy",
-    "contact": "https://bwtng.live/contact"
+    "home": "https://www.bwtng.live/",
+    "about": "https://www.bwtng.live/about-us",
+    "services": "https://www.bwtng.live/services",
+    "portfolio": "https://www.bwtng.live/portfolio",
+    "pricing": "https://www.bwtng.live/pricing",
+    "blog": "https://www.bwtng.live/blog",
+    "academy": "https://www.bwtng.live/ai-builder-academy",
+    "academyRegister": "https://www.bwtng.live/academy/register",
+    "shipItRight": "https://www.bwtng.live/ship-it-right",
+    "webDevelopment": "https://www.bwtng.live/web-development",
+    "mobileAppDevelopment": "https://www.bwtng.live/mobile-app-development",
+    "aiServices": "https://www.bwtng.live/ai-services",
+    "seoServices": "https://www.bwtng.live/seo-services",
+    "uiUxDesign": "https://www.bwtng.live/ui-ux-design",
+    "branding": "https://www.bwtng.live/branding",
+    "businessConsultation": "https://www.bwtng.live/business-consultation",
+    "digitalTools": "https://www.bwtng.live/digital-tools",
+    "contact": "https://www.bwtng.live/contact"
   },
+  "inHouseProducts": [
+    {
+      "name": "PrepVerse",
+      "url": "https://prepverse.bwtng.live/",
+      "category": "EdTech AI Exam Prep"
+    },
+    {
+      "name": "HerbalStrength",
+      "url": "https://herbalstrength.bwtng.live/",
+      "category": "Verified Herbal Health & Wellness"
+    },
+    {
+      "name": "Sankofa Wing 3D Virtual Museum",
+      "url": "https://sankofa-wing.vercel.app/",
+      "category": "WebGL Spatial Cultural Heritage"
+    },
+    {
+      "name": "Citivas",
+      "url": "https://citivas-app.vercel.app/",
+      "category": "Civic Governance & Citizen Engagement"
+    }
+  ],
   "crawlable": true,
-  "sitemap": "https://bwtng.live/sitemap.xml",
+  "sitemap": "https://www.bwtng.live/sitemap.xml",
+  "llms": "https://www.bwtng.live/llms.txt",
   "respectRobotsTxt": true,
   "aiAgents": {
-    "GPTBot": {
-      "allowed": true,
-      "description": "OpenAI GPT crawler"
-    },
-    "ClaudeBot": {
-      "allowed": true,
-      "description": "Anthropic Claude crawler"
-    },
-    "Google-Extended": {
-      "allowed": true,
-      "description": "Google AI training crawler"
-    },
-    "PerplexityBot": {
-      "allowed": true,
-      "description": "Perplexity AI crawler"
-    }
+    "GPTBot": { "allowed": true, "description": "OpenAI GPT / ChatGPT Search crawler" },
+    "ClaudeBot": { "allowed": true, "description": "Anthropic Claude crawler" },
+    "Google-Extended": { "allowed": true, "description": "Google Gemini & AI Overviews training crawler" },
+    "PerplexityBot": { "allowed": true, "description": "Perplexity AI real-time search crawler" },
+    "Applebot-Extended": { "allowed": true, "description": "Apple Intelligence indexer" },
+    "Bytespider": { "allowed": true, "description": "ByteDance AI crawler" },
+    "Diffbot": { "allowed": true, "description": "Diffbot AI Knowledge Graph extractor" }
   }
 }

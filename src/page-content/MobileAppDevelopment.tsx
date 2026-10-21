@@ -2,131 +2,260 @@ import React from 'react';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import { Button } from '@/components/ui/button';
-import { Smartphone, Check, Zap, Palette, Shield } from 'lucide-react';
+import {
+  Smartphone, Check, Zap, Palette, Shield, ArrowRight,
+  CheckCircle2, Bell, Lock, WifiOff, Cpu, Layers
+} from 'lucide-react';
 import { Head as Helmet } from 'vite-react-ssg';
 import ServiceFAQ from '@/components/ServiceFAQ';
-import MobileAppBuildScene from '@/components/scenes/MobileAppBuildScene';
+import MobileAppShowcase from '@/components/showcases/MobileAppShowcase';
+import { Link } from 'react-router-dom';
 
+const MOBILE_DELIVERABLES = [
+  {
+    title: 'PrepVerse — Exam Intelligence App',
+    desc: 'Proprietary offline-capable testing suite engineered with instant mock grading, simulated exam timer, and rich performance analytics.',
+    image: '/image/work/prepverse.jpg',
+    tag: 'React Native · SQLite · Offline-First',
+    features: ['100% Offline question bank sync', 'Intelligent analytics & topic scoring', 'Instant automated result generation'],
+  },
+  {
+    title: 'EmergenSee — Rapid SOS Dispatch',
+    desc: 'Emergency security and medical alert system connecting distressed citizens with nearby responders in real-time.',
+    image: '/emergensee.png',
+    tag: 'Geolocation · WebSockets · Background Tasks',
+    features: ['Sub-second panic beacon broadcast', 'Live GPS vector tracking', 'Automated SMS & voice dial fallback'],
+  },
+  {
+    title: 'Commercial E-Commerce & FinTech Apps',
+    desc: 'High-conversion consumer shopping, digital wallet, and subscription mobile applications with instant Paystack checkout.',
+    image: '/image/work/raffila.jpg',
+    tag: 'Flutter · Paystack SDK · Push Gateway',
+    features: ['Biometric FaceID / TouchID authentication', 'One-click wallet funding & card tokenize', 'Segmented push promotions'],
+  },
+];
+
+const MOBILE_SPECS = [
+  { title: 'Core Frameworks', tech: 'React Native, Expo (EAS Build), Flutter & Dart, Swift / Kotlin Native Bridges' },
+  { title: 'Local Persistence', tech: 'SQLite, WatermelonDB, Encrypted MMKV Storage, Offline-First Sync' },
+  { title: 'Push & Telemetry', tech: 'Firebase Cloud Messaging (FCM), Apple APNs, Sentry Real-Time Crash Monitoring' },
+  { title: 'Hardware Integration', tech: 'Camera QR Scanners, BLE Proximity, GPS Geofencing, Biometric Secure Enclave' },
+  { title: 'Store Deployment', tech: 'Apple App Store (TestFlight & Production), Google Play Console, Zero-Rejection Guarantee' },
+  { title: 'Performance Target', tech: '60–120 FPS Native Threading, Sub-20MB Bundle Optimization, Fast Cold Start' },
+];
 
 const MobileAppDevelopment: React.FC = () => {
-  const features = [
-    { icon: Smartphone, title: 'iOS Development', description: 'Native iOS apps with Swift and SwiftUI' },
-    { icon: Smartphone, title: 'Android Development', description: 'Native Android apps with Kotlin and Jetpack' },
-    { icon: Zap, title: 'Cross-Platform', description: 'React Native and Flutter for both platforms' },
-    { icon: Palette, title: 'Beautiful UI/UX', description: 'Intuitive and engaging user interfaces' },
-    { icon: Shield, title: 'Secure & Reliable', description: 'Built with security and performance in mind' }
-  ];
-
   return (
-    <main className="min-h-screen bg-background text-foreground">
+    <main className="min-h-screen bg-background text-foreground transition-colors">
       <Helmet>
-        <title>Mobile App Development Nigeria | iOS & Android Apps | Bluewaves Technology</title>
-        <meta name="description" content="Custom mobile app development for iOS and Android in Nigeria. Native and cross-platform apps built with React Native, Flutter, Swift and Kotlin." />
-        <meta name="keywords" content="mobile app development Nigeria, iOS app development Nigeria, Android app development Nigeria, React Native developer Nigeria" />
-        <meta name="robots" content="index, follow" />
+        <title>Mobile App Development Nigeria | iOS &amp; Android Apps | Bluewaves Technology</title>
+        <meta name="description" content="Custom mobile app development for iOS and Android in Nigeria. High performance apps built with React Native, Flutter, Swift, and Kotlin by Bluewaves Technology in Port Harcourt." />
         <link rel="canonical" href="https://www.bwtng.live/mobile-app-development" />
-        <meta property="og:title" content="Mobile App Development Nigeria | iOS & Android Apps | Bluewaves Technology" />
-        <meta property="og:description" content="Custom mobile app development for iOS and Android in Nigeria. Native and cross-platform apps built by expert developers in Port Harcourt. React Native, Flutter, Swift and Kotlin." />
-        <meta property="og:url" content="https://www.bwtng.live/mobile-app-development" />
-        <meta property="og:type" content="website" />
-        <meta property="og:image" content="https://www.bwtng.live/og-image.png" />
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Mobile App Development Nigeria | iOS & Android Apps | Bluewaves Technology" />
-        <meta name="twitter:description" content="Custom mobile app development for iOS and Android in Nigeria. Native and cross-platform apps built by expert developers in Port Harcourt. React Native, Flutter, Swift and Kotlin." />
-        <meta name="twitter:image" content="https://www.bwtng.live/og-image.png" />
-        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: `{
-      "@context": "https://schema.org",
-      "@type": "Service",
-      "name": "Mobile App Development",
-      "provider": { "@type": "Organization", "name": "Bluewaves Technology", "url": "https://www.bwtng.live" },
-      "areaServed": "Nigeria",
-      "description": "Custom iOS and Android mobile app development using React Native, Flutter, Swift and Kotlin.",
-      "url": "https://www.bwtng.live/mobile-app-development"
-    }` }} />
       </Helmet>
       <Header />
-      <section className="pt-32 pb-20">
+
+      {/* Hero Section with High-Resolution Image Banner */}
+      <section className="pt-36 pb-20 relative overflow-hidden bg-gradient-to-b from-background via-card/30 to-background">
         <div className="container mx-auto px-6">
-          {/* Hero Section */}
-          <div className="max-w-4xl mx-auto text-center mb-16">
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 text-primary mb-6">
-              <Smartphone className="w-4 h-4" />
-              <span className="text-sm font-medium">Mobile App Development</span>
+          <div className="grid lg:grid-cols-12 gap-12 items-center">
+            <div className="lg:col-span-7 space-y-6">
+              <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-primary/10 border border-primary/20 text-primary text-xs font-mono font-semibold">
+                <Smartphone className="w-3.5 h-3.5" />
+                <span>NATIVE &amp; CROSS-PLATFORM MOBILE PRACTICE</span>
+              </div>
+
+              <h1 className="font-display text-4xl sm:text-5xl md:text-6xl font-black uppercase text-foreground tracking-tight leading-[1.05]">
+                Custom <span className="text-primary">Mobile Apps</span> Engineered for Everyday Life.
+              </h1>
+
+              <p className="text-lg text-muted-foreground leading-relaxed max-w-xl">
+                We engineer native iOS and Android applications with silky-smooth 60–120 FPS animations, encrypted offline-first databases, and reliable hardware integrations.
+              </p>
+
+              <div className="flex flex-wrap items-center gap-4 pt-2">
+                <Button asChild size="lg" className="rounded-full px-8 h-12 font-semibold bg-primary hover:bg-primary/90 text-primary-foreground shadow-lg shadow-primary/20">
+                  <a href="https://wa.me/2347051551543?text=Hi%20Bluewaves%2C%20I%20want%20to%20discuss%20a%20mobile%20app%20project." target="_blank" rel="noopener noreferrer">
+                    Initiate App Scoping <ArrowRight className="ml-2 w-4 h-4" />
+                  </a>
+                </Button>
+                <Button asChild size="lg" variant="outline" className="rounded-full px-7 h-12 font-semibold bg-card/60 backdrop-blur-md">
+                  <Link to="/portfolio">Explore Mobile Portfolio</Link>
+                </Button>
+              </div>
+
+              <div className="flex items-center gap-6 text-xs font-mono text-muted-foreground pt-4 border-t border-border/60">
+                <span>📱 iOS &amp; Android App Stores</span>
+                <span className="text-border">·</span>
+                <span>📶 100% Offline-First Sync</span>
+                <span className="text-border">·</span>
+                <span>🔐 Biometric Security</span>
+              </div>
             </div>
-            <h1 className="text-4xl md:text-5xl font-bold mb-6">
-              Mobile App <span className="text-primary">Development</span> in Nigeria
-            </h1>
-            <p className="text-xl text-muted-foreground mb-8">
-              Create powerful, user-friendly mobile applications for iOS and Android.
+
+            {/* Visual Hero Image Representation */}
+            <div className="lg:col-span-5">
+              <div className="relative rounded-3xl overflow-hidden border border-border/80 shadow-2xl bg-card">
+                <img
+                  src="/image/mobile-app-hero.jpg"
+                  alt="Modern mobile application development with native testing and responsive UI"
+                  loading="lazy"
+                  width={800}
+                  height={520}
+                  className="w-full h-auto object-cover object-center"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-transparent to-transparent" />
+                <div className="absolute bottom-4 inset-x-4 p-4 rounded-2xl bg-background/90 backdrop-blur-md border border-border/60 flex items-center justify-between text-xs font-mono">
+                  <div className="flex items-center gap-2">
+                    <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+                    <span className="text-foreground font-semibold">Engine: React Native &amp; Flutter</span>
+                  </div>
+                  <span className="text-primary font-bold">120 FPS</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Interactive Mobile Engineering Workbench */}
+      <section className="py-16 bg-card/40 border-y border-border/60">
+        <div className="container mx-auto px-6">
+          <div className="text-center max-w-2xl mx-auto mb-12">
+            <span className="text-xs font-mono text-primary uppercase font-bold tracking-wider">Device Simulation</span>
+            <h2 className="font-display text-3xl font-bold uppercase text-foreground mt-2">
+              Interactive Mobile Device Workbench
+            </h2>
+            <p className="text-sm text-muted-foreground mt-2">
+              Explore responsive mobile device frames, native biometric prompts, and offline synchronization states.
             </p>
-            <Button className="bg-primary hover:bg-primary/90 text-primary-foreground rounded-full px-8 py-6 text-lg">
-              Get Started Today
-            </Button>
+          </div>
+          <MobileAppShowcase />
+        </div>
+      </section>
+
+      {/* Visual Deliverables Grid: Real mobile apps we build */}
+      <section className="py-24">
+        <div className="container mx-auto px-6">
+          <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-16">
+            <div>
+              <span className="text-xs font-mono text-primary uppercase font-bold tracking-wider">Verified App Deployments</span>
+              <h2 className="font-display text-3xl sm:text-4xl font-bold uppercase text-foreground mt-2">
+                Mobile products we have engineered.
+              </h2>
+            </div>
+            <p className="text-sm text-muted-foreground max-w-md">
+              From high-stakes emergency dispatch to offline school examinations, our mobile architectures handle heavy everyday usage.
+            </p>
           </div>
 
-          {/* Scroll-linked build scene */}
-          <MobileAppBuildScene />
+          <div className="grid md:grid-cols-3 gap-8">
+            {MOBILE_DELIVERABLES.map((del, idx) => (
+              <div
+                key={idx}
+                className="group rounded-3xl border border-border/80 bg-card/60 backdrop-blur-xl overflow-hidden hover:border-primary/50 transition-all duration-300 hover:shadow-xl flex flex-col justify-between"
+              >
+                <div>
+                  <div className="relative aspect-[16/10] overflow-hidden bg-muted/20 border-b border-border/60">
+                    <img
+                      src={del.image}
+                      alt={del.title}
+                      loading="lazy"
+                      width={640}
+                      height={400}
+                      className="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-105"
+                    />
+                    <div className="absolute top-3 right-3 px-2.5 py-1 rounded-full bg-background/90 backdrop-blur-md border border-border/60 text-[10px] font-mono text-primary font-bold">
+                      {del.tag}
+                    </div>
+                  </div>
 
-          {/* Features */}
-          <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto mb-20">
-            {features.map((feature, index) => (
-              <div key={index} className="bg-card p-8 rounded-2xl border border-border">
-                <div className="w-14 h-14 bg-primary/10 rounded-2xl flex items-center justify-center mb-6">
-                  <feature.icon className="w-7 h-7 text-primary" />
+                  <div className="p-6">
+                    <h3 className="font-display text-xl font-bold text-foreground mb-2 group-hover:text-primary transition-colors">
+                      {del.title}
+                    </h3>
+                    <p className="text-sm text-muted-foreground leading-relaxed mb-6">
+                      {del.desc}
+                    </p>
+
+                    <div className="space-y-2 pt-4 border-t border-border/60">
+                      {del.features.map((feat, fIdx) => (
+                        <div key={fIdx} className="flex items-center gap-2 text-xs text-foreground/85">
+                          <CheckCircle2 className="w-3.5 h-3.5 text-primary shrink-0" />
+                          <span>{feat}</span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
                 </div>
-                <h3 className="text-xl font-bold mb-3">{feature.title}</h3>
-                <p className="text-muted-foreground">{feature.description}</p>
+
+                <div className="p-6 pt-0">
+                  <Button asChild variant="outline" className="w-full rounded-xl text-xs font-semibold h-10 hover:bg-primary hover:text-primary-foreground hover:border-primary transition-all">
+                    <Link to="/portfolio">Inspect App Specifications</Link>
+                  </Button>
+                </div>
               </div>
             ))}
           </div>
-
-          {/* What We Offer */}
-          <div className="max-w-4xl mx-auto mb-20">
-            <h2 className="text-3xl font-bold text-center mb-12">What We Offer</h2>
-            <div className="space-y-4">
-              {[
-                'Native iOS and Android app development',
-                'Cross-platform apps with React Native',
-                'Flutter app development',
-                'E-commerce mobile apps',
-                'Social media and networking apps',
-                'Utility and productivity apps',
-                'App maintenance and updates',
-                'App store optimization (ASO)'
-              ].map((item, index) => (
-                <div key={index} className="flex items-start gap-4 p-6 bg-card rounded-2xl border border-border">
-                  <Check className="w-6 h-6 text-primary flex-shrink-0 mt-1" />
-                  <p className="text-lg">{item}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          {/* CTA */}
-          <div className="max-w-3xl mx-auto text-center bg-card p-12 rounded-3xl border border-border">
-            <h2 className="text-3xl font-bold mb-6">Ready to Build Your App?</h2>
-            <p className="text-muted-foreground mb-8 text-lg">
-              Let's create the next big mobile application together!
-            </p>
-            <Button className="bg-primary hover:bg-primary/90 text-primary-foreground rounded-full px-8 py-6 text-lg">
-              Contact Us Now
-            </Button>
-          </div>
-
-          {/* SEO FAQ */}
-          <ServiceFAQ
-            pageUrl="https://www.bwtng.live/mobile-app-development"
-            faqs={[
-              { question: "Do you build native or cross-platform apps?", answer: "We build both \u2014 native apps for maximum performance, and cross-platform apps (React Native/Flutter) when you need one codebase for iOS and Android to save cost and time." },
-              { question: "How much does it cost to build a mobile app in Nigeria?", answer: "Cost depends on features, platforms, and backend complexity. Contact us for a free quote after we understand what you're building." },
-              { question: "How long does app development take?", answer: "A simple MVP app typically takes 4-8 weeks. Apps with more complex features, payments, or real-time functionality can take longer." },
-              { question: "Do you publish apps to the Play Store and App Store?", answer: "Yes, we handle the full submission process for both the Google Play Store and Apple App Store, including compliance and listing optimization." },
-              { question: "Do you offer app maintenance and updates after launch?", answer: "Yes. We offer ongoing support packages for bug fixes, OS-version compatibility updates, and new feature releases." },
-              { question: "Can you build both the app and backend/API?", answer: "Yes, we build the full stack \u2014 the mobile app itself plus the backend, database, and APIs that power it." }
-            ]}
-          />
         </div>
       </section>
+
+      {/* Technical Architecture Specs Matrix */}
+      <section className="py-20 bg-card/60 border-y border-border/60">
+        <div className="container mx-auto px-6">
+          <div className="max-w-2xl mb-12">
+            <span className="text-xs font-mono text-primary uppercase font-bold tracking-wider">Engineering Specs</span>
+            <h2 className="font-display text-3xl font-bold uppercase text-foreground mt-2">
+              Our Mobile Engineering Stack
+            </h2>
+          </div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {MOBILE_SPECS.map((spec, i) => (
+              <div key={i} className="p-6 rounded-2xl bg-background/90 border border-border/80">
+                <span className="text-xs font-mono text-primary font-bold block mb-2">{spec.title}</span>
+                <p className="text-sm font-medium text-foreground leading-relaxed">{spec.tech}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* FAQ Section */}
+      <section className="py-24">
+        <div className="container mx-auto px-6 max-w-4xl">
+          <div className="text-center mb-16">
+            <span className="text-xs font-mono text-primary uppercase font-bold tracking-wider">Common Inquiries</span>
+            <h2 className="font-display text-3xl font-bold uppercase text-foreground mt-2">
+              Mobile App Development FAQ
+            </h2>
+          </div>
+          <ServiceFAQ serviceName="mobile-app-development" />
+        </div>
+      </section>
+
+      {/* Final Callout Bar */}
+      <section className="pb-28">
+        <div className="container mx-auto px-6">
+          <div className="rounded-3xl border border-primary/30 bg-gradient-to-r from-card via-card/90 to-primary/10 p-8 md:p-12 shadow-2xl flex flex-col md:flex-row items-center justify-between gap-8">
+            <div className="space-y-2 text-center md:text-left">
+              <span className="text-xs font-mono uppercase text-primary font-bold tracking-wider block">Kickstart Your Mobile App</span>
+              <h3 className="font-display text-2xl md:text-3xl font-bold uppercase text-foreground">
+                Ready to publish your app to the world?
+              </h3>
+              <p className="text-sm text-muted-foreground max-w-xl">
+                Chat with our mobile lead developers for architecture consultation, store compliance advisory, and sprint pricing.
+              </p>
+            </div>
+
+            <Button asChild size="lg" className="rounded-full px-8 h-12 font-semibold bg-primary hover:bg-primary/90 text-primary-foreground shadow-lg shadow-primary/20 shrink-0">
+              <a href="https://wa.me/2347051551543?text=Hi%20Bluewaves%2C%20let%27s%20scope%20a%20new%20mobile%20app%20project." target="_blank" rel="noopener noreferrer">
+                Chat on WhatsApp <ArrowRight className="ml-2 w-4 h-4" />
+              </a>
+            </Button>
+          </div>
+        </div>
+      </section>
+
       <Footer />
     </main>
   );

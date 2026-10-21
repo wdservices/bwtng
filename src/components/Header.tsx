@@ -1,13 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { Button } from "@/components/ui/button";
-import { Menu, X, ChevronDown } from "lucide-react";
-import { Link, useNavigate } from 'react-router-dom';
+import { Menu, X, ArrowUpRight } from "lucide-react";
+import { Link, useLocation } from 'react-router-dom';
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  const [servicesOpen, setServicesOpen] = useState(false);
-  const navigate = useNavigate();
+  const location = useLocation();
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 20);
@@ -15,175 +14,106 @@ const Header = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const scrollToSection = (id: string) => {
-    if (window.location.pathname !== '/') {
-      navigate('/');
-      setTimeout(() => {
-        document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
-      }, 150);
-    } else {
-      document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
-    }
-    setIsMenuOpen(false);
-  };
-
-  const navItems: { label: string; path: string; hasDropdown?: boolean; external?: boolean }[] = [
-    { label: 'Home', path: '/' },
-    { label: 'Services', path: '/services', hasDropdown: true },
-    { label: 'Our Work', path: '/portfolio' },
-    { label: 'Our Products', path: '/digital-tools' },
-    { label: 'Digital Museum', path: 'https://sankofa-wing.vercel.app/', external: true },
+  const navLinks = [
+    { label: 'Services', path: '/services' },
+    { label: 'Work', path: '/portfolio' },
+    { label: 'Products', path: '/digital-tools' },
+    { label: 'Blog', path: '/blog' },
     { label: 'Academy', path: '/ai-builder-academy' },
     { label: 'About', path: '/about-us' },
-    { label: 'Contact', path: '/contact' },
-  ];
-
-  const serviceItems = [
-    { label: 'Web Development', path: '/web-development' },
-    { label: 'Mobile App Development', path: '/mobile-app-development' },
-    { label: 'SEO Services', path: '/seo-services' },
-    { label: 'Branding', path: '/branding' },
   ];
 
   return (
-    <header className={`fixed top-0 w-full z-50 transition-all duration-500 ${
+    <header className={`fixed top-0 w-full z-50 transition-all duration-300 ${
       scrolled || isMenuOpen
-        ? 'bg-background/80 backdrop-blur-xl border-b border-border shadow-sm'
+        ? 'bg-background/90 backdrop-blur-xl border-b border-border/80 shadow-lg shadow-black/20'
         : 'bg-transparent'
     }`}>
       <div className="container mx-auto px-6 py-4">
-        <div className="flex items-center justify-between">
-          <Link to="/" className="flex items-center space-x-3 group">
-            <img src="/logo.png" alt="" className="w-9 h-9 object-contain rounded-lg" aria-hidden="true" />
-            <span className="text-lg font-bold text-foreground tracking-normal font-display whitespace-nowrap">
+        <div className="flex items-center justify-between gap-8">
+          {/* Zone 1: Brand wordmark */}
+          <Link to="/" className="flex items-center space-x-3 shrink-0 group">
+            <img src="/logo.png" alt="" className="w-8 h-8 object-contain rounded-lg transition-transform group-hover:scale-105" aria-hidden="true" />
+            <span className="text-lg font-bold text-foreground font-display tracking-tight whitespace-nowrap">
               Bluewaves <span className="text-primary">Technology</span>
             </span>
           </Link>
 
-          <nav className="hidden 2xl:flex items-center gap-1">
-            {navItems.map((item) => (
-              <div key={item.label} className="relative group">
-                {item.external ? (
-                  <a
-                    href={item.path}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="px-4 py-2 text-sm font-medium text-muted-foreground hover:text-foreground transition-colors rounded-lg hover:bg-muted/50"
-                  >
-                    {item.label}
-                  </a>
-                ) : item.hasDropdown ? (
-                  <div
-                    onMouseEnter={() => setServicesOpen(true)}
-                    onMouseLeave={() => setServicesOpen(false)}
-                  >
-                    <Link
-                      to={item.path}
-                      className="flex items-center gap-1 px-4 py-2 text-sm font-medium text-muted-foreground hover:text-foreground transition-colors rounded-lg hover:bg-muted/50"
-                    >
-                      {item.label}
-                      <ChevronDown className="w-4 h-4" />
-                    </Link>
-                    {servicesOpen && (
-                      <div className="absolute top-full left-0 mt-2 bg-card border border-border rounded-xl shadow-xl py-2 min-w-[200px] z-50">
-                        {serviceItems.map((service) => (
-                          <Link
-                            key={service.label}
-                            to={service.path}
-                            className="block px-4 py-2 text-sm text-muted-foreground hover:text-foreground hover:bg-muted/50"
-                            onClick={() => setServicesOpen(false)}
-                          >
-                            {service.label}
-                          </Link>
-                        ))}
-                      </div>
-                    )}
-                  </div>
-                ) : (
-                  <Link
-                    to={item.path}
-                    className="px-4 py-2 text-sm font-medium text-muted-foreground hover:text-foreground transition-colors rounded-lg hover:bg-muted/50"
-                  >
-                    {item.label}
-                  </Link>
-                )}
-              </div>
-            ))}
+          {/* Zone 2: 4-5 single-line clean nav links */}
+          <nav className="hidden md:flex items-center gap-7 text-sm font-medium text-muted-foreground">
+            {navLinks.map((item) => {
+              const active = location.pathname === item.path;
+              return (
+                <Link
+                  key={item.label}
+                  to={item.path}
+                  className={`transition-colors whitespace-nowrap hover:text-foreground ${
+                    active ? 'text-primary font-semibold' : ''
+                  }`}
+                >
+                  {item.label}
+                </Link>
+              );
+            })}
             <a
-              href="https://asemi.vercel.app/"
+              href="https://sankofa-wing.vercel.app/"
               target="_blank"
               rel="noopener noreferrer"
-              className="px-4 py-2 text-sm font-medium text-muted-foreground hover:text-foreground transition-colors rounded-lg hover:bg-muted/50"
+              className="inline-flex items-center gap-1 text-xs text-muted-foreground/80 hover:text-primary transition-colors whitespace-nowrap"
             >
-              Asemi
-            </a>
-            <div className="w-px h-5 bg-border mx-2" />
-            <a href="/#start">
-              <Button size="sm" className="ml-2 bg-primary hover:bg-primary/90 text-primary-foreground rounded-full px-5 glow-sm">
-                Start a Project
-              </Button>
+              3D Museum <ArrowUpRight className="w-3 h-3" />
             </a>
           </nav>
 
-          <div className="2xl:hidden flex items-center gap-2">
-            <Button variant="ghost" size="icon" className="text-foreground shrink-0" onClick={() => setIsMenuOpen(!isMenuOpen)} aria-label={isMenuOpen ? 'Close menu' : 'Open menu'} aria-expanded={isMenuOpen}>
+          {/* Zone 3: 1 primary CTA action */}
+          <div className="hidden md:flex items-center gap-3 shrink-0">
+            <Button asChild size="sm" className="rounded-full px-6 font-semibold bg-primary hover:bg-primary/90 text-primary-foreground shadow-md shadow-primary/20 transition-all hover:scale-[1.02]">
+              <a href="/#start">Start a Project</a>
+            </Button>
+          </div>
+
+          {/* Mobile menu button */}
+          <div className="md:hidden flex items-center">
+            <Button
+              variant="ghost"
+              size="icon"
+              className="text-foreground shrink-0"
+              onClick={() => setIsMenuOpen(!isMenuOpen)}
+              aria-label={isMenuOpen ? 'Close menu' : 'Open menu'}
+              aria-expanded={isMenuOpen}
+            >
               {isMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
             </Button>
           </div>
         </div>
 
+        {/* Mobile menu drawer */}
         {isMenuOpen && (
-          <nav className="2xl:hidden mt-4 pb-4 pt-4 border-t border-border space-y-1 animate-fade-in bg-background/95 backdrop-blur-xl rounded-b-xl max-h-[calc(100vh-80px)] overflow-y-auto">
-            {navItems.map((item) => (
-              <div key={item.label}>
-                {item.external ? (
-                  <a
-                    href={item.path}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="block w-full text-left px-4 py-3 text-sm font-medium text-muted-foreground hover:text-foreground hover:bg-muted/50 rounded-lg transition-colors"
-                    onClick={() => setIsMenuOpen(false)}
-                  >
-                    {item.label}
-                  </a>
-                ) : (
-                  <Link
-                    to={item.path}
-                    className="block w-full text-left px-4 py-3 text-sm font-medium text-muted-foreground hover:text-foreground hover:bg-muted/50 rounded-lg transition-colors"
-                    onClick={() => setIsMenuOpen(false)}
-                  >
-                    {item.label}
-                  </Link>
-                )}
-                {item.hasDropdown && (
-                  <div className="pl-4 space-y-1">
-                    {serviceItems.map((service) => (
-                      <Link
-                        key={service.label}
-                        to={service.path}
-                        className="block w-full text-left px-4 py-2 text-sm text-muted-foreground hover:text-foreground hover:bg-muted/50 rounded-lg transition-colors"
-                        onClick={() => setIsMenuOpen(false)}
-                      >
-                        {service.label}
-                      </Link>
-                    ))}
-                  </div>
-                )}
-              </div>
+          <nav className="md:hidden mt-4 pb-4 pt-4 border-t border-border space-y-2 animate-fade-in bg-card/95 backdrop-blur-xl rounded-2xl p-4 shadow-2xl">
+            {navLinks.map((item) => (
+              <Link
+                key={item.label}
+                to={item.path}
+                className="block px-4 py-2.5 text-sm font-medium text-muted-foreground hover:text-foreground hover:bg-muted/40 rounded-lg transition-colors"
+                onClick={() => setIsMenuOpen(false)}
+              >
+                {item.label}
+              </Link>
             ))}
             <a
-              href="https://asemi.vercel.app/"
+              href="https://sankofa-wing.vercel.app/"
               target="_blank"
               rel="noopener noreferrer"
-              className="block px-4 py-3 text-sm font-medium text-muted-foreground hover:text-foreground hover:bg-muted/50 rounded-lg transition-colors"
+              className="flex items-center justify-between px-4 py-2.5 text-sm font-medium text-muted-foreground hover:text-foreground hover:bg-muted/40 rounded-lg transition-colors"
               onClick={() => setIsMenuOpen(false)}
             >
-              Asemi
+              <span>Sankofa 3D Museum</span>
+              <ArrowUpRight className="w-4 h-4 text-primary" />
             </a>
             <div className="pt-2">
-              <a href="/#start" onClick={() => setIsMenuOpen(false)}>
-                <Button className="w-full bg-primary hover:bg-primary/90 text-primary-foreground rounded-full">Start a Project</Button>
-              </a>
+              <Button asChild className="w-full rounded-full font-semibold" onClick={() => setIsMenuOpen(false)}>
+                <a href="/#start">Start a Project</a>
+              </Button>
             </div>
           </nav>
         )}

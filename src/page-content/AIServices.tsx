@@ -2,125 +2,261 @@ import React from 'react';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import { Button } from '@/components/ui/button';
-import { Cpu, Check, Brain, Bot, LineChart, Workflow, Sparkles } from 'lucide-react';
+import {
+  Cpu, Check, Brain, Bot, LineChart, Workflow, Sparkles,
+  ArrowRight, ShieldCheck, Database, Layers, CheckCircle2,
+  Terminal, Zap, Code2
+} from 'lucide-react';
 import { Head as Helmet } from 'vite-react-ssg';
 import ServiceFAQ from '@/components/ServiceFAQ';
-import AIBuildScene from '@/components/scenes/AIBuildScene';
+import AIShowcase from '@/components/showcases/AIShowcase';
+import { Link } from 'react-router-dom';
+
+const AI_DELIVERABLES = [
+  {
+    title: 'Domain RAG Vector Search Pipelines',
+    desc: 'Connect internal proprietary knowledge (PDFs, policies, database records) into hallucination-free semantic search and chat engines.',
+    image: '/image/ai-solutions-hero.jpg',
+    tag: 'RAG · Pgvector · Hybrid Retrieval',
+    features: ['Context-grounded responses with source citations', 'Sub-250ms vector query matching', 'Automatic sync on document update'],
+  },
+  {
+    title: 'Autonomous Multi-Agent Automation',
+    desc: 'Intelligent software agents that execute multi-step business tasks: parsing emails, generating invoices, and querying CRM APIs.',
+    image: '/image/tech-wizard-hero.jpg',
+    tag: 'Tool Calling · Agentic Workflows',
+    features: ['Function calling with deterministic JSON schema', 'Human-in-the-loop approvals', 'Full execution audit trails'],
+  },
+  {
+    title: 'Intelligent Vision & Document OCR',
+    desc: 'Automated extraction of structured key-value data from physical IDs, paper receipts, waybills, and medical lab reports.',
+    image: '/image/work/citivas.jpg',
+    tag: 'Computer Vision · Document AI',
+    features: ['99.4% Extraction accuracy', 'Automatic PII redaction and encryption', 'Direct database insert pipeline'],
+  },
+];
+
+const AI_SPECS = [
+  { title: 'Foundation Models', tech: 'Google Gemini 2.5 (Pro & Flash), OpenAI GPT-4o, Anthropic Claude 3.5 Sonnet' },
+  { title: 'Vector Datastores', tech: 'Pgvector (PostgreSQL), Pinecone, Redis Vector, Milvus Cluster' },
+  { title: 'Agent Frameworks', tech: 'LangChain, LlamaIndex, Custom TypeScript Agent Loops, Function Calling' },
+  { title: 'Inference Speed', tech: 'Streaming SSE responses, Token optimizations, Sub-300ms Time-to-First-Token' },
+  { title: 'Privacy & Compliance', tech: 'Zero model retention agreements, Strict client data segregation, Encryption at rest' },
+  { title: 'Edge & Local ML', tech: 'ONNX Runtime, Transformers.js, Offline client-side sentiment & intent classifiers' },
+];
 
 const AIServices: React.FC = () => {
-  const features = [
-    { icon: Brain, title: 'Machine Learning', description: 'Custom ML models trained on your data for predictions and insights' },
-    { icon: Bot, title: 'AI Chatbots', description: 'Intelligent conversational agents for customer support and engagement' },
-    { icon: LineChart, title: 'Predictive Analytics', description: 'Data-driven forecasting to make smarter business decisions' },
-    { icon: Workflow, title: 'Process Automation', description: 'AI-powered automation that eliminates repetitive manual tasks' },
-    { icon: Sparkles, title: 'Generative AI', description: 'Custom generative AI solutions for content, images and more' }
-  ];
-
   return (
-    <main className="min-h-screen bg-background text-foreground">
+    <main className="min-h-screen bg-background text-foreground transition-colors">
       <Helmet>
-        <title>AI Services | Machine Learning, Chatbots & AI Solutions | Bluewaves Technology</title>
-        <meta name="description" content="Professional AI services. Machine learning, AI chatbots, predictive analytics, process automation and generative AI solutions for businesses." />
-        <meta name="keywords" content="AI services, machine learning, AI chatbot, artificial intelligence, predictive analytics, generative AI" />
-        <meta name="robots" content="index, follow" />
+        <title>AI &amp; Machine Learning Services | Custom Agents &amp; RAG | Bluewaves Technology</title>
+        <meta name="description" content="Enterprise AI solutions in Nigeria. RAG semantic search pipelines, LLM multi-agent automation, and intelligent chatbots engineered by Bluewaves Technology." />
         <link rel="canonical" href="https://www.bwtng.live/ai-services" />
-        <meta property="og:title" content="AI Services | Machine Learning, Chatbots & AI Solutions | Bluewaves Technology" />
-        <meta property="og:description" content="Professional AI services. Machine learning, AI chatbots, predictive analytics, process automation and generative AI solutions to transform your business." />
-        <meta property="og:url" content="https://www.bwtng.live/ai-services" />
-        <meta property="og:type" content="website" />
-        <meta property="og:image" content="https://www.bwtng.live/og-image.png" />
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="AI Services | Machine Learning, Chatbots & AI Solutions | Bluewaves Technology" />
-        <meta name="twitter:description" content="Professional AI services. Machine learning, AI chatbots, predictive analytics, process automation and generative AI solutions to transform your business." />
-        <meta name="twitter:image" content="https://www.bwtng.live/og-image.png" />
-        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: `{
-      "@context": "https://schema.org",
-      "@type": "Service",
-      "name": "AI & Machine Learning Services",
-      "provider": { "@type": "Organization", "name": "Bluewaves Technology", "url": "https://www.bwtng.live" },
-      "description": "Professional AI services including machine learning, AI chatbots, predictive analytics, process automation and generative AI solutions.",
-      "url": "https://www.bwtng.live/ai-services"
-    }` }} />
       </Helmet>
       <Header />
-      <section className="pt-32 pb-20">
+
+      {/* Hero Section with High-Resolution Image Banner */}
+      <section className="pt-36 pb-20 relative overflow-hidden bg-gradient-to-b from-background via-card/30 to-background">
         <div className="container mx-auto px-6">
-          <div className="max-w-4xl mx-auto text-center mb-16">
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 text-primary mb-6">
-              <Cpu className="w-4 h-4" />
-              <span className="text-sm font-medium">AI Services</span>
+          <div className="grid lg:grid-cols-12 gap-12 items-center">
+            <div className="lg:col-span-7 space-y-6">
+              <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-primary/10 border border-primary/20 text-primary text-xs font-mono font-semibold">
+                <Brain className="w-3.5 h-3.5" />
+                <span>INTELLIGENT SYSTEMS &amp; AI PRACTICE</span>
+              </div>
+
+              <h1 className="font-display text-4xl sm:text-5xl md:text-6xl font-black uppercase text-foreground tracking-tight leading-[1.05]">
+                Enterprise <span className="text-primary">AI Solutions</span> &amp; Autonomous Agents.
+              </h1>
+
+              <p className="text-lg text-muted-foreground leading-relaxed max-w-xl">
+                We turn state-of-the-art foundation models into production systems: hallucination-free enterprise RAG, automated customer dispatchers, and multi-step agent pipelines.
+              </p>
+
+              <div className="flex flex-wrap items-center gap-4 pt-2">
+                <Button asChild size="lg" className="rounded-full px-8 h-12 font-semibold bg-primary hover:bg-primary/90 text-primary-foreground shadow-lg shadow-primary/20">
+                  <a href="https://wa.me/2347051551543?text=Hi%20Bluewaves%2C%20I%20want%20to%20consult%20on%20an%20AI%20automation%20project." target="_blank" rel="noopener noreferrer">
+                    Initiate AI Architecture Review <ArrowRight className="ml-2 w-4 h-4" />
+                  </a>
+                </Button>
+                <Button asChild size="lg" variant="outline" className="rounded-full px-7 h-12 font-semibold bg-card/60 backdrop-blur-md">
+                  <Link to="/ai-builder-academy">Explore AI Academy</Link>
+                </Button>
+              </div>
+
+              <div className="flex items-center gap-6 text-xs font-mono text-muted-foreground pt-4 border-t border-border/60">
+                <span>⚡ Sub-250ms RAG Retrieval</span>
+                <span className="text-border">·</span>
+                <span>🛡️ Enterprise Data Privacy</span>
+                <span className="text-border">·</span>
+                <span>🤖 Gemini 2.5 Integrated</span>
+              </div>
             </div>
-            <h1 className="text-4xl md:text-5xl font-bold mb-6">
-              Professional <span className="text-primary">AI Services</span>
-            </h1>
-            <p className="text-xl text-muted-foreground mb-8">
-              Harness the power of artificial intelligence to automate, predict and transform your business operations.
+
+            {/* Visual Hero Image Representation */}
+            <div className="lg:col-span-5">
+              <div className="relative rounded-3xl overflow-hidden border border-border/80 shadow-2xl bg-card">
+                <img
+                  src="/image/ai-solutions-hero.jpg"
+                  alt="Neural network visualization and autonomous AI agent reasoning pipeline"
+                  loading="lazy"
+                  width={800}
+                  height={520}
+                  className="w-full h-auto object-cover object-center"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-transparent to-transparent" />
+                <div className="absolute bottom-4 inset-x-4 p-4 rounded-2xl bg-background/90 backdrop-blur-md border border-border/60 flex items-center justify-between text-xs font-mono">
+                  <div className="flex items-center gap-2">
+                    <span className="w-2 h-2 rounded-full bg-cyan-400 animate-pulse" />
+                    <span className="text-foreground font-semibold">Gemini 2.5 Flash Pipeline</span>
+                  </div>
+                  <span className="text-primary font-bold">&lt;280ms</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Interactive AI Engineering Workbench */}
+      <section className="py-16 bg-card/40 border-y border-border/60">
+        <div className="container mx-auto px-6">
+          <div className="text-center max-w-2xl mx-auto mb-12">
+            <span className="text-xs font-mono text-primary uppercase font-bold tracking-wider">Interactive Simulation</span>
+            <h2 className="font-display text-3xl font-bold uppercase text-foreground mt-2">
+              AI Reasoning &amp; Context Pipeline Showcase
+            </h2>
+            <p className="text-sm text-muted-foreground mt-2">
+              Observe vector search embeddings, semantic scoring, and structured output formatting in real-time.
             </p>
-            <Button className="bg-primary hover:bg-primary/90 text-primary-foreground rounded-full px-8 py-6 text-lg">
-              Get Started Today
-            </Button>
+          </div>
+          <AIShowcase />
+        </div>
+      </section>
+
+      {/* Visual Deliverables Grid: Real AI solutions we build */}
+      <section className="py-24">
+        <div className="container mx-auto px-6">
+          <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-16">
+            <div>
+              <span className="text-xs font-mono text-primary uppercase font-bold tracking-wider">Autonomous Solutions</span>
+              <h2 className="font-display text-3xl sm:text-4xl font-bold uppercase text-foreground mt-2">
+                AI systems we engineer for clients.
+              </h2>
+            </div>
+            <p className="text-sm text-muted-foreground max-w-md">
+              We design robust safety rails and verification layers so our AI models act as reliable enterprise collaborators.
+            </p>
           </div>
 
-          {/* Scroll-linked build scene */}
-          <AIBuildScene />
+          <div className="grid md:grid-cols-3 gap-8">
+            {AI_DELIVERABLES.map((del, idx) => (
+              <div
+                key={idx}
+                className="group rounded-3xl border border-border/80 bg-card/60 backdrop-blur-xl overflow-hidden hover:border-primary/50 transition-all duration-300 hover:shadow-xl flex flex-col justify-between"
+              >
+                <div>
+                  <div className="relative aspect-[16/10] overflow-hidden bg-muted/20 border-b border-border/60">
+                    <img
+                      src={del.image}
+                      alt={del.title}
+                      loading="lazy"
+                      width={640}
+                      height={400}
+                      className="w-full h-full object-cover object-center transition-transform duration-500 group-hover:scale-105"
+                    />
+                    <div className="absolute top-3 right-3 px-2.5 py-1 rounded-full bg-background/90 backdrop-blur-md border border-border/60 text-[10px] font-mono text-primary font-bold">
+                      {del.tag}
+                    </div>
+                  </div>
 
-          <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto mb-20">
-            {features.map((feature, index) => (
-              <div key={index} className="bg-card p-8 rounded-2xl border border-border">
-                <div className="w-14 h-14 bg-primary/10 rounded-2xl flex items-center justify-center mb-6">
-                  <feature.icon className="w-7 h-7 text-primary" />
+                  <div className="p-6">
+                    <h3 className="font-display text-xl font-bold text-foreground mb-2 group-hover:text-primary transition-colors">
+                      {del.title}
+                    </h3>
+                    <p className="text-sm text-muted-foreground leading-relaxed mb-6">
+                      {del.desc}
+                    </p>
+
+                    <div className="space-y-2 pt-4 border-t border-border/60">
+                      {del.features.map((feat, fIdx) => (
+                        <div key={fIdx} className="flex items-center gap-2 text-xs text-foreground/85">
+                          <CheckCircle2 className="w-3.5 h-3.5 text-primary shrink-0" />
+                          <span>{feat}</span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
                 </div>
-                <h3 className="text-xl font-bold mb-3">{feature.title}</h3>
-                <p className="text-muted-foreground">{feature.description}</p>
+
+                <div className="p-6 pt-0">
+                  <Button asChild variant="outline" className="w-full rounded-xl text-xs font-semibold h-10 hover:bg-primary hover:text-primary-foreground hover:border-primary transition-all">
+                    <Link to="/ai-builder-academy">Learn AI Implementation</Link>
+                  </Button>
+                </div>
               </div>
             ))}
           </div>
-
-          <div className="max-w-4xl mx-auto mb-20">
-            <h2 className="text-3xl font-bold text-center mb-12">What We Offer</h2>
-            <div className="space-y-4">
-              {[
-                'Custom machine learning model development',
-                'AI-powered chatbot and virtual assistant creation',
-                'Predictive analytics and demand forecasting',
-                'Natural language processing (NLP) solutions',
-                'Computer vision and image recognition systems',
-                'Recommendation engines and personalization',
-                'AI workflow automation and orchestration',
-                'Data pipeline and ML infrastructure setup',
-                'AI strategy consulting and implementation'
-              ].map((item, index) => (
-                <div key={index} className="flex items-start gap-4 p-6 bg-card rounded-2xl border border-border">
-                  <Check className="w-6 h-6 text-primary flex-shrink-0 mt-1" />
-                  <p className="text-lg">{item}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          <div className="max-w-3xl mx-auto text-center bg-card p-12 rounded-3xl border border-border">
-            <h2 className="text-3xl font-bold mb-6">Ready to Leverage AI for Your Business?</h2>
-            <p className="text-muted-foreground mb-8 text-lg">
-              Let's explore how AI can automate your processes, reduce costs and unlock new opportunities!
-            </p>
-            <Button className="bg-primary hover:bg-primary/90 text-primary-foreground rounded-full px-8 py-6 text-lg">
-              Contact Us Now
-            </Button>
-          </div>
-
-          {/* SEO FAQ */}
-          <ServiceFAQ
-            pageUrl="https://www.bwtng.live/ai-services"
-            faqs={[
-              { question: "What AI solutions do you build?", answer: "Custom chatbots, AI-powered automation, recommendation systems, and tools that integrate AI models into your existing business processes." },
-              { question: "Can you build a custom chatbot for my business?", answer: "Yes, we build chatbots trained on your business \u2014 for customer support, lead qualification, or internal use \u2014 deployable on your website or WhatsApp." },
-              { question: "Do you offer AI training or workshops?", answer: "Yes, we run AI training programs for teams and organizations wanting to understand and adopt AI tools effectively." },
-              { question: "Can AI tools integrate with our existing systems?", answer: "Yes, we design AI integrations to work with the CRM, database, or workflow tools you already use." },
-              { question: "Is my business data safe when using AI tools?", answer: "Yes, we follow secure data-handling practices and only connect AI systems to the specific data needed for each use case." }
-            ]}
-          />
         </div>
       </section>
+
+      {/* Technical Architecture Specs Matrix */}
+      <section className="py-20 bg-card/60 border-y border-border/60">
+        <div className="container mx-auto px-6">
+          <div className="max-w-2xl mb-12">
+            <span className="text-xs font-mono text-primary uppercase font-bold tracking-wider">Engineering Specs</span>
+            <h2 className="font-display text-3xl font-bold uppercase text-foreground mt-2">
+              Our AI &amp; Machine Learning Stack
+            </h2>
+          </div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {AI_SPECS.map((spec, i) => (
+              <div key={i} className="p-6 rounded-2xl bg-background/90 border border-border/80">
+                <span className="text-xs font-mono text-primary font-bold block mb-2">{spec.title}</span>
+                <p className="text-sm font-medium text-foreground leading-relaxed">{spec.tech}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* FAQ Section */}
+      <section className="py-24">
+        <div className="container mx-auto px-6 max-w-4xl">
+          <div className="text-center mb-16">
+            <span className="text-xs font-mono text-primary uppercase font-bold tracking-wider">Common Inquiries</span>
+            <h2 className="font-display text-3xl font-bold uppercase text-foreground mt-2">
+              AI &amp; Automation FAQ
+            </h2>
+          </div>
+          <ServiceFAQ serviceName="ai-services" />
+        </div>
+      </section>
+
+      {/* Final Callout Bar */}
+      <section className="pb-28">
+        <div className="container mx-auto px-6">
+          <div className="rounded-3xl border border-primary/30 bg-gradient-to-r from-card via-card/90 to-primary/10 p-8 md:p-12 shadow-2xl flex flex-col md:flex-row items-center justify-between gap-8">
+            <div className="space-y-2 text-center md:text-left">
+              <span className="text-xs font-mono uppercase text-primary font-bold tracking-wider block">Empower Your Workflows</span>
+              <h3 className="font-display text-2xl md:text-3xl font-bold uppercase text-foreground">
+                Ready to deploy customized AI models?
+              </h3>
+              <p className="text-sm text-muted-foreground max-w-xl">
+                Schedule a technical consultation to explore RAG indexing, custom agent tooling, and enterprise privacy compliance.
+              </p>
+            </div>
+
+            <Button asChild size="lg" className="rounded-full px-8 h-12 font-semibold bg-primary hover:bg-primary/90 text-primary-foreground shadow-lg shadow-primary/20 shrink-0">
+              <a href="https://wa.me/2347051551543?text=Hi%20Bluewaves%2C%20let%27s%20scope%20an%20AI%20agent%20solution." target="_blank" rel="noopener noreferrer">
+                Chat on WhatsApp <ArrowRight className="ml-2 w-4 h-4" />
+              </a>
+            </Button>
+          </div>
+        </div>
+      </section>
+
       <Footer />
     </main>
   );

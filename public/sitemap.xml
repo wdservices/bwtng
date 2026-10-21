@@ -31,6 +31,12 @@
     </image:image>
   </url>
   <url>
+    <loc>https://www.bwtng.live/academy/register</loc>
+    <lastmod>2026-06-15</lastmod>
+    <priority>0.8</priority>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
     <loc>https://www.bwtng.live/web-development</loc>
     <lastmod>2026-06-04</lastmod>
     <priority>0.9</priority>
@@ -373,6 +379,48 @@
   <url>
     <loc>https://www.bwtng.live/blog/what-makes-a-website-design-mobile-friendly</loc>
     <lastmod>2025-05-01</lastmod>
+    <priority>0.6</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://www.bwtng.live/blog/how-to-evaluate-a-designer-s-portfolio</loc>
+    <lastmod>2026-06-29</lastmod>
+    <priority>0.6</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://www.bwtng.live/blog/what-s-a-reasonable-timeline-for-web-design-projects</loc>
+    <lastmod>2026-06-29</lastmod>
+    <priority>0.6</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://www.bwtng.live/blog/what-s-included-in-a-professional-website-design-package</loc>
+    <lastmod>2026-06-29</lastmod>
+    <priority>0.6</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://www.bwtng.live/blog/what-s-the-3-second-rule-in-web-design</loc>
+    <lastmod>2026-06-29</lastmod>
+    <priority>0.6</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://www.bwtng.live/blog/what-s-the-difference-between-ui-and-ux-design</loc>
+    <lastmod>2026-06-29</lastmod>
+    <priority>0.6</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://www.bwtng.live/blog/what-s-the-difference-between-web-design-and-app-design</loc>
+    <lastmod>2026-06-29</lastmod>
+    <priority>0.6</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://www.bwtng.live/blog/what-s-the-difference-between-website-design-and-website-development</loc>
+    <lastmod>2026-06-29</lastmod>
     <priority>0.6</priority>
     <changefreq>monthly</changefreq>
   </url>

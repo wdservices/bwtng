@@ -1,0 +1,8 @@
+{
+  "name": "Bluewaves Technology",
+  "description": "Leading digital solutions company in Nigeria providing web development, mobile apps, AI solutions, SEO and branding.",
+  "permissions": [],
+  "capabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}

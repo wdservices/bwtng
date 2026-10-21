@@ -3,6 +3,7 @@ import { Head as Helmet } from 'vite-react-ssg';
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import PopupController from "@/components/PopupController";
+import Team from "@/components/Team";
 import {
   StudioHero,
   ServicesOverview,
@@ -10,7 +11,7 @@ import {
   InHouseProducts,
   MuseumFeature,
   WhyAndProcess,
-  StartProject,
+  StudioTechRadar,
 } from "@/components/home/HomeSections";
 
 const Index = () => {
@@ -35,7 +36,8 @@ const Index = () => {
       <InHouseProducts />
       <MuseumFeature />
       <WhyAndProcess />
-      <StartProject />
+      <Team />
+      <StudioTechRadar />
       <Footer />
     </main>
   );

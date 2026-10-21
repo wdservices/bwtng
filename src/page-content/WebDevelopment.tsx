@@ -2,130 +2,261 @@ import React from 'react';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import { Button } from '@/components/ui/button';
-import { Globe, Check, Rocket, Smartphone, Palette, TrendingUp } from 'lucide-react';
+import {
+  Globe, Check, Rocket, Smartphone, Palette, TrendingUp,
+  ArrowRight, ShieldCheck, Cpu, Code2, Database, Layers,
+  ExternalLink, CheckCircle2, Server, Lock, Zap
+} from 'lucide-react';
 import { Head as Helmet } from 'vite-react-ssg';
 import ServiceFAQ from '@/components/ServiceFAQ';
-import WebDevBuildScene from '@/components/WebDevBuildScene';
+import WebDevShowcase from '@/components/showcases/WebDevShowcase';
+import { Link } from 'react-router-dom';
 
+const WEB_DELIVERABLES = [
+  {
+    title: 'Custom SaaS & Web Applications',
+    desc: 'Complex multi-tenant web platforms engineered with React 19 / Next.js 15, PostgreSQL, and robust role-based access control.',
+    image: '/image/work/citivas.jpg',
+    tag: 'Next.js 15 · Postgres · Tailwind',
+    features: ['High-concurrency database queries', 'Real-time WebSocket telemetry', 'Paystack & Stripe multi-currency checkout'],
+  },
+  {
+    title: 'Enterprise Corporate Portals',
+    desc: 'High-speed corporate web platforms with sub-second page loads, structured CMS workflows, and conversion-focused design.',
+    image: '/image/work/megavantage-dynamic.jpg',
+    tag: 'SSR Architecture · Core Vitals · TypeScript',
+    features: ['Sub-30ms Edge TTFB', 'Dynamic SEO & OpenGraph card generator', 'Automated Lead Routing to CRM & WhatsApp'],
+  },
+  {
+    title: 'Hospitality & Booking Portals',
+    desc: 'Bespoke hotel booking engines, room availability synchronizers, and reservation management portals.',
+    image: '/image/work/rivotels.jpg',
+    tag: 'Real-time Booking · Secure Payments',
+    features: ['Calendar sync across channels', 'Automated reservation confirmation SMS', 'Admin operational dashboards'],
+  },
+];
+
+const TECH_SPECS = [
+  { title: 'Frontend Architecture', tech: 'React 19, Next.js 15 (App Router), TypeScript Strict, Tailwind CSS v4' },
+  { title: 'State & Caching', tech: 'TanStack Query v5, Redis In-Memory, Server Actions, Hybrid PPR' },
+  { title: 'Database & ORM', tech: 'PostgreSQL, Cloud SQL, Supabase, Drizzle ORM, ACID-compliant Transactions' },
+  { title: 'Security & Compliance', tech: 'TLS 1.3, AES-256 Data Encryption, CSP Headers, OWASP Top-10 Hardened' },
+  { title: 'Payment Gateways', tech: 'Paystack, Flutterwave, Stripe, Automated Webhook Reconciliation' },
+  { title: 'Deployment & SLA', tech: 'Edge CDN Clusters, Docker Containers, Automated CI/CD, 99.98% Uptime' },
+];
 
 const WebDevelopment: React.FC = () => {
-  const features = [
-    { icon: Globe, title: 'Responsive Design', description: 'Perfect on all devices - desktop, tablet, and mobile' },
-    { icon: Rocket, title: 'Fast Performance', description: 'Optimized for speed and great user experience' },
-    { icon: Smartphone, title: 'Mobile First', description: 'Designed with mobile users in mind from the start' },
-    { icon: Palette, title: 'Modern Design', description: 'Beautiful, contemporary designs that stand out' },
-    { icon: TrendingUp, title: 'SEO Optimized', description: 'Built with search engine optimization in mind' }
-  ];
-
   return (
-    <main className="min-h-screen bg-background text-foreground">
+    <main className="min-h-screen bg-background text-foreground transition-colors">
       <Helmet>
-        <title>Web Development Services Nigeria | Custom Websites & Web Apps | Bluewaves Technology</title>
-        <meta name="description" content="Professional web development in Nigeria. Fast, responsive, SEO-ready websites and web apps using React, Next.js and modern tech." />
-        <meta name="keywords" content="web development Nigeria, website development Port Harcourt, custom web application Nigeria, professional website design Nigeria" />
-        <meta name="robots" content="index, follow" />
+        <title>Web Development Services Nigeria | Custom Websites &amp; SaaS | Bluewaves Technology</title>
+        <meta name="description" content="Professional web development in Nigeria. Fast, responsive, SEO-ready websites, SaaS platforms, and enterprise web applications using React, Next.js, and TypeScript." />
         <link rel="canonical" href="https://www.bwtng.live/web-development" />
-        <meta property="og:title" content="Web Development Services Nigeria | Custom Websites & Web Apps | Bluewaves Technology" />
-        <meta property="og:description" content="Professional web development services in Nigeria. We build fast, responsive, SEO-ready websites and web applications using React, Next.js and modern tech for businesses in Port Harcourt and across Nigeria." />
-        <meta property="og:url" content="https://www.bwtng.live/web-development" />
-        <meta property="og:type" content="website" />
-        <meta property="og:image" content="https://www.bwtng.live/og-image.png" />
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Web Development Services Nigeria | Custom Websites & Web Apps | Bluewaves Technology" />
-        <meta name="twitter:description" content="Professional web development services in Nigeria. We build fast, responsive, SEO-ready websites and web applications using React, Next.js and modern tech for businesses in Port Harcourt and across Nigeria." />
-        <meta name="twitter:image" content="https://www.bwtng.live/og-image.png" />
-        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: `{
-      "@context": "https://schema.org",
-      "@type": "Service",
-      "name": "Web Development Services",
-      "provider": { "@type": "Organization", "name": "Bluewaves Technology", "url": "https://www.bwtng.live" },
-      "areaServed": "Nigeria",
-      "description": "Professional web development services including responsive websites, web applications, and e-commerce solutions.",
-      "url": "https://www.bwtng.live/web-development"
-    }` }} />
       </Helmet>
       <Header />
-      <section className="pt-32 pb-20">
+
+      {/* Hero Section with High-Resolution Image Banner */}
+      <section className="pt-36 pb-20 relative overflow-hidden bg-gradient-to-b from-background via-card/30 to-background">
         <div className="container mx-auto px-6">
-          {/* Hero Section */}
-          <div className="max-w-4xl mx-auto text-center mb-16">
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 text-primary mb-6">
-              <Globe className="w-4 h-4" />
-              <span className="text-sm font-medium">Web Development</span>
+          <div className="grid lg:grid-cols-12 gap-12 items-center">
+            <div className="lg:col-span-7 space-y-6">
+              <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-primary/10 border border-primary/20 text-primary text-xs font-mono font-semibold">
+                <Globe className="w-3.5 h-3.5" />
+                <span>ENTERPRISE WEB PRACTICE</span>
+              </div>
+
+              <h1 className="font-display text-4xl sm:text-5xl md:text-6xl font-black uppercase text-foreground tracking-tight leading-[1.05]">
+                Custom <span className="text-primary">Web Development</span> &amp; Scalable SaaS Platforms.
+              </h1>
+
+              <p className="text-lg text-muted-foreground leading-relaxed max-w-xl">
+                We engineer bulletproof web applications, client portals, and e-commerce platforms engineered for extreme velocity, sub-second TTFB, and verified conversion lift.
+              </p>
+
+              <div className="flex flex-wrap items-center gap-4 pt-2">
+                <Button asChild size="lg" className="rounded-full px-8 h-12 font-semibold bg-primary hover:bg-primary/90 text-primary-foreground shadow-lg shadow-primary/20">
+                  <a href="https://wa.me/2347051551543?text=Hi%20Bluewaves%2C%20I%20want%20to%20discuss%20a%20web%20development%20project." target="_blank" rel="noopener noreferrer">
+                    Initiate Project Scoping <ArrowRight className="ml-2 w-4 h-4" />
+                  </a>
+                </Button>
+                <Button asChild size="lg" variant="outline" className="rounded-full px-7 h-12 font-semibold bg-card/60 backdrop-blur-md">
+                  <Link to="/portfolio">Explore Live Deployments</Link>
+                </Button>
+              </div>
+
+              <div className="flex items-center gap-6 text-xs font-mono text-muted-foreground pt-4 border-t border-border/60">
+                <span>⚡ Sub-second Core Web Vitals</span>
+                <span className="text-border">·</span>
+                <span>🔒 100% IP &amp; Code Ownership</span>
+                <span className="text-border">·</span>
+                <span>💳 Paystack Verified</span>
+              </div>
             </div>
-            <h1 className="text-4xl md:text-5xl font-bold mb-6">
-              Professional <span className="text-primary">Web Development</span> in Nigeria
-            </h1>
-            <p className="text-xl text-muted-foreground mb-8">
-              Build stunning, high-performance websites that drive results for your business.
+
+            {/* Visual Hero Image Representation */}
+            <div className="lg:col-span-5">
+              <div className="relative rounded-3xl overflow-hidden border border-border/80 shadow-2xl bg-card">
+                <img
+                  src="/image/web-dev-hero.jpg"
+                  alt="High performance web development workspace and live code rendering"
+                  loading="lazy"
+                  width={800}
+                  height={520}
+                  className="w-full h-auto object-cover object-center"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-transparent to-transparent" />
+                <div className="absolute bottom-4 inset-x-4 p-4 rounded-2xl bg-background/90 backdrop-blur-md border border-border/60 flex items-center justify-between text-xs font-mono">
+                  <div className="flex items-center gap-2">
+                    <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+                    <span className="text-foreground font-semibold">Production Node: Next.js 15</span>
+                  </div>
+                  <span className="text-primary font-bold">99.98% SLA</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Interactive WebDev Engineering Workbench */}
+      <section className="py-16 bg-card/40 border-y border-border/60">
+        <div className="container mx-auto px-6">
+          <div className="text-center max-w-2xl mx-auto mb-12">
+            <span className="text-xs font-mono text-primary uppercase font-bold tracking-wider">Live System Simulation</span>
+            <h2 className="font-display text-3xl font-bold uppercase text-foreground mt-2">
+              Interactive Web Development Workbench
+            </h2>
+            <p className="text-sm text-muted-foreground mt-2">
+              Test responsive viewports, simulate network throttling, and audit production metrics in real-time.
             </p>
-            <Button className="bg-primary hover:bg-primary/90 text-primary-foreground rounded-full px-8 py-6 text-lg">
-              Get Started Today
-            </Button>
+          </div>
+          <WebDevShowcase />
+        </div>
+      </section>
+
+      {/* Visual Deliverables Grid: Real systems we build */}
+      <section className="py-24">
+        <div className="container mx-auto px-6">
+          <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-16">
+            <div>
+              <span className="text-xs font-mono text-primary uppercase font-bold tracking-wider">Verified Production Platforms</span>
+              <h2 className="font-display text-3xl sm:text-4xl font-bold uppercase text-foreground mt-2">
+                What we build &amp; ship for clients.
+              </h2>
+            </div>
+            <p className="text-sm text-muted-foreground max-w-md">
+              Every system is customized from the database schema up to meet strict commercial performance requirements.
+            </p>
           </div>
 
-          {/* Scroll-linked build scene */}
-          <WebDevBuildScene />
+          <div className="grid md:grid-cols-3 gap-8">
+            {WEB_DELIVERABLES.map((del, idx) => (
+              <div
+                key={idx}
+                className="group rounded-3xl border border-border/80 bg-card/60 backdrop-blur-xl overflow-hidden hover:border-primary/50 transition-all duration-300 hover:shadow-xl flex flex-col justify-between"
+              >
+                <div>
+                  <div className="relative aspect-[16/10] overflow-hidden bg-muted/20 border-b border-border/60">
+                    <img
+                      src={del.image}
+                      alt={del.title}
+                      loading="lazy"
+                      width={640}
+                      height={400}
+                      className="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-105"
+                    />
+                    <div className="absolute top-3 right-3 px-2.5 py-1 rounded-full bg-background/90 backdrop-blur-md border border-border/60 text-[10px] font-mono text-primary font-bold">
+                      {del.tag}
+                    </div>
+                  </div>
 
-          {/* Features */}
-          <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto mb-20">
-            {features.map((feature, index) => (
-              <div key={index} className="bg-card p-8 rounded-2xl border border-border">
-                <div className="w-14 h-14 bg-primary/10 rounded-2xl flex items-center justify-center mb-6">
-                  <feature.icon className="w-7 h-7 text-primary" />
+                  <div className="p-6">
+                    <h3 className="font-display text-xl font-bold text-foreground mb-2 group-hover:text-primary transition-colors">
+                      {del.title}
+                    </h3>
+                    <p className="text-sm text-muted-foreground leading-relaxed mb-6">
+                      {del.desc}
+                    </p>
+
+                    <div className="space-y-2 pt-4 border-t border-border/60">
+                      {del.features.map((feat, fIdx) => (
+                        <div key={fIdx} className="flex items-center gap-2 text-xs text-foreground/85">
+                          <CheckCircle2 className="w-3.5 h-3.5 text-primary shrink-0" />
+                          <span>{feat}</span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
                 </div>
-                <h3 className="text-xl font-bold mb-3">{feature.title}</h3>
-                <p className="text-muted-foreground">{feature.description}</p>
+
+                <div className="p-6 pt-0">
+                  <Button asChild variant="outline" className="w-full rounded-xl text-xs font-semibold h-10 hover:bg-primary hover:text-primary-foreground hover:border-primary transition-all">
+                    <Link to="/portfolio">Inspect Case Study</Link>
+                  </Button>
+                </div>
               </div>
             ))}
           </div>
-
-          {/* What We Offer */}
-          <div className="max-w-4xl mx-auto mb-20">
-            <h2 className="text-3xl font-bold text-center mb-12">What We Offer</h2>
-            <div className="space-y-4">
-              {[
-                'Custom website design and development',
-                'E-commerce websites with online payment integration',
-                'Content Management Systems (CMS)',
-                'Website maintenance and support',
-                'Website redesign and modernization',
-                'Landing page design and optimization',
-                'Blog and news portal development'
-              ].map((item, index) => (
-                <div key={index} className="flex items-start gap-4 p-6 bg-card rounded-2xl border border-border">
-                  <Check className="w-6 h-6 text-primary flex-shrink-0 mt-1" />
-                  <p className="text-lg">{item}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          {/* CTA */}
-          <div className="max-w-3xl mx-auto text-center bg-card p-12 rounded-3xl border border-border">
-            <h2 className="text-3xl font-bold mb-6">Ready to Build Your Website?</h2>
-            <p className="text-muted-foreground mb-8 text-lg">
-              Let's create something amazing together. Contact us today for a free consultation!
-            </p>
-            <Button className="bg-primary hover:bg-primary/90 text-primary-foreground rounded-full px-8 py-6 text-lg">
-              Contact Us Now
-            </Button>
-          </div>
-
-          {/* SEO FAQ */}
-          <ServiceFAQ
-            pageUrl="https://www.bwtng.live/web-development"
-            faqs={[
-              { question: "How much does a website cost in Nigeria?", answer: "Cost depends on scope \u2014 a simple business site, a full e-commerce store, and a custom web app are priced very differently. Contact us for a free quote based on your exact requirements." },
-              { question: "How long does it take to build a website?", answer: "A typical business website takes 2-4 weeks. E-commerce sites and custom web applications with more features usually take 4-8 weeks depending on complexity." },
-              { question: "Do you build e-commerce websites with online payment?", answer: "Yes. We build online stores with secure payment integration (including Nigerian payment gateways like Paystack and Flutterwave), inventory management, and order tracking." },
-              { question: "Will my website be mobile-friendly and fast?", answer: "Every site we build is fully responsive and optimized for speed, since both directly affect your search rankings and conversion rate." },
-              { question: "Do you offer website maintenance after launch?", answer: "Yes, we offer ongoing maintenance packages covering updates, security monitoring, backups, and content changes after your site goes live." },
-              { question: "Can you redesign my existing website?", answer: "Absolutely. We audit your current site, keep what's working, and rebuild the rest with modern design, better performance, and improved SEO." }
-            ]}
-          />
         </div>
       </section>
+
+      {/* Technical Architecture Specs Matrix */}
+      <section className="py-20 bg-card/60 border-y border-border/60">
+        <div className="container mx-auto px-6">
+          <div className="max-w-2xl mb-12">
+            <span className="text-xs font-mono text-primary uppercase font-bold tracking-wider">Engineering Specs</span>
+            <h2 className="font-display text-3xl font-bold uppercase text-foreground mt-2">
+              Our Web Development Tech Stack
+            </h2>
+          </div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {TECH_SPECS.map((spec, i) => (
+              <div key={i} className="p-6 rounded-2xl bg-background/90 border border-border/80">
+                <span className="text-xs font-mono text-primary font-bold block mb-2">{spec.title}</span>
+                <p className="text-sm font-medium text-foreground leading-relaxed">{spec.tech}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* FAQ Section */}
+      <section className="py-24">
+        <div className="container mx-auto px-6 max-w-4xl">
+          <div className="text-center mb-16">
+            <span className="text-xs font-mono text-primary uppercase font-bold tracking-wider">Common Inquiries</span>
+            <h2 className="font-display text-3xl font-bold uppercase text-foreground mt-2">
+              Web Development FAQ
+            </h2>
+          </div>
+          <ServiceFAQ serviceName="web-development" />
+        </div>
+      </section>
+
+      {/* Final Callout Bar */}
+      <section className="pb-28">
+        <div className="container mx-auto px-6">
+          <div className="rounded-3xl border border-primary/30 bg-gradient-to-r from-card via-card/90 to-primary/10 p-8 md:p-12 shadow-2xl flex flex-col md:flex-row items-center justify-between gap-8">
+            <div className="space-y-2 text-center md:text-left">
+              <span className="text-xs font-mono uppercase text-primary font-bold tracking-wider block">Kickstart Your Web Platform</span>
+              <h3 className="font-display text-2xl md:text-3xl font-bold uppercase text-foreground">
+                Ready to engineer your web application?
+              </h3>
+              <p className="text-sm text-muted-foreground max-w-xl">
+                Get an estimated sprint timeline, database architecture overview, and commercial scoping on WhatsApp.
+              </p>
+            </div>
+
+            <Button asChild size="lg" className="rounded-full px-8 h-12 font-semibold bg-primary hover:bg-primary/90 text-primary-foreground shadow-lg shadow-primary/20 shrink-0">
+              <a href="https://wa.me/2347051551543?text=Hi%20Bluewaves%2C%20let%27s%20scope%20a%20new%20web%20application." target="_blank" rel="noopener noreferrer">
+                Chat on WhatsApp <ArrowRight className="ml-2 w-4 h-4" />
+              </a>
+            </Button>
+          </div>
+        </div>
+      </section>
+
       <Footer />
     </main>
   );

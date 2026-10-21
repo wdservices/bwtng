@@ -139,6 +139,55 @@
     animation: neon-pulse 2.4s ease-in-out infinite;
   }
 
+  /* ---------------- Element-Specific Cursor Touch Micro-Animations ---------------- */
+  /* Buttons: Spring lift, active squash & radial energy flare */
+  button, [role="button"], a[class*="button"], .btn {
+    transition: transform 0.22s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.22s ease, filter 0.22s ease;
+  }
+  button:hover, [role="button"]:hover, a[class*="button"]:hover, .btn:hover {
+    transform: translateY(-2.5px) scale(1.02);
+    box-shadow: 0 10px 24px -5px rgba(37, 99, 235, 0.35);
+  }
+  button:active, [role="button"]:active, a[class*="button"]:active, .btn:active {
+    transform: translateY(0px) scale(0.97);
+  }
+
+  /* Cards & Articles: Smooth 3D perspective lift & neon border illumination */
+  article, .card, .glass-card, [class*="card"] {
+    transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.35s ease, border-color 0.35s ease;
+  }
+  article:hover, .card:hover, .glass-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 40px -15px rgba(37, 99, 235, 0.16), 0 0 0 1px rgba(59, 130, 246, 0.2);
+  }
+
+  /* Text & Navigation Links: Magnetic highlight glow */
+  nav a, a:not(button):not([class*="button"]):not([class*="btn"]):not([class*="card"]) {
+    transition: color 0.2s ease, transform 0.2s ease, text-shadow 0.2s ease;
+  }
+  nav a:hover, a:not(button):not([class*="button"]):not([class*="btn"]):not([class*="card"]):hover {
+    text-shadow: 0 0 12px rgba(59, 130, 246, 0.5);
+  }
+
+  /* Form Inputs & Textareas: Cyber focus glow */
+  input, textarea, select {
+    transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+  }
+  input:hover, textarea:hover, select:hover {
+    border-color: rgba(59, 130, 246, 0.45);
+  }
+  input:focus-visible, textarea:focus-visible, select:focus-visible {
+    box-shadow: 0 0 0 2px hsl(var(--primary)), 0 0 20px -3px rgba(37, 99, 235, 0.4);
+  }
+
+  /* Interactive Chips & Tags: Micro expansion */
+  [class*="badge"], [class*="tag"] {
+    transition: transform 0.18s ease, border-color 0.18s ease;
+  }
+  [class*="badge"]:hover, [class*="tag"]:hover {
+    transform: scale(1.06);
+  }
+
   .animate-fade-in {
     animation: fade-in 0.3s ease-out;
   }

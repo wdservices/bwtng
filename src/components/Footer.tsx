@@ -6,7 +6,7 @@ const Footer = () => {
   const whatsappUrl = 'https://wa.me/2347051551543';
 
   return (
-    <footer className="bg-card border-t border-border">
+    <footer className="relative z-50 bg-card border-t border-border">
       <div className="container mx-auto px-6 py-16">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
 

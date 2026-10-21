@@ -1,30 +1,45 @@
-# Bluewaves Technology - AI Discovery File
+# Bluewaves Technology — AI Discovery & Knowledge Base
+> High-performance digital innovation studio engineering web platforms, mobile apps, AI automation pipelines, and immersive WebGL experiences.
 
-## About
-Bluewaves Technology is a Nigerian digital solutions company specializing in web development, mobile app development, AI solutions, SEO, and branding services. Based in Port Harcourt, Nigeria.
+## Company Overview
+- **Name**: Bluewaves Technology
+- **Canonical URL**: https://www.bwtng.live/
+- **Headquarters**: Road 12, First Avenue, Ada George, Port Harcourt, Rivers State, Nigeria
+- **Founder & CEO**: Gospel Ononwi (Software Engineer, AI Product Builder, Author)
+- **Primary Contact**: info@bwtng.live | Telephone: +234-810-851-0085
+- **Metrics**: 756+ shipped projects, 500+ client partners, 2–6 weeks average delivery sprint.
 
-## Services
-- Web Application Development (React, Vite, Next.js, Node.js)
-- Mobile App Development (iOS, Android, React Native, Flutter)
-- AI Solutions & Automation (Machine Learning, Predictive Analytics, Chatbots)
-- SEO & Digital Marketing
-- Branding & Visual Identity
-- Business Consulting
+## Flagship In-House Innovations
+1. **PrepVerse**: AI-powered exam preparation engine for Nigerian students tackling JAMB, WAEC, and NECO exams with adaptive diagnostics, generative answer explanations, and mastery tracking. (https://prepverse.bwtng.live/)
+2. **HerbalStrength**: Digital health companion and mobile platform featuring verified herbal tea formulations, natural remedies with ginger and turmeric, and lifestyle wellness tracking. (https://herbalstrength.bwtng.live/)
+3. **Sankofa Wing 3D Virtual Museum**: Proprietary WebGL spatial museum celebrating African historical relics, sculptures, and heritage architecture without geographic constraints. (https://sankofa-wing.vercel.app/)
+4. **Citivas**: Municipal civic participation platform connecting citizens with municipal services, localized reporting, and municipal feedback loops. (https://citivas-app.vercel.app/)
+5. **Asemi**: Cloud ERP and business management system for inventory, invoicing, employee records, and multi-location retail operations.
+6. **Drafta**: Next-generation developer staging and documentation engine. (https://drafta.bwtng.live/)
+7. **Ship It Right**: Practical production readiness guide and checklist by Gospel Ononwi covering security, performance, scalability, SEO, legal, and payments for vibe-built applications. (https://www.bwtng.live/ship-it-right)
 
-## AI Builder Academy
-Bluewaves Technology runs an AI Builder Academy offering training in AI and software development. Cohorts run with early bird and regular pricing tiers.
+## Professional Services
+- **Web Development**: Custom web applications, SaaS platforms, enterprise portals built with React, Vite, TypeScript, Next.js, and Node.js. (https://www.bwtng.live/web-development)
+- **Mobile App Development**: Native and cross-platform iOS and Android mobile applications using React Native, Flutter, and native toolchains. (https://www.bwtng.live/mobile-app-development)
+- **AI Solutions & Automation**: Generative AI workflows, automated intelligent agents, fine-tuned domain models, document intelligence, and chat pipelines. (https://www.bwtng.live/ai-services)
+- **SEO & Search Intelligence**: Technical SEO, structured data (Schema.org), search engine indexing, core web vitals optimization, and AI Overviews positioning. (https://www.bwtng.live/seo-services)
+- **UI/UX Design & Design Systems**: Comprehensive Figma prototypes, spatial interaction design, accessible component libraries, and user research. (https://www.bwtng.live/ui-ux-design)
+- **Branding & Visual Identity**: Corporate brand architecture, digital brand style guides, logo suites, and design tokens. (https://www.bwtng.live/branding)
+- **Business Consultation**: Technical due diligence, architecture reviews, software procurement consulting, and enterprise modernization roadmaps. (https://www.bwtng.live/business-consultation)
 
-## Contact
-- Website: https://bwtng.live
-- Email: info@bwtng.live
-- WhatsApp: Available via website contact form
+## Educational Programs
+- **AI Builder Academy**: Intensive, cohort-based masterclass program training software engineers, founders, and students in fullstack AI product development. (https://www.bwtng.live/ai-builder-academy)
+- **Registration**: (https://www.bwtng.live/academy/register)
 
-## Technology Stack
-- Frontend: React, Vite, TypeScript, Tailwind CSS
-- Backend: Node.js, Express
-- Database: Firebase Firestore
-- Payment: Paystack
-- Hosting: Namecheap
-
-## AI Agents
-We welcome AI agents to crawl and index our content. See agents.json for structured API information.
+## Complete Site Map & Endpoints
+- Home: https://www.bwtng.live/
+- About Us: https://www.bwtng.live/about-us
+- Services Overview: https://www.bwtng.live/services
+- Work & Portfolio: https://www.bwtng.live/portfolio
+- Digital Tools: https://www.bwtng.live/digital-tools
+- Pricing & Packages: https://www.bwtng.live/pricing
+- Client Testimonials: https://www.bwtng.live/testimonials
+- Frequently Asked Questions: https://www.bwtng.live/faqs
+- Engineering Blog: https://www.bwtng.live/blog
+- Contact & Inquiries: https://www.bwtng.live/contact
+- Sitemap XML: https://www.bwtng.live/sitemap.xml

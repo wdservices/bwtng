@@ -4,9 +4,9 @@ import { ArrowRight } from "lucide-react";
 import { motion } from "framer-motion";
 
 const products = [
-  { logo: "/product-logos/prepverse.png",     name: "PrepVerse",      description: "AI-powered exam preparation with practice tests, study plans, and progress analytics.",           category: "EdTech",      status: "Live",        url: "https://www.prepverse.bwtng.live/" },
-  { logo: "/product-logos/herbalstrength.png", name: "HerbalStrength", description: "Wellness platform for discovering herbal solutions and healthy lifestyle products.",             category: "Health",      status: "Live",        url: "https://play.google.com/store/apps/details?id=com.bwtng.herbalstrenght" },
-  { logo: "/product-logos/citivas_blue.png",  name: "Citivas",        description: "Discover, book and enjoy the best experiences around you.",                                    category: "Travel",      status: "Coming Soon", url: null },
+  { logo: "/product-logos/prepverse.png",     name: "PrepVerse",      description: "AI-powered exam preparation with practice tests, study plans, and progress analytics.",           category: "EdTech",      status: "Live",        url: "https://prepverse.bwtng.live/" },
+  { logo: "/product-logos/herbalstrength.png", name: "HerbalStrength", description: "Wellness platform for discovering herbal solutions and healthy lifestyle products.",             category: "Health",      status: "Live",        url: "https://herbalstrength.bwtng.live/" },
+  { logo: "/product-logos/citivas_blue.png",  name: "Citivas",        description: "Discover, book and enjoy the best experiences around you.",                                    category: "Travel",      status: "Coming Soon", url: "https://citivas.vercel.app/" },
 ];
 
 const Products = () => (

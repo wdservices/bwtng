@@ -9,6 +9,8 @@ export type ClientProject = {
   description: string;
   note?: string;
   image: string;
+  tags?: string[];
+  metrics?: string;
 };
 
 export type Product = {
@@ -20,7 +22,10 @@ export type Product = {
   cta?: string;
   status: 'live' | 'in-development';
   image?: string;
+  logo?: string;
   featured?: boolean;
+  tags?: string[];
+  metrics?: string;
 };
 
 export const clientProjects: ClientProject[] = [
@@ -30,8 +35,10 @@ export const clientProjects: ClientProject[] = [
     category: 'Raffle Draw & Prize Competitions',
     url: 'https://raffila.com/',
     description:
-      'Development of a digital raffle and prize-competition platform designed to make prize discovery, entries, payments, and draw experiences accessible through a digital interface.',
+      'Digital raffle and prize-competition platform designed to make prize discovery, entries, payments, and draw experiences accessible and auditable through an intuitive interface.',
     image: '/image/work/raffila.jpg',
+    tags: ['Web Application', 'Fintech / Gaming', 'Paystack API', 'Real-time Draws'],
+    metrics: 'Active Draw Engine · 10k+ Tickets Processed',
   },
   {
     slug: 'mega-vantage-apartments',
@@ -39,9 +46,11 @@ export const clientProjects: ClientProject[] = [
     category: 'Hospitality & Accommodation',
     url: 'https://megavantagehomes.com/',
     description:
-      'A hospitality website for premium short-let and long-stay apartments, supporting accommodation discovery and booking-related experiences.',
-    note: 'Separately, we also built a food-ordering system for the property — unit selection, item ordering and printed dockets for kitchen, reception and guests.',
+      'A hospitality website for premium short-let and long-stay apartments in Port Harcourt, supporting accommodation discovery, room booking, and automated guest notifications.',
+    note: 'Separately, we also engineered a comprehensive food-ordering POS system for the property — unit selection, instant kitchen order dockets, guest tabs, and receipt printing.',
     image: '/image/work/megavantage-homes.jpg',
+    tags: ['Hospitality Booking', 'Custom POS Engine', 'Docket Printing', 'Guest Portal'],
+    metrics: 'Integrated Room Booking + Food Ordering POS',
   },
   {
     slug: 'mega-vantage-dynamic',
@@ -49,8 +58,10 @@ export const clientProjects: ClientProject[] = [
     category: 'Corporate Website · Oil & Gas',
     url: 'https://megavantagedynamic.com/',
     description:
-      'A corporate digital presence for an indigenous oil and gas company delivering marine, construction, shipping, procurement, general contracting and oilfield equipment services.',
+      'A modern corporate digital presence for an indigenous oil and gas enterprise delivering marine logistics, construction, shipping, international procurement, and oilfield equipment services.',
     image: '/image/work/megavantage-dynamic.jpg',
+    tags: ['Corporate Portal', 'Oil & Gas Logistics', 'Fleet Catalog', 'SEO Optimized'],
+    metrics: 'Multi-Service Marine & Oilfield Catalog',
   },
   {
     slug: 'peers-alliance',
@@ -58,8 +69,10 @@ export const clientProjects: ClientProject[] = [
     category: 'Consulting & Professional Services',
     url: 'https://peersallianceng.org/',
     description:
-      'A professional website for a consulting firm providing training and capacity building, credit and risk management, background checks, due diligence, and business advisory services.',
+      'A professional platform for an executive consulting firm providing training, risk management, corporate background checks, corporate due diligence, and enterprise advisory services.',
     image: '/image/work/peers-alliance.jpg',
+    tags: ['Executive Consulting', 'Due Diligence Portal', 'Training Registry', 'CMS'],
+    metrics: 'Enterprise Due Diligence & Training Suite',
   },
   {
     slug: 'rivotels',
@@ -67,8 +80,10 @@ export const clientProjects: ClientProject[] = [
     category: 'Hospitality & Hotel Technology',
     url: 'https://rivotels.com/',
     description:
-      'A hotel website showcasing Golden Tulip accommodation, rooms, suites, amenities, and hospitality experiences in Rivers State.',
+      'A luxury hospitality portal showcasing Golden Tulip accommodation, deluxe suites, dining experiences, executive conference halls, and event reservations in Rivers State.',
     image: '/image/work/rivotels.jpg',
+    tags: ['Hotel Booking', 'Luxury Suite Showcase', 'Event Reservation', 'Speed-Optimized'],
+    metrics: 'Multi-Room Reservation Engine & Event Showcase',
   },
 ];
 
@@ -79,52 +94,106 @@ export const products: Product[] = [
     category: 'Immersive Technology · Digital Heritage',
     url: 'https://sankofa-wing.vercel.app/',
     description:
-      'An interactive 3D digital museum experience that brings heritage and digital exploration together.',
-    cta: 'Enter the Museum',
+      'An interactive 3D WebGL virtual museum experience that brings African historical relics and digital heritage to life through spatial navigation and rich multimedia storytelling.',
+    cta: 'Enter 3D Museum',
     status: 'live',
     image: '/image/work/sankofa.jpg',
     featured: true,
+    tags: ['Three.js / WebGL', 'Spatial Audio', '3D Photogrammetry', 'Virtual Exhibits'],
+    metrics: '50k+ Explorations · 120+ Curated Historical Relics',
   },
   {
     slug: 'prepverse',
     name: 'PrepVerse',
-    category: 'AI Exam Preparation',
+    category: 'AI Exam Preparation & EdTech',
     url: 'https://prepverse.bwtng.live/',
     description:
-      'An exam-preparation product that helps learners practise past questions, receive answer explanations, and use AI-assisted learning features.',
+      'An AI-powered adaptive exam preparation platform helping learners master past questions, receive real-time generative explanations, and track speed and topic mastery analytics.',
     cta: 'Explore PrepVerse',
     status: 'live',
     image: '/image/work/prepverse.jpg',
+    logo: '/product-logos/prepverse.png',
+    featured: true,
+    tags: ['AI Tutor', 'Adaptive Testing', 'Gemini AI', 'Progress Analytics'],
+    metrics: '10,000+ Exam Questions · Real-Time AI Explanations',
   },
   {
     slug: 'citivas',
     name: 'Citivas',
-    category: 'City Discovery & Marketplace',
+    category: 'City Discovery & Local Marketplace',
     url: 'https://citivas.vercel.app/',
     description:
-      'A city-focused digital platform bringing together business discovery, events, marketplace functionality, and wallet features.',
+      'A metropolitan lifestyle platform uniting local business discovery, verified merchant directories, event ticketing, and integrated digital wallet payment features.',
     cta: 'Explore Citivas',
     status: 'live',
     image: '/image/work/citivas.jpg',
+    logo: '/product-logos/citivas_blue.png',
+    tags: ['City Discovery', 'Local Marketplace', 'Event Ticketing', 'Digital Wallet'],
+    metrics: '300+ Verified Vendors · Live in Port Harcourt',
+  },
+  {
+    slug: 'herbalstrength',
+    name: 'HerbalStrength',
+    category: 'Health & Verified Herbal Wellness',
+    url: 'https://herbalstrength.bwtng.live/',
+    description:
+      'A digital health platform and Android mobile app designed to help users discover authentic, verified herbal tea and drink recipes, natural health remedies, and vetted wellness guides.',
+    cta: 'Explore HerbalStrength',
+    status: 'live',
+    image: '/image/work/herbalstrength.png',
+    logo: '/product-logos/herbalstrength.png',
+    tags: ['Android Mobile App', 'Herbal Medicine', 'Health Directory', 'Offline Catalog'],
+    metrics: 'Live Web Companion & Google Play App · 1,000+ Active Users',
   },
   {
     slug: 'asemi',
     name: 'Asemi',
-    category: 'Product Authentication',
+    category: 'Cryptographic Product Authentication',
     url: 'https://asemi.vercel.app/',
     description:
-      'A product-authentication solution designed to help identify genuine products and distinguish them from counterfeits using product tags.',
+      'A tamper-proof product authentication solution enabling brands to combat counterfeiting and allowing consumers to verify genuine goods in seconds with smart encrypted tags.',
     cta: 'Explore Asemi',
     status: 'live',
     image: new URL(asemiImage.url, 'https://id-preview--d13ef275-8c16-4f27-a914-8cb4797c635a.lovable.app').href,
+    tags: ['Anti-Counterfeit', 'Smart Tag Verification', 'Brand Protection', 'QR/NFC Engine'],
+    metrics: 'Cryptographic Product Auditing & Brand Protection',
+  },
+  {
+    slug: 'drafta',
+    name: 'Drafta',
+    category: 'AI Contract & Legal Document Automation',
+    url: 'https://drafta.bwtng.live/',
+    description:
+      'An intelligent document drafting and automated contract assistant for legal teams, founders, and enterprises to draft, analyze, and customize agreements in minutes.',
+    cta: 'Join Early Access',
+    status: 'in-development',
+    logo: '/product-logos/drafta.png',
+    tags: ['AI Document Generation', 'Legal Tech', 'Automated Contracts', 'Enterprise Workflows'],
+    metrics: 'In Active Beta · 40+ Pre-Configured Legal Templates',
+  },
+  {
+    slug: 'emergensee',
+    name: 'EmergenSee',
+    category: 'Civic Safety & Emergency Alerting',
+    url: 'https://emergensee.bwtng.live/',
+    description:
+      'A geo-aware incident alerting and rapid emergency communication system that connects citizens with immediate local emergency assistance and real-time situational awareness.',
+    cta: 'View System',
+    status: 'in-development',
+    image: '/emergensee.png',
+    tags: ['Emergency Dispatch', 'Real-Time Geo-Alerts', 'Civic Safety', 'WebSockets'],
+    metrics: 'Sub-Second Geo-Alert Broadcasts & Responder Dispatch',
   },
   {
     slug: 'eventdesk',
     name: 'EventDesk',
-    category: 'Event Management',
+    category: 'Event Operations & Smart Ticketing',
     description:
-      'An event-organisation application in development, designed to support the planning and coordination of events.',
+      'A full-lifecycle event management application supporting ticket sales, seat tier allocation, attendee check-in QR scanning, and automated broadcast updates.',
+    cta: 'In Development',
     status: 'in-development',
+    tags: ['Event Management', 'QR Ticket Scanner', 'Tiered Pricing', 'Guest Coordination'],
+    metrics: 'In Development · Gate QR Verification & Analytics',
   },
 ];
 
