@@ -59,6 +59,8 @@ export default function TechGlobe3D() {
     renderer.setSize(width, height);
     renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
     renderer.outputColorSpace = THREE.SRGBColorSpace;
+    renderer.setClearColor(0x000000, 0);
+    renderer.domElement.style.background = 'transparent';
     renderer.domElement.style.touchAction = 'pan-y';
     container.appendChild(renderer.domElement);
 
@@ -400,9 +402,15 @@ export default function TechGlobe3D() {
       className="relative w-full max-w-[320px] sm:max-w-[440px] md:max-w-[540px] lg:max-w-[620px] xl:max-w-[660px] mx-auto flex items-center justify-center select-none cursor-grab active:cursor-grabbing touch-pan-y"
       style={{ touchAction: 'pan-y' }}
     >
-      {/* Soft ambient background glow seamlessly blending into hero atmosphere */}
-      <div className="absolute inset-4 rounded-full bg-primary/10 blur-3xl pointer-events-none" />
-      <div className="absolute inset-16 rounded-full bg-cyan-500/10 blur-2xl pointer-events-none" />
+      {/* Soft radial ambient glow fading fully to transparent (no box/clip edges) */}
+      <div
+        className="absolute inset-0 pointer-events-none"
+        aria-hidden="true"
+        style={{
+          background:
+            'radial-gradient(circle at 50% 50%, rgba(37,99,235,0.16) 0%, rgba(56,189,248,0.09) 38%, rgba(37,99,235,0.04) 58%, rgba(10,15,28,0) 74%)',
+        }}
+      />
 
       {/* 3D WebGL Canvas Container: Borderless, clean, with reactive acceleration & zoom */}
       <div

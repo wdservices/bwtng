@@ -113,7 +113,7 @@ export const StudioHero = () => {
           </motion.div>
 
           {/* Right Column: Borderless 3D Tech Globe Model blending seamlessly into background */}
-          <motion.div style={{ y: globeY }} className="lg:col-span-6 flex items-center justify-center lg:justify-end w-full overflow-hidden">
+          <motion.div style={{ y: globeY }} className="lg:col-span-6 flex items-center justify-center lg:justify-end w-full min-w-0">
             <TechGlobe3D />
           </motion.div>
         </div>
@@ -292,7 +292,7 @@ const StackingProjectCard: React.FC<StackingCardProps> = ({ project, index, tota
     >
       <div className="grid lg:grid-cols-12 gap-6 sm:gap-8 items-center">
         {/* Adjusted Preview Window (16:10 browser frame) */}
-        <div className="lg:col-span-7">
+        <div className="lg:col-span-7 min-w-0">
           <a
             href={project.url}
             {...ext}
@@ -331,7 +331,7 @@ const StackingProjectCard: React.FC<StackingCardProps> = ({ project, index, tota
         </div>
 
         {/* Project Specs */}
-        <div className="lg:col-span-5 flex flex-col justify-between">
+        <div className="lg:col-span-5 min-w-0 flex flex-col justify-between">
           <div>
             <div className="flex flex-wrap items-center gap-x-2 gap-y-1 text-xs text-muted-foreground mb-3 font-mono">
               <span className="whitespace-nowrap shrink-0">0{index + 1} / 0{total}</span>
