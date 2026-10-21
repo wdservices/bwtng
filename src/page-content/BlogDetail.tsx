@@ -4,6 +4,8 @@ import { getPostBySlug, allPosts, BlogPost } from '@/data/blog-posts';
 import { ArrowLeft, Calendar, Tag, Eye, Clock, User, Share2, Sparkles, ChevronRight, MessageSquare } from 'lucide-react';
 import { Head as Helmet } from 'vite-react-ssg';
 import { useBlogViews } from '@/hooks/useBlogViews';
+import Header from '@/components/Header';
+import Footer from '@/components/Footer';
 
 const BLUEWAVES_BLOG_IMAGE = '/image/blog/bluewaves-blog-bg.jpg';
 const BLUEWAVES_BLOG_IMAGE_ABSOLUTE = 'https://www.bwtng.live/image/blog/bluewaves-blog-bg.jpg';
@@ -108,8 +110,11 @@ const BlogDetail: React.FC = () => {
         </script>
       </Helmet>
 
+      {/* Top Navigation */}
+      <Header />
+
       {/* Hero Header with Unique Bluewaves Background Image */}
-      <section className="relative overflow-hidden border-b border-slate-800/80 bg-slate-900 pt-16 pb-16 lg:pb-20">
+      <section className="relative overflow-hidden border-b border-slate-800/80 bg-slate-900 pt-24 sm:pt-32 pb-12 sm:pb-16 lg:pb-20">
         <div className="absolute inset-0 opacity-30 pointer-events-none">
           <img
             src={BLUEWAVES_BLOG_IMAGE}
@@ -120,7 +125,7 @@ const BlogDetail: React.FC = () => {
           <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/80 to-slate-950/50" />
         </div>
 
-        <div className="container relative mx-auto px-4 max-w-5xl">
+        <div className="container relative mx-auto px-4 sm:px-6 max-w-5xl">
           {/* Breadcrumb Navigation */}
           <nav className="flex items-center gap-2 text-xs text-slate-400 mb-6 flex-wrap">
             <Link to="/" className="hover:text-blue-400 transition-colors">
@@ -335,6 +340,9 @@ const BlogDetail: React.FC = () => {
           </aside>
         </div>
       </div>
+
+      {/* Footer */}
+      <Footer />
     </main>
   );
 };

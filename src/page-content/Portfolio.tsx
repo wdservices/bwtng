@@ -94,7 +94,7 @@ const Portfolio: React.FC = () => {
       {/* Hero Header */}
       <section className="relative pt-36 pb-16 overflow-hidden border-b border-border/60">
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_60%_50%_at_50%_-10%,rgba(37,99,235,0.12),transparent_70%)] pointer-events-none" />
-        <div className="container relative z-10 mx-auto px-6 max-w-6xl">
+        <div className="container relative z-10 mx-auto px-4 sm:px-6 max-w-6xl">
           <div className="text-center max-w-3xl mx-auto mb-12">
             <motion.div
               initial={{ opacity: 0, y: -10 }}
@@ -133,9 +133,9 @@ const Portfolio: React.FC = () => {
           </div>
 
           {/* Interactive Controls & Filters */}
-          <div className="flex flex-col md:flex-row items-center justify-between gap-4 pt-4 border-t border-border/60">
+          <div className="flex flex-col md:flex-row items-stretch md:items-center justify-between gap-4 pt-4 border-t border-border/60">
             {/* Filter Tabs */}
-            <div className="flex flex-wrap items-center gap-1.5 p-1 bg-card border border-border rounded-2xl w-full md:w-auto">
+            <div className="flex items-center gap-1.5 p-1.5 bg-card border border-border rounded-2xl max-w-full overflow-x-auto no-scrollbar">
               {[
                 { id: 'all', label: 'All Works' },
                 { id: 'in-house', label: 'In-House Products (8)' },
@@ -146,7 +146,7 @@ const Portfolio: React.FC = () => {
                 <button
                   key={tab.id}
                   onClick={() => setActiveFilter(tab.id as FilterType)}
-                  className={`px-4 py-2 rounded-xl text-xs font-semibold transition-all ${
+                  className={`px-3.5 sm:px-4 py-2 rounded-xl text-xs font-semibold whitespace-nowrap shrink-0 transition-all ${
                     activeFilter === tab.id
                       ? 'bg-primary text-primary-foreground shadow-sm'
                       : 'text-muted-foreground hover:text-foreground hover:bg-muted/40'
@@ -173,8 +173,8 @@ const Portfolio: React.FC = () => {
       </section>
 
       {/* Main Content Section */}
-      <section className="py-20">
-        <div className="container mx-auto px-6 max-w-6xl space-y-24">
+      <section className="py-16 sm:py-20">
+        <div className="container mx-auto px-4 sm:px-6 max-w-6xl space-y-16 sm:space-y-24">
 
           {/* Section 1: In-House Products Grid */}
           {(activeFilter === 'all' || activeFilter === 'in-house' || activeFilter === 'ai-3d' || activeFilter === 'mobile') && filteredProducts.length > 0 && (
@@ -339,7 +339,7 @@ const Portfolio: React.FC = () => {
                 {filteredClients.map((client, idx) => (
                   <div
                     key={client.slug}
-                    className="group rounded-2xl bg-card border border-border/80 hover:border-primary/40 shadow-sm hover:shadow-xl hover:shadow-primary/5 transition-all duration-300 p-6 sm:p-8"
+                    className="group rounded-2xl bg-card border border-border/80 hover:border-primary/40 shadow-sm hover:shadow-xl hover:shadow-primary/5 transition-all duration-300 p-4 sm:p-6 md:p-8"
                   >
                     <div className="grid md:grid-cols-12 gap-6 items-center">
                       {/* Left: Project Screenshot */}

@@ -135,23 +135,23 @@ export const Team = () => {
       <div className="absolute top-1/4 -left-48 w-96 h-96 rounded-full bg-primary/10 blur-[120px] pointer-events-none" />
       <div className="absolute bottom-1/4 -right-48 w-96 h-96 rounded-full bg-blue-600/10 blur-[140px] pointer-events-none" />
 
-      <div className="container mx-auto px-6 relative z-10">
+      <div className="container mx-auto px-4 sm:px-6 max-w-7xl relative z-10">
         {/* Section Header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="text-center max-w-3xl mx-auto mb-16 md:mb-20"
+          className="text-center max-w-3xl mx-auto mb-12 sm:mb-16 md:mb-20"
         >
           <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-primary/10 border border-primary/25 text-primary text-xs font-semibold uppercase tracking-wider mb-4">
             <Sparkles className="w-3.5 h-3.5" />
             Core Leadership &amp; Engineering
           </div>
-          <h2 className="font-display text-3xl sm:text-4xl md:text-5xl font-extrabold text-foreground tracking-tight leading-[1.1] mb-5">
+          <h2 className="font-display text-2xl sm:text-4xl md:text-5xl font-extrabold text-foreground tracking-tight leading-[1.1] mb-4 sm:mb-5">
             The Team Turning Vision Into <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-sky-200 to-white">Production Reality</span>
           </h2>
-          <p className="text-base sm:text-lg text-muted-foreground leading-relaxed">
+          <p className="text-sm sm:text-base md:text-lg text-muted-foreground leading-relaxed">
             A distributed collective of fullstack engineers, spatial designers, and AI specialists building high-performance digital products from Port Harcourt to the world.
           </p>
         </motion.div>
@@ -163,18 +163,18 @@ export const Team = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.65 }}
-            className="mb-14 rounded-3xl p-6 sm:p-10 md:p-12 bg-gradient-to-br from-card/90 via-card/70 to-primary/5 border border-primary/30 shadow-[0_20px_60px_-15px_rgba(0,0,0,0.5)] backdrop-blur-xl relative overflow-hidden group"
+            className="mb-12 sm:mb-14 rounded-3xl p-5 sm:p-10 md:p-12 bg-gradient-to-br from-card/90 via-card/70 to-primary/5 border border-primary/30 shadow-[0_20px_60px_-15px_rgba(0,0,0,0.5)] backdrop-blur-xl relative overflow-hidden group"
           >
             <div className="absolute top-0 right-0 w-80 h-80 rounded-full bg-primary/15 blur-[90px] pointer-events-none" />
 
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center relative z-10">
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-8 lg:gap-12 items-center relative z-10">
               {/* Founder Avatar */}
               <div className="lg:col-span-4 flex justify-center lg:justify-start">
                 <div className="relative">
-                  <div className="w-48 h-48 sm:w-56 sm:h-56 rounded-3xl overflow-hidden border-2 border-primary/50 shadow-2xl shadow-primary/20 bg-muted">
+                  <div className="w-40 h-40 sm:w-56 sm:h-56 rounded-3xl overflow-hidden border-2 border-primary/50 shadow-2xl shadow-primary/20 bg-muted">
                     <MemberPhoto name={founder.name} image={founder.image} />
                   </div>
-                  <div className="absolute -bottom-3 -right-3 bg-primary text-primary-foreground text-xs font-bold px-3 py-1.5 rounded-full shadow-lg flex items-center gap-1.5">
+                  <div className="absolute -bottom-2.5 sm:-bottom-3 -right-2.5 sm:-right-3 bg-primary text-primary-foreground text-[11px] sm:text-xs font-bold px-2.5 sm:px-3 py-1 sm:py-1.5 rounded-full shadow-lg flex items-center gap-1.5">
                     <CheckCircle2 className="w-3.5 h-3.5 text-white" />
                     Founder &amp; CEO
                   </div>
@@ -183,7 +183,7 @@ export const Team = () => {
 
               {/* Founder Details */}
               <div className="lg:col-span-8 space-y-4">
-                <div className="flex flex-wrap items-center gap-3">
+                <div className="flex flex-wrap items-center gap-2.5 sm:gap-3">
                   <span className="text-xs font-semibold px-3 py-1 rounded-full bg-primary/20 text-primary border border-primary/30">
                     Executive Leadership
                   </span>
@@ -194,24 +194,24 @@ export const Team = () => {
                 </div>
 
                 <div>
-                  <h3 className="font-display text-2xl sm:text-3xl font-bold text-foreground">
+                  <h3 className="font-display text-xl sm:text-2xl md:text-3xl font-bold text-foreground">
                     {founder.name}
                   </h3>
-                  <p className="text-sm sm:text-base text-primary font-medium mt-0.5">
+                  <p className="text-xs sm:text-sm md:text-base text-primary font-medium mt-0.5">
                     {founder.title}
                   </p>
                 </div>
 
-                <p className="text-sm sm:text-base text-muted-foreground leading-relaxed">
+                <p className="text-xs sm:text-sm md:text-base text-muted-foreground leading-relaxed">
                   {founder.bio}
                 </p>
 
                 {/* Skills Chips */}
-                <div className="flex flex-wrap gap-2 pt-2">
+                <div className="flex flex-wrap gap-1.5 sm:gap-2 pt-1 sm:pt-2">
                   {founder.skills.map((skill) => (
                     <span
                       key={skill}
-                      className="text-xs px-3 py-1 rounded-lg bg-background/70 border border-border/80 text-foreground font-medium"
+                      className="text-xs px-2.5 sm:px-3 py-1 rounded-lg bg-background/70 border border-border/80 text-foreground font-medium"
                     >
                       {skill}
                     </span>
@@ -219,12 +219,12 @@ export const Team = () => {
                 </div>
 
                 {/* Connect */}
-                <div className="pt-2 flex items-center gap-3">
+                <div className="pt-2 flex flex-wrap items-center gap-2 sm:gap-3">
                   <a
                     href="https://www.linkedin.com"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-1.5 text-xs font-semibold px-4 py-2 rounded-xl bg-card border border-border/80 hover:border-primary/60 hover:text-primary transition-all text-muted-foreground"
+                    className="inline-flex items-center gap-1.5 text-xs font-semibold px-3.5 sm:px-4 py-2 rounded-xl bg-card border border-border/80 hover:border-primary/60 hover:text-primary transition-all text-muted-foreground"
                     aria-label={`${founder.name} on LinkedIn`}
                   >
                     <Linkedin className="w-3.5 h-3.5" />
@@ -234,7 +234,7 @@ export const Team = () => {
                     href="https://x.com"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-1.5 text-xs font-semibold px-4 py-2 rounded-xl bg-card border border-border/80 hover:border-primary/60 hover:text-primary transition-all text-muted-foreground"
+                    className="inline-flex items-center gap-1.5 text-xs font-semibold px-3.5 sm:px-4 py-2 rounded-xl bg-card border border-border/80 hover:border-primary/60 hover:text-primary transition-all text-muted-foreground"
                     aria-label={`${founder.name} on X`}
                   >
                     <Twitter className="w-3.5 h-3.5" />
@@ -242,7 +242,7 @@ export const Team = () => {
                   </a>
                   <a
                     href="/ship-it-right"
-                    className="inline-flex items-center gap-1.5 text-xs font-semibold px-4 py-2 rounded-xl bg-primary/10 border border-primary/30 text-primary hover:bg-primary/20 transition-all ml-auto"
+                    className="inline-flex items-center gap-1.5 text-xs font-semibold px-3.5 sm:px-4 py-2 rounded-xl bg-primary/10 border border-primary/30 text-primary hover:bg-primary/20 transition-all sm:ml-auto"
                   >
                     Read &ldquo;Ship It Right&rdquo; &rarr;
                   </a>

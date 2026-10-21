@@ -33,7 +33,7 @@ export const StudioHero = () => {
     <motion.section
       ref={heroRef}
       style={{ scale: heroScale, opacity: heroOpacity }}
-      className="relative min-h-[96vh] flex items-center overflow-hidden bg-background pt-28 pb-32 z-10 will-change-transform"
+      className="relative min-h-[88vh] sm:min-h-[96vh] flex items-center overflow-hidden bg-background pt-24 sm:pt-28 pb-20 sm:pb-32 z-10 will-change-transform"
     >
       {/* Background Cybernetic Grid & Ambient Lighting */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
@@ -46,7 +46,7 @@ export const StudioHero = () => {
         <div className="absolute inset-x-0 bottom-0 h-48 bg-gradient-to-t from-background via-background/90 to-transparent" aria-hidden="true" />
       </div>
 
-      <div className="container relative z-10 mx-auto px-6">
+      <div className="container relative z-10 mx-auto px-4 sm:px-6 max-w-7xl">
         <div className="grid lg:grid-cols-12 gap-8 lg:gap-8 items-center">
           {/* Left Column: Adjusted Text Size & Value Proposition */}
           <motion.div style={{ y: contentY }} className="lg:col-span-6 space-y-6">
@@ -55,14 +55,14 @@ export const StudioHero = () => {
               initial={{ opacity: 0, y: -10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
-              className="inline-flex items-center gap-3 px-4 py-1.5 rounded-full bg-card/85 border border-primary/30 backdrop-blur-md text-xs text-muted-foreground shadow-sm"
+              className="inline-flex items-center gap-2 sm:gap-3 px-3.5 sm:px-4 py-1.5 rounded-full bg-card/85 border border-primary/30 backdrop-blur-md text-[11px] sm:text-xs text-muted-foreground shadow-sm max-w-full overflow-hidden"
             >
-              <span className="w-2 h-2 rounded-full bg-primary animate-pulse" />
-              <span className="text-foreground font-medium">Port Harcourt, Nigeria</span>
+              <span className="w-2 h-2 rounded-full bg-primary animate-pulse shrink-0" />
+              <span className="text-foreground font-medium whitespace-nowrap">Port Harcourt, Nigeria</span>
               <span aria-hidden="true" className="text-border">·</span>
-              <span>Full-Stack &amp; AI Studio</span>
-              <span aria-hidden="true" className="text-border">·</span>
-              <span className="text-primary font-medium">Available for Q2</span>
+              <span className="whitespace-nowrap">Full-Stack &amp; AI Studio</span>
+              <span aria-hidden="true" className="text-border hidden sm:inline">·</span>
+              <span className="text-primary font-medium hidden sm:inline whitespace-nowrap">Available for Q2</span>
             </motion.div>
 
             {/* Elegant, Unclustered Hero Headline with Open Spacing and Natural Rhythm */}
@@ -70,7 +70,7 @@ export const StudioHero = () => {
               initial={{ opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.65, ease: [0.16, 1, 0.3, 1] }}
-              className="font-display font-extrabold text-foreground text-3xl sm:text-4xl md:text-5xl lg:text-[3.25rem] xl:text-[3.65rem] leading-[1.22] tracking-tight max-w-xl"
+              className="font-display font-extrabold text-foreground text-2xl sm:text-4xl md:text-5xl lg:text-[3.25rem] xl:text-[3.65rem] leading-[1.2] sm:leading-[1.22] tracking-tight max-w-xl text-balance"
             >
               We turn{' '}
               <span className="text-primary font-bold">ambitious ideas</span>{' '}
@@ -85,7 +85,7 @@ export const StudioHero = () => {
             </p>
 
             {/* Quantified Metrics */}
-            <div className="flex flex-wrap items-center gap-x-6 gap-y-2 text-xs text-muted-foreground font-medium pt-1">
+            <div className="flex flex-wrap items-center gap-x-4 sm:gap-x-6 gap-y-2 text-xs text-muted-foreground font-medium pt-1">
               <div>
                 <span className="text-foreground font-bold text-sm tabular-nums">756+</span> Projects Shipped
               </div>
@@ -100,20 +100,20 @@ export const StudioHero = () => {
             </div>
 
             {/* CTAs */}
-            <div className="flex flex-wrap items-center gap-3.5 pt-2">
-              <Button asChild size="lg" className="rounded-full px-8 h-12 font-semibold bg-primary hover:bg-primary/90 text-primary-foreground shadow-lg shadow-primary/20 group">
+            <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3.5 pt-2 w-full sm:w-auto">
+              <Button asChild size="lg" className="rounded-full px-8 h-12 font-semibold bg-primary hover:bg-primary/90 text-primary-foreground shadow-lg shadow-primary/20 group w-full sm:w-auto justify-center">
                 <a href="#ecosystem">
                   Explore Architecture <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
                 </a>
               </Button>
-              <Button asChild size="lg" variant="outline" className="rounded-full px-8 h-12 font-semibold bg-card/60 backdrop-blur-md hover:bg-card">
+              <Button asChild size="lg" variant="outline" className="rounded-full px-8 h-12 font-semibold bg-card/60 backdrop-blur-md hover:bg-card w-full sm:w-auto justify-center">
                 <a href="#work">Explore Our Work</a>
               </Button>
             </div>
           </motion.div>
 
           {/* Right Column: Borderless 3D Tech Globe Model blending seamlessly into background */}
-          <motion.div style={{ y: globeY }} className="lg:col-span-6 flex items-center justify-center lg:justify-end">
+          <motion.div style={{ y: globeY }} className="lg:col-span-6 flex items-center justify-center lg:justify-end w-full overflow-hidden">
             <TechGlobe3D />
           </motion.div>
         </div>
@@ -188,14 +188,14 @@ export const ServicesOverview = () => {
     <section
       ref={sectionRef}
       id="services"
-      className="relative z-20 -mt-20 md:-mt-28 py-24 bg-card/95 backdrop-blur-2xl rounded-t-[2.5rem] md:rounded-t-[3.5rem] border-t border-primary/20 shadow-[0_-25px_60px_-15px_rgba(0,0,0,0.7)]"
+      className="relative z-20 -mt-8 sm:-mt-14 md:-mt-28 py-16 sm:py-20 md:py-24 bg-card/95 backdrop-blur-2xl rounded-t-[2rem] sm:rounded-t-[2.5rem] md:rounded-t-[3.5rem] border-t border-primary/20 shadow-[0_-25px_60px_-15px_rgba(0,0,0,0.7)]"
     >
-      <div className="container mx-auto px-6">
+      <div className="container mx-auto px-4 sm:px-6 max-w-7xl">
         <motion.div style={{ y: smoothHeaderY }}>
-          <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-16">
+          <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12 sm:mb-16">
             <div>
               <Eyebrow>Capabilities &amp; Architecture</Eyebrow>
-              <h2 className="font-display text-3xl sm:text-4xl md:text-5xl font-bold uppercase text-foreground leading-[1.05]">
+              <h2 className="font-display text-2xl sm:text-4xl md:text-5xl font-bold uppercase text-foreground leading-[1.08] sm:leading-[1.05]">
                 Engineered with precision. Built to scale.
               </h2>
             </div>
@@ -206,18 +206,18 @@ export const ServicesOverview = () => {
         </motion.div>
 
         {/* Smart Bento Grid with layered depth */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6">
           {serviceCategories.map((s, i) => (
             <Reveal key={s.id} delay={i * 0.05}>
-              <div className="group h-full flex flex-col justify-between p-7 rounded-2xl bg-background/80 border border-border/80 hover:border-primary/50 transition-all duration-300 hover:shadow-2xl hover:shadow-primary/10 hover:-translate-y-1">
+              <div className="group h-full flex flex-col justify-between p-6 sm:p-7 rounded-2xl bg-background/80 border border-border/80 hover:border-primary/50 transition-all duration-300 hover:shadow-2xl hover:shadow-primary/10 hover:-translate-y-1">
                 <div>
-                  <div className="flex items-center justify-between mb-6">
+                  <div className="flex items-center justify-between mb-5 sm:mb-6">
                     <div className="w-12 h-12 rounded-xl bg-card border border-border/60 flex items-center justify-center text-primary group-hover:scale-110 transition-transform shadow-inner">
                       <s.icon className="w-6 h-6" />
                     </div>
                     <span className="text-xs font-mono text-muted-foreground/60">0{i + 1}</span>
                   </div>
-                  <h3 className="font-display text-xl font-bold text-foreground mb-3 group-hover:text-primary transition-colors">
+                  <h3 className="font-display text-lg sm:text-xl font-bold text-foreground mb-2 sm:mb-3 group-hover:text-primary transition-colors">
                     {s.title}
                   </h3>
                   <p className="text-sm text-muted-foreground leading-relaxed mb-6">
@@ -261,6 +261,15 @@ interface StackingCardProps {
 
 const StackingProjectCard: React.FC<StackingCardProps> = ({ project, index, total }) => {
   const cardRef = useRef<HTMLDivElement>(null);
+  const [isDesktop, setIsDesktop] = React.useState(false);
+
+  React.useEffect(() => {
+    const check = () => setIsDesktop(window.innerWidth >= 1024);
+    check();
+    window.addEventListener('resize', check);
+    return () => window.removeEventListener('resize', check);
+  }, []);
+
   const { scrollYProgress } = useScroll({
     target: cardRef,
     offset: ['start 120px', 'end start'],
@@ -274,14 +283,14 @@ const StackingProjectCard: React.FC<StackingCardProps> = ({ project, index, tota
     <motion.div
       ref={cardRef}
       style={{
-        scale: smoothScale,
-        opacity,
-        top: `${80 + index * 12}px`,
+        scale: isDesktop ? smoothScale : 1,
+        opacity: isDesktop ? opacity : 1,
+        top: isDesktop ? `${80 + index * 12}px` : undefined,
         zIndex: 10 + index,
       }}
-      className="sticky rounded-3xl bg-card border border-border/90 p-6 md:p-8 shadow-[0_-15px_45px_rgba(0,0,0,0.5)] transition-all duration-300 backdrop-blur-xl"
+      className="relative lg:sticky rounded-3xl bg-card border border-border/90 p-5 sm:p-6 md:p-8 shadow-[0_-15px_45px_rgba(0,0,0,0.5)] transition-all duration-300 backdrop-blur-xl"
     >
-      <div className="grid lg:grid-cols-12 gap-8 items-center">
+      <div className="grid lg:grid-cols-12 gap-6 sm:gap-8 items-center">
         {/* Adjusted Preview Window (16:10 browser frame) */}
         <div className="lg:col-span-7">
           <a
@@ -291,16 +300,21 @@ const StackingProjectCard: React.FC<StackingCardProps> = ({ project, index, tota
             className="group block rounded-2xl overflow-hidden border border-border/80 bg-background shadow-md hover:border-primary/50 transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
           >
             {/* Browser Chrome Header */}
-            <div className="flex items-center justify-between px-4 py-2.5 bg-muted/40 border-b border-border/60">
-              <div className="flex items-center gap-1.5">
-                <span className="w-2.5 h-2.5 rounded-full bg-red-500/70" />
-                <span className="w-2.5 h-2.5 rounded-full bg-amber-500/70" />
-                <span className="w-2.5 h-2.5 rounded-full bg-emerald-500/70" />
-                <span className="ml-3 text-xs text-muted-foreground font-mono truncate max-w-[200px] md:max-w-[320px]">
+            <div className="flex items-center justify-between gap-3 px-3.5 sm:px-4 py-2 sm:py-2.5 bg-muted/40 border-b border-border/60">
+              <div className="flex items-center gap-1.5 min-w-0 flex-1">
+                <div className="flex items-center gap-1.5 shrink-0">
+                  <span className="w-2.5 h-2.5 rounded-full bg-red-500/70" />
+                  <span className="w-2.5 h-2.5 rounded-full bg-amber-500/70" />
+                  <span className="w-2.5 h-2.5 rounded-full bg-emerald-500/70" />
+                </div>
+                <span className="ml-2 sm:ml-3 text-xs text-muted-foreground font-mono truncate min-w-0 flex-1">
                   {project.url.replace('https://', '').replace(/\/$/, '')}
                 </span>
               </div>
-              <span className="text-[11px] font-medium text-emerald-400">Live Production</span>
+              <span className="inline-flex items-center gap-1.5 text-[10px] sm:text-[11px] font-medium text-emerald-400 shrink-0 whitespace-nowrap pl-1">
+                <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse hidden xs:inline-block" />
+                Live Production
+              </span>
             </div>
 
             <div className="aspect-[16/10] overflow-hidden bg-muted/20 relative">
@@ -319,37 +333,37 @@ const StackingProjectCard: React.FC<StackingCardProps> = ({ project, index, tota
         {/* Project Specs */}
         <div className="lg:col-span-5 flex flex-col justify-between">
           <div>
-            <div className="flex items-center gap-2 text-xs text-muted-foreground mb-3 font-mono">
-              <span>0{index + 1} / 0{total}</span>
-              <span aria-hidden="true">·</span>
+            <div className="flex flex-wrap items-center gap-x-2 gap-y-1 text-xs text-muted-foreground mb-3 font-mono">
+              <span className="whitespace-nowrap shrink-0">0{index + 1} / 0{total}</span>
+              <span aria-hidden="true" className="shrink-0">·</span>
               <span className="text-primary font-medium">{project.category}</span>
             </div>
 
-            <h3 className="font-display text-2xl md:text-3xl font-bold text-foreground mb-4">
+            <h3 className="font-display text-xl sm:text-2xl md:text-3xl font-bold text-foreground mb-3 sm:mb-4">
               {project.name}
             </h3>
 
-            <p className="text-muted-foreground text-sm leading-relaxed mb-4">
+            <p className="text-muted-foreground text-xs sm:text-sm leading-relaxed mb-4">
               {project.description}
             </p>
 
             {project.note && (
-              <div className="p-3.5 rounded-xl bg-background/60 border border-border/60 text-xs text-foreground/80 leading-relaxed mb-6">
+              <div className="p-3 sm:p-3.5 rounded-xl bg-background/60 border border-border/60 text-xs text-foreground/80 leading-relaxed mb-5 sm:mb-6">
                 <span className="font-semibold text-primary">Engineered Highlight: </span>
                 {project.note}
               </div>
             )}
           </div>
 
-          <div className="pt-4 border-t border-border/60 flex items-center justify-between">
+          <div className="pt-4 border-t border-border/60 flex items-center justify-between gap-2">
             <a
               href={project.url}
               {...ext}
-              className="inline-flex items-center gap-2 text-sm font-semibold text-primary hover:text-primary/80 transition-colors"
+              className="inline-flex items-center gap-1.5 sm:gap-2 text-xs sm:text-sm font-semibold text-primary hover:text-primary/80 transition-colors"
             >
-              Visit Live System <ArrowUpRight className="w-4 h-4" />
+              Visit Live System <ArrowUpRight className="w-4 h-4 shrink-0" />
             </a>
-            <span className="text-xs text-muted-foreground">Full-Stack Solution</span>
+            <span className="text-[11px] sm:text-xs text-muted-foreground">Full-Stack Solution</span>
           </div>
         </div>
       </div>
@@ -374,14 +388,14 @@ export const ClientWork = () => {
     <section
       ref={sectionRef}
       id="work"
-      className="relative z-25 -mt-14 md:-mt-20 py-28 bg-background rounded-t-[2.5rem] md:rounded-t-[3.5rem] border-t border-border/90 shadow-[0_-25px_60px_-15px_rgba(0,0,0,0.7)]"
+      className="relative z-25 -mt-8 sm:-mt-14 md:-mt-20 py-16 sm:py-24 md:py-28 bg-background rounded-t-[2rem] sm:rounded-t-[2.5rem] md:rounded-t-[3.5rem] border-t border-border/90 shadow-[0_-25px_60px_-15px_rgba(0,0,0,0.7)]"
     >
-      <div className="container mx-auto px-6">
+      <div className="container mx-auto px-4 sm:px-6 max-w-7xl">
         <Reveal>
-          <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
+          <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-8 sm:mb-12">
             <div>
               <Eyebrow>Verified Production Deployments</Eyebrow>
-              <h2 className="font-display text-3xl sm:text-4xl md:text-5xl font-bold uppercase text-foreground leading-[1]">
+              <h2 className="font-display text-2xl sm:text-4xl md:text-5xl font-bold uppercase text-foreground leading-[1.08] sm:leading-[1]">
                 Products we have built.
               </h2>
             </div>
@@ -391,8 +405,8 @@ export const ClientWork = () => {
           </div>
         </Reveal>
 
-        {/* Interactive Segmented Filter Controls */}
-        <div className="flex items-center gap-1.5 p-1.5 bg-card border border-border/80 rounded-xl max-w-fit mb-12">
+        {/* Interactive Segmented Filter Controls - horizontal scroll with no overflow blow-out */}
+        <div className="flex items-center gap-1.5 p-1.5 bg-card border border-border/80 rounded-xl max-w-full overflow-x-auto no-scrollbar mb-8 sm:mb-12">
           {[
             { id: 'all', label: 'All Projects' },
             { id: 'hospitality', label: 'Hospitality & Stays' },
@@ -402,7 +416,7 @@ export const ClientWork = () => {
             <button
               key={tab.id}
               onClick={() => setFilter(tab.id as 'all' | 'hospitality' | 'corporate' | 'platform')}
-              className={`px-4 py-1.5 text-xs font-medium rounded-lg transition-colors whitespace-nowrap ${
+              className={`px-3.5 sm:px-4 py-1.5 text-xs font-medium rounded-lg transition-colors whitespace-nowrap shrink-0 ${
                 filter === tab.id
                   ? 'bg-primary text-primary-foreground shadow-sm'
                   : 'text-muted-foreground hover:text-foreground'
@@ -413,8 +427,8 @@ export const ClientWork = () => {
           ))}
         </div>
 
-        {/* Stacked Scrolling Cards Deck: Cards stick and display over preceding ones with Framer Motion parallax */}
-        <div className="relative space-y-12 pb-16">
+        {/* Stacked Scrolling Cards Deck */}
+        <div className="relative space-y-8 sm:space-y-12 pb-12 sm:pb-16">
           {filteredProjects.map((p, i) => (
             <StackingProjectCard
               key={p.slug}
@@ -445,7 +459,7 @@ export const InHouseProducts = () => {
     <section
       ref={sectionRef}
       id="products"
-      className="relative z-30 -mt-14 md:-mt-20 py-28 bg-card/75 backdrop-blur-2xl rounded-t-[2.5rem] md:rounded-t-[3.5rem] border-t border-border shadow-[0_-25px_60px_-15px_rgba(0,0,0,0.7)] overflow-hidden"
+      className="relative z-30 -mt-8 sm:-mt-14 md:-mt-20 py-16 sm:py-24 md:py-28 bg-card/75 backdrop-blur-2xl rounded-t-[2rem] sm:rounded-t-[2.5rem] md:rounded-t-[3.5rem] border-t border-border shadow-[0_-25px_60px_-15px_rgba(0,0,0,0.7)] overflow-hidden"
     >
       {/* Background Floating Grid Accent */}
       <motion.div
@@ -453,12 +467,12 @@ export const InHouseProducts = () => {
         className="absolute inset-0 pointer-events-none opacity-20 bg-[radial-gradient(#38bdf8_1px,transparent_1px)] [background-size:24px_24px]"
       />
 
-      <div className="container relative z-10 mx-auto px-6">
+      <div className="container relative z-10 mx-auto px-4 sm:px-6 max-w-7xl">
         <Reveal>
-          <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-16">
+          <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12 sm:mb-16">
             <div>
               <Eyebrow>Proprietary IP &amp; Lab Ventures</Eyebrow>
-              <h2 className="font-display text-3xl sm:text-4xl md:text-5xl font-bold uppercase text-foreground leading-[1] max-w-3xl">
+              <h2 className="font-display text-2xl sm:text-4xl md:text-5xl font-bold uppercase text-foreground leading-[1.08] sm:leading-[1] max-w-3xl">
                 In-house products we are building.
               </h2>
             </div>
@@ -469,10 +483,10 @@ export const InHouseProducts = () => {
         </Reveal>
 
         {/* Balanced, Proportionate Product Matrix (3 Columns Desktop) */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6">
           {inHouseList.map((p, idx) => (
             <Reveal key={p.slug} delay={idx * 0.05}>
-              <article className="group h-full flex flex-col justify-between rounded-2xl border border-border/80 bg-background/90 p-6 hover:border-primary/50 transition-all duration-300 hover:shadow-2xl hover:shadow-primary/10 hover:-translate-y-1">
+              <article className="group h-full flex flex-col justify-between rounded-2xl border border-border/80 bg-background/90 p-5 sm:p-6 hover:border-primary/50 transition-all duration-300 hover:shadow-2xl hover:shadow-primary/10 hover:-translate-y-1">
                 <div>
                   {/* Compact Header & Category */}
                   <div className="flex items-center justify-between gap-2 mb-4 text-xs">
@@ -506,11 +520,11 @@ export const InHouseProducts = () => {
                     )}
                   </div>
 
-                  <h3 className="font-display text-xl font-bold text-foreground mb-2 group-hover:text-primary transition-colors">
+                  <h3 className="font-display text-lg sm:text-xl font-bold text-foreground mb-2 group-hover:text-primary transition-colors">
                     {p.name}
                   </h3>
 
-                  <p className="text-sm text-muted-foreground leading-relaxed line-clamp-3 mb-6">
+                  <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed line-clamp-3 mb-6">
                     {p.description}
                   </p>
                 </div>
@@ -546,17 +560,17 @@ export const MuseumFeature = () => {
     offset: ['start end', 'end start'],
   });
 
-  const imgY = useTransform(scrollYProgress, [0, 1], [-60, 60]);
-  const textParallax = useTransform(scrollYProgress, [0, 1], [30, -30]);
+  const imgY = useTransform(scrollYProgress, [0, 1], [-40, 40]);
+  const textParallax = useTransform(scrollYProgress, [0, 1], [20, -20]);
 
   return (
     <section
       ref={bannerRef}
       id="museum"
-      className="relative z-35 -mt-12 md:-mt-16 py-24 bg-background rounded-t-[2.5rem] md:rounded-t-[3.5rem] border-t border-border shadow-[0_-25px_60px_-15px_rgba(0,0,0,0.7)] overflow-hidden"
+      className="relative z-35 -mt-8 sm:-mt-12 md:-mt-16 py-16 sm:py-24 bg-background rounded-t-[2rem] sm:rounded-t-[2.5rem] md:rounded-t-[3.5rem] border-t border-border shadow-[0_-25px_60px_-15px_rgba(0,0,0,0.7)] overflow-hidden"
     >
-      <div className="container mx-auto px-6">
-        <div className="relative rounded-3xl overflow-hidden border border-border/90 bg-card p-8 md:p-14 lg:p-16 shadow-2xl">
+      <div className="container mx-auto px-4 sm:px-6 max-w-7xl">
+        <div className="relative rounded-3xl overflow-hidden border border-border/90 bg-card p-5 sm:p-8 md:p-14 lg:p-16 shadow-2xl">
           {/* Background Image with Deep Parallax & High Visibility */}
           <motion.div style={{ y: imgY }} className="absolute inset-0 overflow-hidden pointer-events-none">
             <img
@@ -572,22 +586,22 @@ export const MuseumFeature = () => {
             <div className="absolute inset-0 bg-gradient-to-t from-card/80 via-transparent to-card/25" />
           </motion.div>
 
-          <motion.div style={{ y: textParallax }} className="relative z-10 max-w-2xl bg-card/60 backdrop-blur-md p-6 sm:p-8 md:p-10 rounded-2xl border border-white/10 shadow-2xl">
+          <motion.div style={{ y: textParallax }} className="relative z-10 max-w-2xl bg-card/60 backdrop-blur-md p-5 sm:p-8 md:p-10 rounded-2xl border border-white/10 shadow-2xl">
             <Eyebrow>Signature WebGL Experience</Eyebrow>
-            <h2 className="font-display text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold uppercase text-foreground leading-[1.08] mb-5">
+            <h2 className="font-display text-xl sm:text-3xl md:text-4xl lg:text-5xl font-bold uppercase text-foreground leading-[1.1] sm:leading-[1.08] mb-4 sm:mb-5">
               Culture deserves more than a flat screen. <span className="text-primary">It deserves an experience.</span>
             </h2>
-            <p className="text-sm sm:text-base md:text-lg text-muted-foreground leading-relaxed mb-8 max-w-xl">
+            <p className="text-xs sm:text-base md:text-lg text-muted-foreground leading-relaxed mb-6 sm:mb-8 max-w-xl">
               Sankofa Wing is our proprietary 3D digital museum built on WebGL. It transports visitors through virtual architectural galleries to explore African artefacts, digital sculpture, and heritage without geographical barriers.
             </p>
 
-            <div className="flex flex-wrap items-center gap-4">
-              <Button asChild size="lg" className="rounded-full px-8 h-12 font-semibold bg-primary hover:bg-primary/90 text-primary-foreground shadow-lg shadow-primary/20 group">
+            <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 sm:gap-4">
+              <Button asChild size="lg" className="rounded-full px-8 h-12 font-semibold bg-primary hover:bg-primary/90 text-primary-foreground shadow-lg shadow-primary/20 group w-full sm:w-auto justify-center">
                 <a href={MUSEUM_URL} {...ext}>
                   Enter the 3D Museum <ArrowUpRight className="ml-2 h-4 w-4 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
                 </a>
               </Button>
-              <span className="text-xs text-muted-foreground font-mono">
+              <span className="text-[11px] sm:text-xs text-muted-foreground font-mono text-center sm:text-left">
                 Desktop &amp; Mobile WebGL · No App Install Required
               </span>
             </div>
@@ -639,15 +653,15 @@ export const WhyAndProcess = () => {
     <section
       ref={sectionRef}
       id="about"
-      className="relative z-40 -mt-12 md:-mt-16 py-28 bg-card/85 backdrop-blur-2xl rounded-t-[2.5rem] md:rounded-t-[3.5rem] border-t border-border shadow-[0_-25px_60px_-15px_rgba(0,0,0,0.7)]"
+      className="relative z-40 -mt-8 sm:-mt-12 md:-mt-16 py-16 sm:py-24 md:py-28 bg-card/85 backdrop-blur-2xl rounded-t-[2rem] sm:rounded-t-[2.5rem] md:rounded-t-[3.5rem] border-t border-border shadow-[0_-25px_60px_-15px_rgba(0,0,0,0.7)]"
     >
-      <div className="container mx-auto px-6">
+      <div className="container mx-auto px-4 sm:px-6 max-w-7xl">
         <motion.div style={{ y: headerY }}>
           <Reveal>
-            <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-16">
+            <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12 sm:mb-16">
               <div>
                 <Eyebrow>Operational Reliability</Eyebrow>
-                <h2 className="font-display text-3xl sm:text-4xl md:text-5xl font-bold uppercase text-foreground leading-[1]">
+                <h2 className="font-display text-2xl sm:text-4xl md:text-5xl font-bold uppercase text-foreground leading-[1.08] sm:leading-[1]">
                   The Bluewaves engineering framework.
                 </h2>
               </div>
@@ -658,14 +672,14 @@ export const WhyAndProcess = () => {
           </Reveal>
         </motion.div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 sm:gap-6">
           {workflowPhases.map((w, idx) => (
             <Reveal key={w.step} delay={idx * 0.08}>
-              <div className="h-full flex flex-col justify-between p-6 rounded-2xl bg-background/90 border border-border/80 hover:border-primary/40 transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
+              <div className="h-full flex flex-col justify-between p-5 sm:p-6 rounded-2xl bg-background/90 border border-border/80 hover:border-primary/40 transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
                 <div>
-                  <span className="font-mono text-xs text-primary font-bold mb-4 block">PHASE {w.step}</span>
-                  <h3 className="font-display text-lg font-bold text-foreground mb-3">{w.title}</h3>
-                  <p className="text-sm text-muted-foreground leading-relaxed mb-6">{w.desc}</p>
+                  <span className="font-mono text-xs text-primary font-bold mb-3 sm:mb-4 block">PHASE {w.step}</span>
+                  <h3 className="font-display text-base sm:text-lg font-bold text-foreground mb-2 sm:mb-3">{w.title}</h3>
+                  <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed mb-5 sm:mb-6">{w.desc}</p>
                 </div>
                 <div className="pt-4 border-t border-border/60">
                   <span className="text-xs font-medium text-foreground/80">{w.highlight}</span>
@@ -785,17 +799,17 @@ export const StudioTechRadar = () => {
     <section
       ref={sectionRef}
       id="ecosystem"
-      className="relative z-45 -mt-12 md:-mt-16 py-28 bg-card/90 backdrop-blur-2xl rounded-t-[2.5rem] md:rounded-t-[3.5rem] border-t border-primary/25 shadow-[0_-30px_70px_-15px_rgba(0,0,0,0.8)]"
+      className="relative z-45 -mt-8 sm:-mt-12 md:-mt-16 py-16 sm:py-24 md:py-28 bg-card/90 backdrop-blur-2xl rounded-t-[2rem] sm:rounded-t-[2.5rem] md:rounded-t-[3.5rem] border-t border-primary/25 shadow-[0_-30px_70px_-15px_rgba(0,0,0,0.8)]"
     >
       {/* Anchor point for header #start links */}
       <span id="start" className="sr-only">Studio Technology Ecosystem &amp; Intelligence Hub</span>
 
-      <div className="container mx-auto px-6">
+      <div className="container mx-auto px-4 sm:px-6 max-w-7xl">
         <Reveal>
-          <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-16">
+          <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12 sm:mb-16">
             <div>
               <Eyebrow>Engineering Standards &amp; Architecture</Eyebrow>
-              <h2 className="font-display text-3xl sm:text-4xl md:text-5xl font-bold uppercase text-foreground leading-[1] max-w-2xl">
+              <h2 className="font-display text-2xl sm:text-4xl md:text-5xl font-bold uppercase text-foreground leading-[1.08] sm:leading-[1] max-w-2xl">
                 The Bluewaves Technology Radar.
               </h2>
             </div>
@@ -805,8 +819,8 @@ export const StudioTechRadar = () => {
           </div>
         </Reveal>
 
-        {/* 1. Interactive Technology Pillars Switcher */}
-        <div className="flex items-center gap-2 p-1.5 bg-background/80 border border-border/80 rounded-2xl max-w-full overflow-x-auto mb-10 no-scrollbar">
+        {/* 1. Interactive Technology Pillars Switcher - mobile scrollable */}
+        <div className="flex items-center gap-2 p-1.5 bg-background/80 border border-border/80 rounded-2xl max-w-full overflow-x-auto mb-8 sm:mb-10 no-scrollbar">
           {TECH_PILLARS.map(pillar => {
             const active = pillar.id === activePillar;
             const Icon = pillar.icon;
@@ -814,7 +828,7 @@ export const StudioTechRadar = () => {
               <button
                 key={pillar.id}
                 onClick={() => setActivePillar(pillar.id)}
-                className={`flex items-center gap-2.5 px-5 py-3 rounded-xl text-xs md:text-sm font-semibold whitespace-nowrap transition-all ${
+                className={`flex items-center gap-2.5 px-4 sm:px-5 py-2.5 sm:py-3 rounded-xl text-xs md:text-sm font-semibold whitespace-nowrap shrink-0 transition-all ${
                   active
                     ? 'bg-primary text-primary-foreground shadow-md shadow-primary/20 scale-[1.02]'
                     : 'text-muted-foreground hover:text-foreground hover:bg-card/60'
@@ -828,42 +842,42 @@ export const StudioTechRadar = () => {
         </div>
 
         {/* 2. Active Pillar Architecture Card */}
-        <div className="rounded-3xl border border-border/90 bg-background/80 p-6 md:p-10 mb-20 shadow-xl backdrop-blur-xl">
-          <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-6 pb-8 border-b border-border/60">
+        <div className="rounded-3xl border border-border/90 bg-background/80 p-5 sm:p-8 md:p-10 mb-14 sm:mb-20 shadow-xl backdrop-blur-xl">
+          <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-6 pb-6 sm:pb-8 border-b border-border/60">
             <div>
               <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 text-primary text-xs font-mono font-semibold mb-3">
                 <span className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse" />
                 {currentPillar.badge}
               </div>
-              <h3 className="font-display text-2xl md:text-3xl font-bold text-foreground">
+              <h3 className="font-display text-xl sm:text-2xl md:text-3xl font-bold text-foreground">
                 {currentPillar.label}
               </h3>
-              <p className="text-muted-foreground text-sm md:text-base mt-2 max-w-2xl">
+              <p className="text-muted-foreground text-xs sm:text-sm md:text-base mt-2 max-w-2xl">
                 {currentPillar.desc}
               </p>
             </div>
 
-            {/* Pillar Telemetry Indicators */}
-            <div className="grid grid-cols-3 gap-3 md:gap-4 shrink-0">
+            {/* Pillar Telemetry Indicators - responsive grid */}
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-2.5 sm:gap-4 shrink-0 w-full lg:w-auto">
               {currentPillar.metrics.map(m => (
-                <div key={m.label} className="p-3.5 rounded-2xl bg-card border border-border/60 text-center">
+                <div key={m.label} className="p-3 sm:p-3.5 rounded-2xl bg-card border border-border/60 text-center">
                   <span className="block text-[10px] md:text-xs text-muted-foreground font-mono uppercase">{m.label}</span>
-                  <span className="text-sm md:text-base font-bold text-foreground font-mono mt-1 block">{m.value}</span>
+                  <span className="text-sm md:text-base font-bold text-foreground font-mono mt-0.5 sm:mt-1 block">{m.value}</span>
                 </div>
               ))}
             </div>
           </div>
 
           {/* Technology Matrix Grid */}
-          <div className="grid md:grid-cols-2 gap-4 pt-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 pt-6 sm:pt-8">
             {currentPillar.stack.map(tech => (
               <div
                 key={tech.name}
-                className="group p-5 rounded-2xl bg-card/60 border border-border/60 hover:border-primary/50 transition-all duration-300 hover:shadow-lg flex items-start justify-between gap-4"
+                className="group p-4 sm:p-5 rounded-2xl bg-card/60 border border-border/60 hover:border-primary/50 transition-all duration-300 hover:shadow-lg flex items-start justify-between gap-4"
               >
                 <div className="space-y-1">
                   <div className="flex items-center gap-2">
-                    <span className="font-display font-bold text-foreground text-base group-hover:text-primary transition-colors">
+                    <span className="font-display font-bold text-foreground text-sm sm:text-base group-hover:text-primary transition-colors">
                       {tech.name}
                     </span>
                   </div>
@@ -871,7 +885,7 @@ export const StudioTechRadar = () => {
                     {tech.role}
                   </p>
                 </div>
-                <span className="shrink-0 text-[10px] font-mono px-2.5 py-1 rounded-md bg-background border border-border/80 text-primary">
+                <span className="shrink-0 text-[10px] font-mono px-2 py-0.5 sm:px-2.5 sm:py-1 rounded-md bg-background border border-border/80 text-primary">
                   {tech.tag}
                 </span>
               </div>
@@ -880,18 +894,18 @@ export const StudioTechRadar = () => {
         </div>
 
         {/* 3. Studio Delivery Standards & FAQ Accordion */}
-        <div className="grid lg:grid-cols-12 gap-10 items-start mb-16">
+        <div className="grid lg:grid-cols-12 gap-8 lg:gap-10 items-start mb-14 sm:mb-16">
           <div className="lg:col-span-5 space-y-4">
             <Eyebrow>Operational Transparency</Eyebrow>
-            <h3 className="font-display text-2xl md:text-3xl font-bold uppercase text-foreground leading-[1.1]">
+            <h3 className="font-display text-2xl sm:text-3xl font-bold uppercase text-foreground leading-[1.1]">
               How we work &amp; protect your business.
             </h3>
-            <p className="text-sm md:text-base text-muted-foreground leading-relaxed">
+            <p className="text-xs sm:text-sm md:text-base text-muted-foreground leading-relaxed">
               Clear commitments on code ownership, agile cadence, enterprise security, and long-term production reliability.
             </p>
 
             {/* Verified Certifications Pill Stack */}
-            <div className="space-y-2 pt-4">
+            <div className="space-y-2 pt-2 sm:pt-4">
               <div className="flex items-center gap-3 p-3 rounded-xl bg-card/60 border border-border/60 text-xs">
                 <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0" />
                 <span className="text-foreground/90 font-medium">100% Repository &amp; IP Transfer Guaranteed</span>
@@ -917,7 +931,7 @@ export const StudioTechRadar = () => {
                 >
                   <button
                     onClick={() => setOpenFaq(isOpen ? null : idx)}
-                    className="w-full p-5 text-left flex items-center justify-between gap-4 font-display font-bold text-foreground text-sm md:text-base hover:text-primary transition-colors"
+                    className="w-full p-4 sm:p-5 text-left flex items-center justify-between gap-4 font-display font-bold text-foreground text-sm md:text-base hover:text-primary transition-colors min-h-[44px]"
                   >
                     <span>{faq.q}</span>
                     <ChevronRight
@@ -933,7 +947,7 @@ export const StudioTechRadar = () => {
                         animate={{ opacity: 1, height: 'auto' }}
                         exit={{ opacity: 0, height: 0 }}
                         transition={{ duration: 0.25 }}
-                        className="px-5 pb-5 text-xs md:text-sm text-muted-foreground leading-relaxed border-t border-border/40 pt-3"
+                        className="px-4 sm:px-5 pb-4 sm:pb-5 text-xs md:text-sm text-muted-foreground leading-relaxed border-t border-border/40 pt-3"
                       >
                         {faq.a}
                       </motion.div>
@@ -946,32 +960,32 @@ export const StudioTechRadar = () => {
         </div>
 
         {/* 4. Instant Direct Connect Launchpad (Replaces the Form completely with direct links) */}
-        <div className="rounded-3xl border border-primary/30 bg-gradient-to-r from-card via-card/95 to-primary/10 p-8 md:p-12 shadow-2xl flex flex-col lg:flex-row items-center justify-between gap-8">
+        <div className="rounded-3xl border border-primary/30 bg-gradient-to-r from-card via-card/95 to-primary/10 p-6 sm:p-8 md:p-12 shadow-2xl flex flex-col lg:flex-row items-center justify-between gap-6 sm:gap-8">
           <div className="space-y-2 text-center lg:text-left">
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 text-xs font-mono">
               <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
               Engineering Team Active · Rapid Dispatch
             </div>
-            <h4 className="font-display text-2xl md:text-3xl font-bold uppercase text-foreground">
+            <h4 className="font-display text-xl sm:text-2xl md:text-3xl font-bold uppercase text-foreground">
               Ready to architect your solution?
             </h4>
-            <p className="text-sm text-muted-foreground max-w-xl">
+            <p className="text-xs sm:text-sm text-muted-foreground max-w-xl">
               Connect directly with our engineering team for technical scoping, architecture reviews, and sprint availability.
             </p>
           </div>
 
-          <div className="flex flex-wrap items-center justify-center gap-3 shrink-0">
-            <Button asChild size="lg" className="rounded-full px-8 h-12 font-semibold bg-primary hover:bg-primary/90 text-primary-foreground shadow-lg shadow-primary/20 group">
+          <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-center gap-3 shrink-0 w-full lg:w-auto">
+            <Button asChild size="lg" className="rounded-full px-7 h-12 font-semibold bg-primary hover:bg-primary/90 text-primary-foreground shadow-lg shadow-primary/20 group w-full sm:w-auto justify-center">
               <a href="https://wa.me/2347051551543?text=Hello%20Bluewaves%20Technology%2C%20I%20would%20like%20to%20discuss%20an%20engineering%20project." {...ext}>
                 <MessageSquare className="w-4 h-4 mr-2" /> Chat on WhatsApp
               </a>
             </Button>
-            <Button asChild size="lg" variant="outline" className="rounded-full px-7 h-12 font-semibold bg-background/80 hover:bg-background">
+            <Button asChild size="lg" variant="outline" className="rounded-full px-6 h-12 font-semibold bg-background/80 hover:bg-background w-full sm:w-auto justify-center">
               <a href="tel:+2348108510085">
                 <Phone className="w-4 h-4 mr-2" /> 0810 851 0085
               </a>
             </Button>
-            <Button asChild size="lg" variant="ghost" className="rounded-full px-6 h-12 font-semibold text-muted-foreground hover:text-foreground">
+            <Button asChild size="lg" variant="ghost" className="rounded-full px-5 h-12 font-semibold text-muted-foreground hover:text-foreground w-full sm:w-auto justify-center">
               <a href="mailto:info@bwtng.live">
                 <Mail className="w-4 h-4 mr-2" /> info@bwtng.live
               </a>

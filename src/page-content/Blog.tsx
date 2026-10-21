@@ -4,6 +4,8 @@ import { allPosts, BlogPost } from '@/data/blog-posts';
 import { FileText, Calendar, Tag, Eye, Clock, Search, ArrowRight, Sparkles } from 'lucide-react';
 import { Head as Helmet } from 'vite-react-ssg';
 import { useBlogViews } from '@/hooks/useBlogViews';
+import Header from '@/components/Header';
+import Footer from '@/components/Footer';
 
 const BLUEWAVES_BLOG_IMAGE = '/image/blog/bluewaves-blog-bg.jpg';
 const BLUEWAVES_BLOG_IMAGE_ABSOLUTE = 'https://www.bwtng.live/image/blog/bluewaves-blog-bg.jpg';
@@ -83,8 +85,11 @@ const Blog: React.FC = () => {
         <meta name="twitter:image" content={BLUEWAVES_BLOG_IMAGE_ABSOLUTE} />
       </Helmet>
 
+      {/* Top Header */}
+      <Header />
+
       {/* Hero Header with Unique Bluewaves Background & Ambient Glow */}
-      <section className="relative overflow-hidden border-b border-slate-800/80 bg-gradient-to-b from-slate-900 via-slate-950 to-slate-950 pt-20 pb-16">
+      <section className="relative overflow-hidden border-b border-slate-800/80 bg-gradient-to-b from-slate-900 via-slate-950 to-slate-950 pt-28 sm:pt-36 pb-14 sm:pb-16">
         <div className="absolute inset-0 opacity-25 pointer-events-none">
           <img
             src={BLUEWAVES_BLOG_IMAGE}
@@ -95,13 +100,13 @@ const Blog: React.FC = () => {
           <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/70 to-transparent" />
         </div>
 
-        <div className="container relative mx-auto px-4 max-w-6xl">
-          <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-semibold uppercase tracking-wider bg-blue-500/10 text-blue-400 border border-blue-500/30 mb-6 backdrop-blur-md">
+        <div className="container relative mx-auto px-4 sm:px-6 max-w-6xl">
+          <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-semibold uppercase tracking-wider bg-blue-500/10 text-blue-400 border border-blue-500/30 mb-5 sm:mb-6 backdrop-blur-md">
             <Sparkles className="w-3.5 h-3.5" />
             <span>Bluewaves Technology Knowledge Base</span>
           </div>
 
-          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-white mb-6">
+          <h1 className="text-3xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-white mb-4 sm:mb-6">
             Insights, Architecture &{' '}
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-sky-300 to-white">
               Digital Craft
@@ -258,6 +263,9 @@ const Blog: React.FC = () => {
           </div>
         )}
       </section>
+
+      {/* Footer */}
+      <Footer />
     </main>
   );
 };

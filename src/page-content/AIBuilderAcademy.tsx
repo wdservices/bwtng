@@ -99,19 +99,19 @@ export default function AIBuilderAcademy() {
               <Chip icon={Video}>Live Virtual Training</Chip>
             </div>
 
-            <div className="flex flex-wrap items-center justify-center gap-4">
-              <Link to="/academy/register">
+            <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-center gap-3.5 sm:gap-4 max-w-lg mx-auto">
+              <Link to="/academy/register" className="w-full sm:w-auto">
                 <Button type="button"
-                  className="h-14 px-8 rounded-full bg-gradient-to-r from-primary to-purple-500 text-white font-bold text-base shadow-[0_8px_30px_rgba(99,102,241,0.5)] hover:scale-105 hover:shadow-[0_12px_40px_rgba(99,102,241,0.7)] transition-all">
-                  {cohort ? `Join Cohort ${cohort.number}` : 'Join Now'} <ArrowRight className="w-5 h-5 ml-2" />
+                  className="w-full sm:w-auto h-12 sm:h-14 px-8 rounded-full bg-gradient-to-r from-primary to-purple-500 text-white font-bold text-sm sm:text-base shadow-[0_8px_30px_rgba(99,102,241,0.5)] hover:scale-105 hover:shadow-[0_12px_40px_rgba(99,102,241,0.7)] transition-all">
+                  {cohort ? `Join Cohort ${cohort.number}` : 'Join Now'} <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 ml-2" />
                 </Button>
               </Link>
-            <Link to="/academy/register" className="block">
-              <Button type="button"
-                className="relative w-full h-16 py-3 rounded-full bg-gradient-to-r from-pink-500 via-rose-500 to-orange-500 text-white font-extrabold text-lg uppercase tracking-wide shadow-[0_12px_50px_rgba(244,63,94,0.6)] hover:scale-[1.02] hover:shadow-[0_18px_60px_rgba(244,63,94,0.8)] hover:from-pink-400 hover:via-rose-400 hover:to-orange-400 transition-all ring-2 ring-white/20 hover:ring-white/40">
-                {cohort && seatsLeft === 0 ? 'Sold Out' : `Register Now — ₦${price.toLocaleString()}`}
-              </Button>
-            </Link>
+              <Link to="/academy/register" className="w-full sm:w-auto block">
+                <Button type="button"
+                  className="relative w-full sm:w-auto h-12 sm:h-14 px-8 py-3 rounded-full bg-gradient-to-r from-pink-500 via-rose-500 to-orange-500 text-white font-extrabold text-sm sm:text-base uppercase tracking-wide shadow-[0_12px_50px_rgba(244,63,94,0.6)] hover:scale-[1.02] hover:shadow-[0_18px_60px_rgba(244,63,94,0.8)] hover:from-pink-400 hover:via-rose-400 hover:to-orange-400 transition-all ring-2 ring-white/20 hover:ring-white/40">
+                  {cohort && seatsLeft === 0 ? 'Sold Out' : `Register Now — ₦${price.toLocaleString()}`}
+                </Button>
+              </Link>
             </div>
           </motion.div>
         </div>

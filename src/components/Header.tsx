@@ -26,15 +26,15 @@ const Header = () => {
   return (
     <header className={`fixed top-0 w-full z-50 transition-all duration-300 ${
       scrolled || isMenuOpen
-        ? 'bg-background/90 backdrop-blur-xl border-b border-border/80 shadow-lg shadow-black/20'
+        ? 'bg-background/95 backdrop-blur-xl border-b border-border/80 shadow-lg shadow-black/20'
         : 'bg-transparent'
     }`}>
-      <div className="container mx-auto px-6 py-4">
-        <div className="flex items-center justify-between gap-8">
+      <div className="container mx-auto px-4 sm:px-6 py-3 sm:py-4 max-w-7xl">
+        <div className="flex items-center justify-between gap-4 md:gap-8">
           {/* Zone 1: Brand wordmark */}
-          <Link to="/" className="flex items-center space-x-3 shrink-0 group">
-            <img src="/logo.png" alt="" className="w-8 h-8 object-contain rounded-lg transition-transform group-hover:scale-105" aria-hidden="true" />
-            <span className="text-lg font-bold text-foreground font-display tracking-tight whitespace-nowrap">
+          <Link to="/" className="flex items-center space-x-2.5 sm:space-x-3 shrink-0 group">
+            <img src="/logo.png" alt="" className="w-7 h-7 sm:w-8 sm:h-8 object-contain rounded-lg transition-transform group-hover:scale-105" aria-hidden="true" />
+            <span className="text-base sm:text-lg font-bold text-foreground font-display tracking-tight whitespace-nowrap">
               Bluewaves <span className="text-primary">Technology</span>
             </span>
           </Link>
@@ -72,46 +72,53 @@ const Header = () => {
             </Button>
           </div>
 
-          {/* Mobile menu button */}
+          {/* Mobile menu button with 44px touch target */}
           <div className="md:hidden flex items-center">
             <Button
               variant="ghost"
               size="icon"
-              className="text-foreground shrink-0"
+              className="text-foreground shrink-0 w-11 h-11 flex items-center justify-center rounded-xl bg-card/60 border border-border/60 hover:bg-card"
               onClick={() => setIsMenuOpen(!isMenuOpen)}
               aria-label={isMenuOpen ? 'Close menu' : 'Open menu'}
               aria-expanded={isMenuOpen}
             >
-              {isMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+              {isMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5 text-foreground" />}
             </Button>
           </div>
         </div>
 
-        {/* Mobile menu drawer */}
+        {/* Mobile menu drawer with accessible touch targets */}
         {isMenuOpen && (
-          <nav className="md:hidden mt-4 pb-4 pt-4 border-t border-border space-y-2 animate-fade-in bg-card/95 backdrop-blur-xl rounded-2xl p-4 shadow-2xl">
-            {navLinks.map((item) => (
-              <Link
-                key={item.label}
-                to={item.path}
-                className="block px-4 py-2.5 text-sm font-medium text-muted-foreground hover:text-foreground hover:bg-muted/40 rounded-lg transition-colors"
-                onClick={() => setIsMenuOpen(false)}
-              >
-                {item.label}
-              </Link>
-            ))}
+          <nav className="md:hidden mt-3 pb-4 pt-3 border-t border-border space-y-1.5 animate-fade-in bg-card/95 backdrop-blur-2xl rounded-2xl p-3 shadow-2xl max-h-[calc(100vh-5rem)] overflow-y-auto">
+            {navLinks.map((item) => {
+              const active = location.pathname === item.path;
+              return (
+                <Link
+                  key={item.label}
+                  to={item.path}
+                  className={`flex items-center px-4 py-3 min-h-[44px] text-sm font-medium rounded-xl transition-colors ${
+                    active
+                      ? 'bg-primary/15 text-primary font-semibold border border-primary/25'
+                      : 'text-muted-foreground hover:text-foreground hover:bg-muted/50'
+                  }`}
+                  onClick={() => setIsMenuOpen(false)}
+                >
+                  {item.label}
+                </Link>
+              );
+            })}
             <a
               href="https://sankofa-wing.vercel.app/"
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center justify-between px-4 py-2.5 text-sm font-medium text-muted-foreground hover:text-foreground hover:bg-muted/40 rounded-lg transition-colors"
+              className="flex items-center justify-between px-4 py-3 min-h-[44px] text-sm font-medium text-muted-foreground hover:text-foreground hover:bg-muted/50 rounded-xl transition-colors"
               onClick={() => setIsMenuOpen(false)}
             >
               <span>Sankofa 3D Museum</span>
               <ArrowUpRight className="w-4 h-4 text-primary" />
             </a>
-            <div className="pt-2">
-              <Button asChild className="w-full rounded-full font-semibold" onClick={() => setIsMenuOpen(false)}>
+            <div className="pt-2 px-1">
+              <Button asChild className="w-full h-11 rounded-xl font-semibold bg-primary hover:bg-primary/90 text-primary-foreground shadow-md shadow-primary/20" onClick={() => setIsMenuOpen(false)}>
                 <a href="/#start">Start a Project</a>
               </Button>
             </div>

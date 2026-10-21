@@ -37,24 +37,24 @@ const ContactPage: React.FC = () => {
         <meta name="twitter:image" content="https://www.bwtng.live/og-image.png" />
       </Helmet>
       <Header />
-      <section className="pt-32 pb-20">
-        <div className="container mx-auto px-6">
-          <div className="max-w-4xl mx-auto text-center mb-16">
-            <p className="text-sm font-semibold text-primary uppercase tracking-widest mb-3">Contact</p>
-            <h1 className="text-4xl md:text-5xl font-bold mb-6">
+      <section className="pt-28 sm:pt-32 pb-16 sm:pb-20">
+        <div className="container mx-auto px-4 sm:px-6">
+          <div className="max-w-4xl mx-auto text-center mb-10 sm:mb-16">
+            <p className="text-xs sm:text-sm font-semibold text-primary uppercase tracking-widest mb-3">Contact</p>
+            <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 sm:mb-6">
               Get in <span className="text-primary">Touch</span>
             </h1>
-            <p className="text-xl text-muted-foreground">
+            <p className="text-base sm:text-xl text-muted-foreground">
               Ready to transform your business? Reach out and let's discuss your project.
             </p>
           </div>
 
-          <div className="grid lg:grid-cols-2 gap-12 max-w-6xl mx-auto">
-            <div className="space-y-8">
-              <div className="bg-card p-8 rounded-2xl border border-border">
-                <h2 className="text-2xl font-bold mb-6">Contact Information</h2>
+          <div className="grid lg:grid-cols-2 gap-8 sm:gap-12 max-w-6xl mx-auto">
+            <div className="space-y-6 sm:space-y-8">
+              <div className="bg-card p-5 sm:p-8 rounded-2xl border border-border">
+                <h2 className="text-xl sm:text-2xl font-bold mb-6">Contact Information</h2>
                 
-                <div className="space-y-6">
+                <div className="space-y-5 sm:space-y-6">
                   {contactItems.map((item, index) => {
                     const Icon = item.icon;
                     const Wrapper = item.href ? 'a' : 'div';
@@ -64,14 +64,14 @@ const ContactPage: React.FC = () => {
                       <Wrapper
                         key={index}
                         {...wrapperProps}
-                        className="flex items-start gap-4 group"
+                        className="flex items-start gap-3.5 sm:gap-4 group min-w-0"
                       >
-                        <div className="w-12 h-12 bg-muted/50 rounded-xl flex items-center justify-center flex-shrink-0">
-                          <Icon className="w-6 h-6 text-primary" />
+                        <div className="w-10 h-10 sm:w-12 sm:h-12 bg-muted/50 rounded-xl flex items-center justify-center shrink-0">
+                          <Icon className="w-5 h-5 sm:w-6 sm:h-6 text-primary" />
                         </div>
-                        <div>
-                          <h3 className="font-semibold mb-1">{item.label}</h3>
-                          <p className="text-muted-foreground">{item.value}</p>
+                        <div className="min-w-0 flex-1">
+                          <h3 className="font-semibold text-sm sm:text-base mb-0.5">{item.label}</h3>
+                          <p className="text-xs sm:text-sm text-muted-foreground break-words">{item.value}</p>
                         </div>
                       </Wrapper>
                     );
@@ -80,18 +80,18 @@ const ContactPage: React.FC = () => {
               </div>
 
               <div className="text-center">
-                <Button asChild size="lg" className="bg-green-600 hover:bg-green-700 text-white rounded-full px-10 h-12 text-base glow-sm">
+                <Button asChild size="lg" className="bg-green-600 hover:bg-green-700 text-white rounded-full px-8 sm:px-10 h-12 text-sm sm:text-base glow-sm w-full sm:w-auto">
                   <a href={whatsappUrl} target="_blank" rel="noopener noreferrer">
-                    <MessageCircle className="mr-2 h-5 w-5" />
+                    <MessageCircle className="mr-2 h-5 w-5 shrink-0" />
                     Chat on WhatsApp
                   </a>
                 </Button>
               </div>
             </div>
 
-            <div className="bg-card p-8 rounded-2xl border border-border">
-              <h2 className="text-2xl font-bold mb-6">Send us a Message</h2>
-              <form className="space-y-6">
+            <div className="bg-card p-5 sm:p-8 rounded-2xl border border-border">
+              <h2 className="text-xl sm:text-2xl font-bold mb-6">Send us a Message</h2>
+              <form className="space-y-5 sm:space-y-6">
                 <div className="grid md:grid-cols-2 gap-4">
                   <div>
                     <label className="block text-sm font-medium mb-2">First Name</label>

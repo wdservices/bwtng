@@ -13,46 +13,49 @@ export default function WebDevShowcase() {
   };
 
   return (
-    <div className="my-16 rounded-3xl bg-card border border-border/90 p-6 md:p-10 shadow-2xl relative overflow-hidden">
+    <div className="my-10 sm:my-16 rounded-3xl bg-card border border-border/90 p-4 sm:p-6 md:p-10 shadow-2xl relative overflow-hidden">
       {/* Background subtle mesh */}
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,rgba(37,99,235,0.08),transparent_60%)] pointer-events-none" />
 
       {/* Header controls */}
-      <div className="flex flex-col md:flex-row md:items-center justify-between gap-6 mb-8 pb-6 border-b border-border/70 relative z-10">
+      <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 sm:gap-6 mb-6 sm:mb-8 pb-5 sm:pb-6 border-b border-border/70 relative z-10">
         <div>
           <span className="text-xs font-mono text-primary uppercase tracking-widest font-semibold block mb-1">
             Interactive Technical Workbench
           </span>
-          <h3 className="font-display text-2xl font-bold text-foreground">
+          <h3 className="font-display text-xl sm:text-2xl font-bold text-foreground">
             Full-Stack Web Architecture & Performance Audit
           </h3>
         </div>
 
         {/* Viewport switchers */}
-        <div className="flex items-center gap-1.5 p-1 bg-background/80 border border-border rounded-xl">
+        <div className="flex items-center gap-1 p-1 bg-background/80 border border-border rounded-xl overflow-x-auto max-w-full">
           <button
             onClick={() => setDevice('desktop')}
-            className={`px-3 py-1.5 rounded-lg text-xs font-medium flex items-center gap-1.5 transition-colors ${
+            className={`px-2.5 sm:px-3 py-1.5 rounded-lg text-xs font-medium flex items-center gap-1.5 transition-colors whitespace-nowrap min-h-[38px] ${
               device === 'desktop' ? 'bg-primary text-primary-foreground shadow-sm' : 'text-muted-foreground hover:text-foreground'
             }`}
           >
-            <Monitor className="w-3.5 h-3.5" /> Desktop (1440px)
+            <Monitor className="w-3.5 h-3.5 shrink-0" />
+            <span>Desktop <span className="hidden sm:inline">(1440px)</span></span>
           </button>
           <button
             onClick={() => setDevice('tablet')}
-            className={`px-3 py-1.5 rounded-lg text-xs font-medium flex items-center gap-1.5 transition-colors ${
+            className={`px-2.5 sm:px-3 py-1.5 rounded-lg text-xs font-medium flex items-center gap-1.5 transition-colors whitespace-nowrap min-h-[38px] ${
               device === 'tablet' ? 'bg-primary text-primary-foreground shadow-sm' : 'text-muted-foreground hover:text-foreground'
             }`}
           >
-            <Tablet className="w-3.5 h-3.5" /> Tablet (768px)
+            <Tablet className="w-3.5 h-3.5 shrink-0" />
+            <span>Tablet <span className="hidden sm:inline">(768px)</span></span>
           </button>
           <button
             onClick={() => setDevice('mobile')}
-            className={`px-3 py-1.5 rounded-lg text-xs font-medium flex items-center gap-1.5 transition-colors ${
+            className={`px-2.5 sm:px-3 py-1.5 rounded-lg text-xs font-medium flex items-center gap-1.5 transition-colors whitespace-nowrap min-h-[38px] ${
               device === 'mobile' ? 'bg-primary text-primary-foreground shadow-sm' : 'text-muted-foreground hover:text-foreground'
             }`}
           >
-            <Smartphone className="w-3.5 h-3.5" /> Mobile (375px)
+            <Smartphone className="w-3.5 h-3.5 shrink-0" />
+            <span>Mobile <span className="hidden sm:inline">(375px)</span></span>
           </button>
         </div>
       </div>
@@ -90,28 +93,28 @@ export default function WebDevShowcase() {
                 </div>
               </div>
 
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-3 pt-2">
-                <div className="p-4 rounded-xl bg-card border border-border/70">
-                  <span className="text-[11px] text-muted-foreground block mb-1">Server Response</span>
-                  <span className="text-xl font-bold font-mono text-foreground tabular-nums">18ms</span>
-                  <span className="text-[10px] text-emerald-400 block mt-1">Edge Cloud Node</span>
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-2.5 sm:gap-3 pt-2">
+                <div className="p-3 sm:p-4 rounded-xl bg-card border border-border/70">
+                  <span className="text-[10px] sm:text-[11px] text-muted-foreground block mb-0.5">Server Response</span>
+                  <span className="text-lg sm:text-xl font-bold font-mono text-foreground tabular-nums">18ms</span>
+                  <span className="text-[10px] text-emerald-400 block mt-0.5">Edge Cloud Node</span>
                 </div>
-                <div className="p-4 rounded-xl bg-card border border-border/70">
-                  <span className="text-[11px] text-muted-foreground block mb-1">Lighthouse Score</span>
-                  <span className="text-xl font-bold font-mono text-primary tabular-nums">100 / 100</span>
-                  <span className="text-[10px] text-emerald-400 block mt-1">Green Zone</span>
+                <div className="p-3 sm:p-4 rounded-xl bg-card border border-border/70">
+                  <span className="text-[10px] sm:text-[11px] text-muted-foreground block mb-0.5">Lighthouse Score</span>
+                  <span className="text-lg sm:text-xl font-bold font-mono text-primary tabular-nums">100 / 100</span>
+                  <span className="text-[10px] text-emerald-400 block mt-0.5">Green Zone</span>
                 </div>
-                <div className="p-4 rounded-xl bg-card border border-border/70">
-                  <span className="text-[11px] text-muted-foreground block mb-1">Bundle Size</span>
-                  <span className="text-xl font-bold font-mono text-foreground tabular-nums">42.4 KB</span>
-                  <span className="text-[10px] text-muted-foreground block mt-1">Gzipped & Tree-shaken</span>
+                <div className="p-3 sm:p-4 rounded-xl bg-card border border-border/70">
+                  <span className="text-[10px] sm:text-[11px] text-muted-foreground block mb-0.5">Bundle Size</span>
+                  <span className="text-lg sm:text-xl font-bold font-mono text-foreground tabular-nums">42.4 KB</span>
+                  <span className="text-[10px] text-muted-foreground block mt-0.5">Gzipped & Tree-shaken</span>
                 </div>
               </div>
             </div>
 
-            <div className="pt-6 border-t border-border/40 flex items-center justify-between text-xs text-muted-foreground">
+            <div className="pt-4 sm:pt-6 border-t border-border/40 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2 text-xs text-muted-foreground">
               <span>Dynamic Breakpoint Simulation: <strong className="text-foreground capitalize">{device}</strong></span>
-              <span className="font-mono text-primary">Hydrated with React 18 & TypeScript</span>
+              <span className="font-mono text-primary">Hydrated with React 19 & TypeScript</span>
             </div>
           </div>
         </div>

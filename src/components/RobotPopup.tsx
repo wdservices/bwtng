@@ -15,7 +15,14 @@ const RobotPopup: React.FC = () => {
   const [selectedBuild, setSelectedBuild] = useState<string>('website');
 
   useEffect(() => {
-    // Show after gentle dwell
+    // Respect mobile viewports: start minimized on mobile so small screens are never blocked
+    const isMobile = window.innerWidth < 768;
+    if (isMobile) {
+      setMinimized(true);
+      return;
+    }
+
+    // Gentle 10s dwell on desktop per design guidelines
     const timer = setTimeout(() => {
       const dismissed = sessionStorage.getItem('wave-popup-dismissed');
       if (!dismissed) {
@@ -23,7 +30,7 @@ const RobotPopup: React.FC = () => {
       } else {
         setMinimized(true);
       }
-    }, 1400);
+    }, 10000);
     return () => clearTimeout(timer);
   }, []);
 
@@ -51,14 +58,14 @@ const RobotPopup: React.FC = () => {
             setIsOpen(true);
             setMinimized(false);
           }}
-          className="fixed bottom-24 right-6 z-[9990] flex items-center gap-3 px-4 py-2.5 rounded-full bg-card/95 border border-primary/50 text-foreground shadow-2xl backdrop-blur-xl group hover:border-primary transition-all duration-300"
+          className="fixed bottom-20 sm:bottom-24 right-4 sm:right-6 z-[9990] flex items-center gap-2.5 sm:gap-3 px-3.5 sm:px-4 py-2 sm:py-2.5 rounded-full bg-card/95 border border-primary/50 text-foreground shadow-2xl backdrop-blur-xl group hover:border-primary transition-all duration-300"
           aria-label="Open Wave Assistant"
         >
           <div className="relative flex items-center justify-center">
             <span className="w-2.5 h-2.5 rounded-full bg-blue-500 absolute -top-0.5 -right-0.5 animate-ping" />
             <span className="w-2 h-2 rounded-full bg-blue-500 absolute -top-0.5 -right-0.5" />
-            <div className="w-8 h-8 rounded-xl bg-primary/20 flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-white transition-colors">
-              <Bot className="w-4 h-4" />
+            <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-xl bg-primary/20 flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-white transition-colors">
+              <Bot className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
             </div>
           </div>
           <div className="text-left pr-1">
@@ -74,14 +81,14 @@ const RobotPopup: React.FC = () => {
       {/* Main Holographic Popup Modal - matches user specification */}
       <AnimatePresence>
         {isOpen && (
-          <div className="fixed inset-0 z-[9998] flex items-end justify-end p-4 sm:p-6 md:p-8 pointer-events-none">
+          <div className="fixed inset-0 z-[9998] flex items-end justify-center sm:justify-end p-0 sm:p-6 md:p-8 pointer-events-none">
             {/* Subtle soft backdrop */}
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               transition={{ duration: 0.2 }}
-              className="fixed inset-0 bg-background/40 backdrop-blur-[2px] pointer-events-auto"
+              className="fixed inset-0 bg-background/50 backdrop-blur-[2px] pointer-events-auto"
               onClick={handleClose}
             />
 
@@ -90,9 +97,9 @@ const RobotPopup: React.FC = () => {
               animate={{ scale: 1, opacity: 1, y: 0 }}
               exit={{ scale: 0.94, opacity: 0, y: 24 }}
               transition={{ type: 'spring', damping: 26, stiffness: 360 }}
-              className="relative z-[9999] w-full sm:w-[380px] pointer-events-auto"
+              className="relative z-[9999] w-full sm:w-[380px] pointer-events-auto max-h-[90vh] overflow-y-auto"
             >
-              <div className="relative rounded-3xl bg-[#0c1322]/95 backdrop-blur-2xl border border-blue-500/30 shadow-2xl shadow-blue-500/10 overflow-hidden text-white">
+              <div className="relative rounded-t-3xl sm:rounded-3xl bg-[#0c1322]/98 backdrop-blur-2xl border border-blue-500/30 shadow-2xl shadow-blue-500/10 overflow-hidden text-white">
                 {/* Subtle top neon ambient glow line */}
                 <div className="absolute top-0 inset-x-0 h-1 bg-gradient-to-r from-blue-600 via-cyan-400 to-indigo-600" />
 

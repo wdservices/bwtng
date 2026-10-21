@@ -55,39 +55,39 @@ const MobileAppDevelopment: React.FC = () => {
       <Header />
 
       {/* Hero Section with High-Resolution Image Banner */}
-      <section className="pt-36 pb-20 relative overflow-hidden bg-gradient-to-b from-background via-card/30 to-background">
-        <div className="container mx-auto px-6">
-          <div className="grid lg:grid-cols-12 gap-12 items-center">
-            <div className="lg:col-span-7 space-y-6">
-              <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-primary/10 border border-primary/20 text-primary text-xs font-mono font-semibold">
-                <Smartphone className="w-3.5 h-3.5" />
-                <span>NATIVE &amp; CROSS-PLATFORM MOBILE PRACTICE</span>
+      <section className="pt-32 sm:pt-36 pb-16 sm:pb-20 relative overflow-hidden bg-gradient-to-b from-background via-card/30 to-background">
+        <div className="container mx-auto px-4 sm:px-6">
+          <div className="grid lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+            <div className="lg:col-span-7 space-y-5 sm:space-y-6">
+              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-primary/10 border border-primary/20 text-primary text-xs font-mono font-semibold max-w-full truncate">
+                <Smartphone className="w-3.5 h-3.5 shrink-0" />
+                <span className="truncate">NATIVE &amp; CROSS-PLATFORM MOBILE PRACTICE</span>
               </div>
 
-              <h1 className="font-display text-4xl sm:text-5xl md:text-6xl font-black uppercase text-foreground tracking-tight leading-[1.05]">
+              <h1 className="font-display text-3xl sm:text-5xl md:text-6xl font-black uppercase text-foreground tracking-tight leading-[1.08] text-balance">
                 Custom <span className="text-primary">Mobile Apps</span> Engineered for Everyday Life.
               </h1>
 
-              <p className="text-lg text-muted-foreground leading-relaxed max-w-xl">
+              <p className="text-base sm:text-lg text-muted-foreground leading-relaxed max-w-xl">
                 We engineer native iOS and Android applications with silky-smooth 60–120 FPS animations, encrypted offline-first databases, and reliable hardware integrations.
               </p>
 
-              <div className="flex flex-wrap items-center gap-4 pt-2">
-                <Button asChild size="lg" className="rounded-full px-8 h-12 font-semibold bg-primary hover:bg-primary/90 text-primary-foreground shadow-lg shadow-primary/20">
+              <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3.5 pt-2">
+                <Button asChild size="lg" className="rounded-full px-8 h-12 font-semibold bg-primary hover:bg-primary/90 text-primary-foreground shadow-lg shadow-primary/20 w-full sm:w-auto">
                   <a href="https://wa.me/2347051551543?text=Hi%20Bluewaves%2C%20I%20want%20to%20discuss%20a%20mobile%20app%20project." target="_blank" rel="noopener noreferrer">
                     Initiate App Scoping <ArrowRight className="ml-2 w-4 h-4" />
                   </a>
                 </Button>
-                <Button asChild size="lg" variant="outline" className="rounded-full px-7 h-12 font-semibold bg-card/60 backdrop-blur-md">
+                <Button asChild size="lg" variant="outline" className="rounded-full px-7 h-12 font-semibold bg-card/60 backdrop-blur-md w-full sm:w-auto">
                   <Link to="/portfolio">Explore Mobile Portfolio</Link>
                 </Button>
               </div>
 
-              <div className="flex items-center gap-6 text-xs font-mono text-muted-foreground pt-4 border-t border-border/60">
+              <div className="flex flex-wrap items-center gap-x-4 gap-y-2 text-xs font-mono text-muted-foreground pt-4 border-t border-border/60">
                 <span>📱 iOS &amp; Android App Stores</span>
-                <span className="text-border">·</span>
+                <span className="text-border hidden sm:inline">·</span>
                 <span>📶 100% Offline-First Sync</span>
-                <span className="text-border">·</span>
+                <span className="text-border hidden sm:inline">·</span>
                 <span>🔐 Biometric Security</span>
               </div>
             </div>

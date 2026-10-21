@@ -56,39 +56,39 @@ const WebDevelopment: React.FC = () => {
       <Header />
 
       {/* Hero Section with High-Resolution Image Banner */}
-      <section className="pt-36 pb-20 relative overflow-hidden bg-gradient-to-b from-background via-card/30 to-background">
-        <div className="container mx-auto px-6">
-          <div className="grid lg:grid-cols-12 gap-12 items-center">
-            <div className="lg:col-span-7 space-y-6">
-              <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-primary/10 border border-primary/20 text-primary text-xs font-mono font-semibold">
-                <Globe className="w-3.5 h-3.5" />
-                <span>ENTERPRISE WEB PRACTICE</span>
+      <section className="pt-32 sm:pt-36 pb-16 sm:pb-20 relative overflow-hidden bg-gradient-to-b from-background via-card/30 to-background">
+        <div className="container mx-auto px-4 sm:px-6">
+          <div className="grid lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+            <div className="lg:col-span-7 space-y-5 sm:space-y-6">
+              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-primary/10 border border-primary/20 text-primary text-xs font-mono font-semibold max-w-full truncate">
+                <Globe className="w-3.5 h-3.5 shrink-0" />
+                <span className="truncate">ENTERPRISE WEB PRACTICE</span>
               </div>
 
-              <h1 className="font-display text-4xl sm:text-5xl md:text-6xl font-black uppercase text-foreground tracking-tight leading-[1.05]">
+              <h1 className="font-display text-3xl sm:text-5xl md:text-6xl font-black uppercase text-foreground tracking-tight leading-[1.08] text-balance">
                 Custom <span className="text-primary">Web Development</span> &amp; Scalable SaaS Platforms.
               </h1>
 
-              <p className="text-lg text-muted-foreground leading-relaxed max-w-xl">
+              <p className="text-base sm:text-lg text-muted-foreground leading-relaxed max-w-xl">
                 We engineer bulletproof web applications, client portals, and e-commerce platforms engineered for extreme velocity, sub-second TTFB, and verified conversion lift.
               </p>
 
-              <div className="flex flex-wrap items-center gap-4 pt-2">
-                <Button asChild size="lg" className="rounded-full px-8 h-12 font-semibold bg-primary hover:bg-primary/90 text-primary-foreground shadow-lg shadow-primary/20">
+              <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3.5 pt-2">
+                <Button asChild size="lg" className="rounded-full px-8 h-12 font-semibold bg-primary hover:bg-primary/90 text-primary-foreground shadow-lg shadow-primary/20 w-full sm:w-auto">
                   <a href="https://wa.me/2347051551543?text=Hi%20Bluewaves%2C%20I%20want%20to%20discuss%20a%20web%20development%20project." target="_blank" rel="noopener noreferrer">
                     Initiate Project Scoping <ArrowRight className="ml-2 w-4 h-4" />
                   </a>
                 </Button>
-                <Button asChild size="lg" variant="outline" className="rounded-full px-7 h-12 font-semibold bg-card/60 backdrop-blur-md">
+                <Button asChild size="lg" variant="outline" className="rounded-full px-7 h-12 font-semibold bg-card/60 backdrop-blur-md w-full sm:w-auto">
                   <Link to="/portfolio">Explore Live Deployments</Link>
                 </Button>
               </div>
 
-              <div className="flex items-center gap-6 text-xs font-mono text-muted-foreground pt-4 border-t border-border/60">
+              <div className="flex flex-wrap items-center gap-x-4 gap-y-2 text-xs font-mono text-muted-foreground pt-4 border-t border-border/60">
                 <span>⚡ Sub-second Core Web Vitals</span>
-                <span className="text-border">·</span>
+                <span className="text-border hidden sm:inline">·</span>
                 <span>🔒 100% IP &amp; Code Ownership</span>
-                <span className="text-border">·</span>
+                <span className="text-border hidden sm:inline">·</span>
                 <span>💳 Paystack Verified</span>
               </div>
             </div>
@@ -119,14 +119,14 @@ const WebDevelopment: React.FC = () => {
       </section>
 
       {/* Interactive WebDev Engineering Workbench */}
-      <section className="py-16 bg-card/40 border-y border-border/60">
-        <div className="container mx-auto px-6">
-          <div className="text-center max-w-2xl mx-auto mb-12">
+      <section className="py-12 sm:py-16 bg-card/40 border-y border-border/60">
+        <div className="container mx-auto px-4 sm:px-6">
+          <div className="text-center max-w-2xl mx-auto mb-8 sm:mb-12">
             <span className="text-xs font-mono text-primary uppercase font-bold tracking-wider">Live System Simulation</span>
-            <h2 className="font-display text-3xl font-bold uppercase text-foreground mt-2">
+            <h2 className="font-display text-2xl sm:text-3xl font-bold uppercase text-foreground mt-2">
               Interactive Web Development Workbench
             </h2>
-            <p className="text-sm text-muted-foreground mt-2">
+            <p className="text-xs sm:text-sm text-muted-foreground mt-2">
               Test responsive viewports, simulate network throttling, and audit production metrics in real-time.
             </p>
           </div>
@@ -135,21 +135,21 @@ const WebDevelopment: React.FC = () => {
       </section>
 
       {/* Visual Deliverables Grid: Real systems we build */}
-      <section className="py-24">
-        <div className="container mx-auto px-6">
-          <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-16">
+      <section className="py-16 sm:py-24">
+        <div className="container mx-auto px-4 sm:px-6">
+          <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 sm:gap-6 mb-10 sm:mb-16">
             <div>
               <span className="text-xs font-mono text-primary uppercase font-bold tracking-wider">Verified Production Platforms</span>
-              <h2 className="font-display text-3xl sm:text-4xl font-bold uppercase text-foreground mt-2">
+              <h2 className="font-display text-2xl sm:text-4xl font-bold uppercase text-foreground mt-2">
                 What we build &amp; ship for clients.
               </h2>
             </div>
-            <p className="text-sm text-muted-foreground max-w-md">
+            <p className="text-xs sm:text-sm text-muted-foreground max-w-md">
               Every system is customized from the database schema up to meet strict commercial performance requirements.
             </p>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
             {WEB_DELIVERABLES.map((del, idx) => (
               <div
                 key={idx}
@@ -170,11 +170,11 @@ const WebDevelopment: React.FC = () => {
                     </div>
                   </div>
 
-                  <div className="p-6">
-                    <h3 className="font-display text-xl font-bold text-foreground mb-2 group-hover:text-primary transition-colors">
+                  <div className="p-5 sm:p-6">
+                    <h3 className="font-display text-lg sm:text-xl font-bold text-foreground mb-2 group-hover:text-primary transition-colors">
                       {del.title}
                     </h3>
-                    <p className="text-sm text-muted-foreground leading-relaxed mb-6">
+                    <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed mb-6">
                       {del.desc}
                     </p>
 
@@ -189,8 +189,8 @@ const WebDevelopment: React.FC = () => {
                   </div>
                 </div>
 
-                <div className="p-6 pt-0">
-                  <Button asChild variant="outline" className="w-full rounded-xl text-xs font-semibold h-10 hover:bg-primary hover:text-primary-foreground hover:border-primary transition-all">
+                <div className="p-5 sm:p-6 pt-0">
+                  <Button asChild variant="outline" className="w-full rounded-xl text-xs font-semibold h-11 hover:bg-primary hover:text-primary-foreground hover:border-primary transition-all">
                     <Link to="/portfolio">Inspect Case Study</Link>
                   </Button>
                 </div>
@@ -201,20 +201,20 @@ const WebDevelopment: React.FC = () => {
       </section>
 
       {/* Technical Architecture Specs Matrix */}
-      <section className="py-20 bg-card/60 border-y border-border/60">
-        <div className="container mx-auto px-6">
-          <div className="max-w-2xl mb-12">
+      <section className="py-16 sm:py-20 bg-card/60 border-y border-border/60">
+        <div className="container mx-auto px-4 sm:px-6">
+          <div className="max-w-2xl mb-8 sm:mb-12">
             <span className="text-xs font-mono text-primary uppercase font-bold tracking-wider">Engineering Specs</span>
-            <h2 className="font-display text-3xl font-bold uppercase text-foreground mt-2">
+            <h2 className="font-display text-2xl sm:text-3xl font-bold uppercase text-foreground mt-2">
               Our Web Development Tech Stack
             </h2>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
             {TECH_SPECS.map((spec, i) => (
-              <div key={i} className="p-6 rounded-2xl bg-background/90 border border-border/80">
+              <div key={i} className="p-5 sm:p-6 rounded-2xl bg-background/90 border border-border/80">
                 <span className="text-xs font-mono text-primary font-bold block mb-2">{spec.title}</span>
-                <p className="text-sm font-medium text-foreground leading-relaxed">{spec.tech}</p>
+                <p className="text-xs sm:text-sm font-medium text-foreground leading-relaxed">{spec.tech}</p>
               </div>
             ))}
           </div>
@@ -222,11 +222,11 @@ const WebDevelopment: React.FC = () => {
       </section>
 
       {/* FAQ Section */}
-      <section className="py-24">
-        <div className="container mx-auto px-6 max-w-4xl">
-          <div className="text-center mb-16">
+      <section className="py-16 sm:py-24">
+        <div className="container mx-auto px-4 sm:px-6 max-w-4xl">
+          <div className="text-center mb-10 sm:mb-16">
             <span className="text-xs font-mono text-primary uppercase font-bold tracking-wider">Common Inquiries</span>
-            <h2 className="font-display text-3xl font-bold uppercase text-foreground mt-2">
+            <h2 className="font-display text-2xl sm:text-3xl font-bold uppercase text-foreground mt-2">
               Web Development FAQ
             </h2>
           </div>
@@ -235,20 +235,20 @@ const WebDevelopment: React.FC = () => {
       </section>
 
       {/* Final Callout Bar */}
-      <section className="pb-28">
-        <div className="container mx-auto px-6">
-          <div className="rounded-3xl border border-primary/30 bg-gradient-to-r from-card via-card/90 to-primary/10 p-8 md:p-12 shadow-2xl flex flex-col md:flex-row items-center justify-between gap-8">
+      <section className="pb-20 sm:pb-28">
+        <div className="container mx-auto px-4 sm:px-6">
+          <div className="rounded-3xl border border-primary/30 bg-gradient-to-r from-card via-card/90 to-primary/10 p-6 sm:p-8 md:p-12 shadow-2xl flex flex-col md:flex-row items-stretch md:items-center justify-between gap-6 sm:gap-8">
             <div className="space-y-2 text-center md:text-left">
               <span className="text-xs font-mono uppercase text-primary font-bold tracking-wider block">Kickstart Your Web Platform</span>
-              <h3 className="font-display text-2xl md:text-3xl font-bold uppercase text-foreground">
+              <h3 className="font-display text-xl sm:text-2xl md:text-3xl font-bold uppercase text-foreground">
                 Ready to engineer your web application?
               </h3>
-              <p className="text-sm text-muted-foreground max-w-xl">
+              <p className="text-xs sm:text-sm text-muted-foreground max-w-xl">
                 Get an estimated sprint timeline, database architecture overview, and commercial scoping on WhatsApp.
               </p>
             </div>
 
-            <Button asChild size="lg" className="rounded-full px-8 h-12 font-semibold bg-primary hover:bg-primary/90 text-primary-foreground shadow-lg shadow-primary/20 shrink-0">
+            <Button asChild size="lg" className="rounded-full px-8 h-12 font-semibold bg-primary hover:bg-primary/90 text-primary-foreground shadow-lg shadow-primary/20 shrink-0 w-full sm:w-auto">
               <a href="https://wa.me/2347051551543?text=Hi%20Bluewaves%2C%20let%27s%20scope%20a%20new%20web%20application." target="_blank" rel="noopener noreferrer">
                 Chat on WhatsApp <ArrowRight className="ml-2 w-4 h-4" />
               </a>

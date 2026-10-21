@@ -55,7 +55,7 @@ export const clientProjects: ClientProject[] = [
   {
     slug: 'mega-vantage-dynamic',
     name: 'Mega Vantage Dynamic',
-    category: 'Corporate Website · Oil & Gas',
+    category: 'Corporate Energy & Oilfield Logistics',
     url: 'https://megavantagedynamic.com/',
     description:
       'A modern corporate digital presence for an indigenous oil and gas enterprise delivering marine logistics, construction, shipping, international procurement, and oilfield equipment services.',

@@ -45,7 +45,7 @@ export default function TechGlobe3D() {
     // NEVER get cut off by the canvas edges, floating seamlessly in the hero background.
     const computeCameraZ = (w: number, h: number) => {
       const minDim = Math.min(w, h);
-      const targetGlobePixels = 375;
+      const targetGlobePixels = minDim < 420 ? minDim * 0.58 : 375;
       const targetFraction = Math.min(targetGlobePixels / minDim, 0.65);
       const visibleWorldHeight = (innerRadius * 2) / targetFraction;
       const fovRad = (camera.fov * Math.PI) / 360;
@@ -59,6 +59,7 @@ export default function TechGlobe3D() {
     renderer.setSize(width, height);
     renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
     renderer.outputColorSpace = THREE.SRGBColorSpace;
+    renderer.domElement.style.touchAction = 'pan-y';
     container.appendChild(renderer.domElement);
 
     // Root Globe Group
@@ -395,7 +396,10 @@ export default function TechGlobe3D() {
   }, []);
 
   return (
-    <div className="relative w-full max-w-[580px] lg:max-w-[640px] xl:max-w-[680px] mx-auto flex items-center justify-center select-none cursor-grab active:cursor-grabbing">
+    <div
+      className="relative w-full max-w-[320px] sm:max-w-[440px] md:max-w-[540px] lg:max-w-[620px] xl:max-w-[660px] mx-auto flex items-center justify-center select-none cursor-grab active:cursor-grabbing touch-pan-y"
+      style={{ touchAction: 'pan-y' }}
+    >
       {/* Soft ambient background glow seamlessly blending into hero atmosphere */}
       <div className="absolute inset-4 rounded-full bg-primary/10 blur-3xl pointer-events-none" />
       <div className="absolute inset-16 rounded-full bg-cyan-500/10 blur-2xl pointer-events-none" />
@@ -403,7 +407,8 @@ export default function TechGlobe3D() {
       {/* 3D WebGL Canvas Container: Borderless, clean, with reactive acceleration & zoom */}
       <div
         ref={mountRef}
-        className="w-full aspect-square min-h-[380px] sm:min-h-[440px] md:min-h-[480px] lg:min-h-[540px] relative z-10 flex items-center justify-center overflow-visible"
+        className="w-full aspect-square min-h-[240px] sm:min-h-[340px] md:min-h-[440px] lg:min-h-[500px] relative z-10 flex items-center justify-center overflow-hidden"
+        style={{ touchAction: 'pan-y' }}
       />
     </div>
   );
